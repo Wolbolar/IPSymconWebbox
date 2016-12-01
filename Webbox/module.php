@@ -20,11 +20,11 @@
 			{
 				$sid = $this->RegisterScript("WebboxIPSInterface", "Webbox IPS Interface", $this->CreateWebHookScript(), 1);
 				IPS_SetHidden($sid, true);
-				$this->RegisterHookOLD("/hook/webhook", $sid);
+				$this->RegisterHookOLD("/hook/webbox", $sid);
 			}
 			else
 			{
-				$this->RegisterHook("/hook/webhook");
+				$this->RegisterHook("/hook/webbox");
 			}
 		}
 		
