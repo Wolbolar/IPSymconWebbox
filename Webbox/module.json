@@ -1,0 +1,14 @@
+{
+	"id": "{2669C5BE-13FD-4FE9-9862-CCC5458657CE}",
+	"name": "Webbox",
+	"type": 0,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "Webbox"
+}

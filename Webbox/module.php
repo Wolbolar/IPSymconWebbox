@@ -1,0 +1,281 @@
+<?
+
+	class Webbox extends IPSModule
+	{
+		
+		public function Create() {
+			//Never delete this line!
+			parent::Create();
+			
+			$this->RegisterPropertyString("Username", "");
+			$this->RegisterPropertyString("Password", "");
+		}
+	
+		public function ApplyChanges() {
+			//Never delete this line!
+			parent::ApplyChanges();
+			
+			$ipsversion = $this->GetIPSVersion();
+			if($ipsversion == 0 || $ipsversion == 1)
+			{
+				$sid = $this->RegisterScript("WebboxIPSInterface", "Webbox IPS Interface", $this->CreateWebHookScript(), 1);
+				IPS_SetHidden($sid, true);
+				$this->RegisterHookOLD("/hook/webhook", $sid);
+			}
+			else
+			{
+				$this->RegisterHook("/hook/webhook");
+			}
+		}
+		
+		private function RegisterHookOLD($Hook, $TargetID)
+		{
+			$ids = IPS_GetInstanceListByModuleID("{015A6EB8-D6E5-4B93-B496-0D3F77AE9FE1}");
+			if(sizeof($ids) > 0) 
+			{
+				$hooks = json_decode(IPS_GetProperty($ids[0], "Hooks"), true);
+				$found = false;
+				foreach($hooks as $index => $hook)
+					{
+					if($hook['Hook'] == $Hook)
+						{
+						if($hook['TargetID'] == $TargetID)
+							return;
+						$hooks[$index]['TargetID'] = $TargetID;
+						$found = true;
+					}
+				}
+				if(!$found) {
+					$hooks[] = Array("Hook" => $Hook, "TargetID" => $TargetID);
+				}
+				IPS_SetProperty($ids[0], "Hooks", json_encode($hooks));
+				IPS_ApplyChanges($ids[0]);
+			}
+		}
+		
+		private function RegisterHook($WebHook)
+		{
+  			$ids = IPS_GetInstanceListByModuleID("{015A6EB8-D6E5-4B93-B496-0D3F77AE9FE1}");
+  			if(sizeof($ids) > 0)
+				{
+  				$hooks = json_decode(IPS_GetProperty($ids[0], "Hooks"), true);
+  				$found = false;
+  				foreach($hooks as $index => $hook)
+					{
+					if($hook['Hook'] == $WebHook)
+						{
+						if($hook['TargetID'] == $this->InstanceID)
+  							return;
+						$hooks[$index]['TargetID'] = $this->InstanceID;
+  						$found = true;
+						}
+					}
+  				if(!$found)
+					{
+ 					$hooks[] = Array("Hook" => $WebHook, "TargetID" => $this->InstanceID);
+					}
+  				IPS_SetProperty($ids[0], "Hooks", json_encode($hooks));
+  				IPS_ApplyChanges($ids[0]);
+				}
+  		}
+		
+		
+		/**
+		* This function will be available automatically after the module is imported with the module control.
+		* Using the custom prefix this function will be callable from PHP and JSON-RPC through:
+		*
+		* Webbox_ProcessHookData($id);
+		*
+		*/
+		public function ProcessHookDataOLD()
+		{
+			if($_IPS['SENDER'] == "Execute") {
+				echo "This script cannot be used this way.";
+				return;
+			}
+			
+			if((IPS_GetProperty($this->InstanceID, "Username") != "") || (IPS_GetProperty($this->InstanceID, "Password") != "")) {
+				if(!isset($_SERVER['PHP_AUTH_USER']))
+					$_SERVER['PHP_AUTH_USER'] = "";
+				if(!isset($_SERVER['PHP_AUTH_PW']))
+					$_SERVER['PHP_AUTH_PW'] = "";
+					
+				if(($_SERVER['PHP_AUTH_USER'] != IPS_GetProperty($this->InstanceID, "Username")) || ($_SERVER['PHP_AUTH_PW'] != IPS_GetProperty($this->InstanceID, "Password"))) {
+					header('WWW-Authenticate: Basic Realm="Geofency WebHook"');
+					header('HTTP/1.0 401 Unauthorized');
+					echo "Authorization required";
+					return;
+				}
+			}
+			
+			if(!isset($_POST['device']) || !isset($_POST['id']) || !isset($_POST['name'])) {
+				IPS_LogMessage("Geofency", "Malformed data: ".print_r($_POST, true));
+				return;
+			}
+			
+			$this->SendDebug("GeoFency", "Array POST: ".print_r($_POST, true), 0);
+			$deviceID = $this->CreateInstanceByIdent($this->InstanceID, $this->ReduceGUIDToIdent($_POST['device']), "Device");
+			SetValue($this->CreateVariableByIdent($deviceID, "Latitude", "Latitude", 2), $this->ParseFloat($_POST['latitude']));
+			SetValue($this->CreateVariableByIdent($deviceID, "Longitude", "Longitude", 2), $this->ParseFloat($_POST['longitude']));
+			SetValue($this->CreateVariableByIdent($deviceID, "Timestamp", "Timestamp", 1, "~UnixTimestamp"), intval(strtotime($_POST['date'])));
+			SetValue($this->CreateVariableByIdent($deviceID, $this->ReduceGUIDToIdent($_POST['id']), utf8_decode($_POST['name']), 0, "~Presence"), intval($_POST['entry']) > 0);
+			
+		}
+		
+		/**
+ 		* This function will be called by the hook control. Visibility should be protected!
+  		*/
+		
+		protected function ProcessHookData()
+		{
+  			if($_IPS['SENDER'] == "Execute") {
+  				echo "This script cannot be used this way.";
+  				return;
+ @@ -67,7 +62,7 @@ public function ProcessHookData() {
+  			}
+  			
+  			if(!isset($_GET['device']) || !isset($_GET['id']) || !isset($_GET['name'])) {
+ -				IPS_LogMessage("EgiGeoZone", "Malformed data: ".print_r($_GET, true));
+ +				$this->SendDebug("EgiGeoZone", "Malformed data: ".print_r($_GET, true), 0);
+  				return;
+  			}
+		protected function ProcessHookData()
+		{
+			if($_IPS['SENDER'] == "Execute") {
+				echo "This script cannot be used this way.";
+				return;
+			}
+			
+			if((IPS_GetProperty($this->InstanceID, "Username") != "") || (IPS_GetProperty($this->InstanceID, "Password") != "")) {
+				if(!isset($_SERVER['PHP_AUTH_USER']))
+					$_SERVER['PHP_AUTH_USER'] = "";
+				if(!isset($_SERVER['PHP_AUTH_PW']))
+					$_SERVER['PHP_AUTH_PW'] = "";
+					
+				if(($_SERVER['PHP_AUTH_USER'] != IPS_GetProperty($this->InstanceID, "Username")) || ($_SERVER['PHP_AUTH_PW'] != IPS_GetProperty($this->InstanceID, "Password"))) {
+					header('WWW-Authenticate: Basic Realm="Geofency WebHook"');
+					header('HTTP/1.0 401 Unauthorized');
+					echo "Authorization required";
+					return;
+				}
+			}
+			
+			if(!isset($_POST['device']) || !isset($_POST['id']) || !isset($_POST['name'])) {
+				$this->SendDebug("Webbox", "Malformed data: ".print_r($_POST, true), 0);
+				return;
+			}
+			
+			$deviceID = $this->CreateInstanceByIdent($this->InstanceID, $this->ReduceGUIDToIdent($_POST['device']), "Device");
+			SetValue($this->CreateVariableByIdent($deviceID, "Latitude", "Latitude", 2), $this->ParseFloat($_POST['latitude']));
+			SetValue($this->CreateVariableByIdent($deviceID, "Longitude", "Longitude", 2), $this->ParseFloat($_POST['longitude']));
+			SetValue($this->CreateVariableByIdent($deviceID, "Timestamp", "Timestamp", 1, "~UnixTimestamp"), intval(strtotime($_POST['date'])));
+			SetValue($this->CreateVariableByIdent($deviceID, $this->ReduceGUIDToIdent($_POST['id']), utf8_decode($_POST['name']), 0, "~Presence"), intval($_POST['entry']) > 0);
+			
+		}
+		
+		
+		
+		
+		private function CreateWebHookScript()
+    {
+        $Script = '<?
+//Do not delete or modify.
+Webbox_ProcessHookDataOLD('.$this->InstanceID.');		
+?>';
+        /*
+		var_dump($_GET);
+            $PlayerSelect = IPS_GetObjectIDByIdent("PlayerSelect",IPS_GetParent($_IPS["SELF"]));
+            $PlayerID = GetValueInteger($PlayerSelect);
+            if ($PlayerID == -1)
+            {
+            // Alle
+            }
+            elseif($PlayerID >= 0)
+            {
+                $Player = LMS_GetPlayerInfo(IPS_GetParent($_IPS["SELF"]),$PlayerID);
+                if ($Player["Instanceid"] > 0)
+                {
+                    LSQ_LoadPlaylistByPlaylistID($Player["Instanceid"],(integer)$_GET["Playlistid"]);
+                }
+            }
+            SetValueInteger($PlayerSelect,-2);
+		*/
+		
+		return $Script;
+    }
+		
+		private function ReduceGUIDToIdent($guid) {
+			return str_replace(Array("{", "-", "}"), "", $guid);
+		}
+		
+		protected function GetIPSVersion ()
+		{
+			$ipsversion = IPS_GetKernelVersion ( );
+			$ipsversion = explode( ".", $ipsversion);
+			$ipsmajor = intval($ipsversion[0]);
+			$ipsminor = intval($ipsversion[1]);
+			if($ipsminor < 10) // 4.0
+			{
+				$ipsversion = 0;
+			}
+			elseif ($ipsminor >= 10 && $ipsminor < 20) // 4.1
+			{
+				$ipsversion = 1;
+			}
+			else   // 4.2
+			{
+				$ipsversion = 2;
+			}
+			return $ipsversion;
+		}
+		
+		/*
+		Hook -> ProcessHookData
+		OAuth -> ProcessOAuthData
+		*/
+		
+		private function CreateCategoryByIdent($id, $ident, $name) {
+			 $cid = @IPS_GetObjectIDByIdent($ident, $id);
+			 if($cid === false) {
+				 $cid = IPS_CreateCategory();
+				 IPS_SetParent($cid, $id);
+				 IPS_SetName($cid, $name);
+				 IPS_SetIdent($cid, $ident);
+			 }
+			 return $cid;
+		}
+		
+		private function CreateVariableByIdent($id, $ident, $name, $type, $profile = "") {
+			 $vid = @IPS_GetObjectIDByIdent($ident, $id);
+			 if($vid === false) {
+				 $vid = IPS_CreateVariable($type);
+				 IPS_SetParent($vid, $id);
+				 IPS_SetName($vid, $name);
+				 IPS_SetIdent($vid, $ident);
+				 if($profile != "")
+					IPS_SetVariableCustomProfile($vid, $profile);
+			 }
+			 return $vid;
+		}
+		
+		private function CreateInstanceByIdent($id, $ident, $name, $moduleid = "{485D0419-BE97-4548-AA9C-C083EB82E61E}") {
+			 $iid = @IPS_GetObjectIDByIdent($ident, $id);
+			 if($iid === false) {
+				 $iid = IPS_CreateInstance($moduleid);
+				 IPS_SetParent($iid, $id);
+				 IPS_SetName($iid, $name);
+				 IPS_SetIdent($iid, $ident);
+			 }
+			 return $iid;
+		}
+		
+		private function ParseFloat($floatString) { 
+			$LocaleInfo = localeconv(); 
+			$floatString = str_replace(".", $LocaleInfo["decimal_point"], $floatString);
+			$floatString = str_replace(",", $LocaleInfo["decimal_point"], $floatString);
+			return floatval($floatString); 
+		}
+		
+	}
+
+?>
