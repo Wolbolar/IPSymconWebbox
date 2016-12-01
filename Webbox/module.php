@@ -128,19 +128,6 @@
 		
 		protected function ProcessHookData()
 		{
-  			if($_IPS['SENDER'] == "Execute") {
-  				echo "This script cannot be used this way.";
-  				return;
- @@ -67,7 +62,7 @@ public function ProcessHookData() {
-  			}
-  			
-  			if(!isset($_GET['device']) || !isset($_GET['id']) || !isset($_GET['name'])) {
- -				IPS_LogMessage("EgiGeoZone", "Malformed data: ".print_r($_GET, true));
- +				$this->SendDebug("EgiGeoZone", "Malformed data: ".print_r($_GET, true), 0);
-  				return;
-  			}
-		protected function ProcessHookData()
-		{
 			if($_IPS['SENDER'] == "Execute") {
 				echo "This script cannot be used this way.";
 				return;
