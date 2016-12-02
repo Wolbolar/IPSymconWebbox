@@ -216,7 +216,7 @@
 			
 		}
 		
-		protected function HTMLBox($id)
+		protected function HTMLBox($objektid)
 		{
 		// HTMLBox ausgeben
 		$HTML = GetValue($objektid);
