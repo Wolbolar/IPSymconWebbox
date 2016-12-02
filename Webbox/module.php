@@ -259,7 +259,7 @@
 		$imgdata = base64_decode($imgbase64); 
 		$mimetype = $this->getImageMimeType($imgdata);
 		$headhtml =  $this->getimgheader($mimetype);
-		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata)
+		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata);
 		return $mediaimage;
 		}
 		
@@ -318,7 +318,7 @@
 		}
 		
 		private function CreateWebHookScript()
-    {
+		{
         $Script = '<?
 //Do not delete or modify.
 Webbox_ProcessHookDataOLD('.$this->InstanceID.');		
@@ -343,9 +343,10 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 		*/
 		
 		return $Script;
-    }
+		}
 		
-		private function ReduceGUIDToIdent($guid) {
+		private function ReduceGUIDToIdent($guid)
+		{
 			return str_replace(Array("{", "-", "}"), "", $guid);
 		}
 		
