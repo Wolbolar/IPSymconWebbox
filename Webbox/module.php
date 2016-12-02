@@ -198,6 +198,10 @@
 					header($headhtml);
 					echo $imgdata;
 				}
+				if($type == "test")
+				{
+					echo "Webbox Webhook";
+				}
 			}
 			
 			
