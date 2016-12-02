@@ -267,23 +267,23 @@
 		{
 			if($mimetype == "jpeg")
 			{
-			$header = '"Content-Type: image/jpeg"';
+			$header = 'Content-Type: image/jpeg';
 			}
 			elseif($mimetype == "png")
 			{
-			$header = '"Content-Type: image/png"';
+			$header = 'Content-Type: image/png';
 			}
 			elseif($mimetype == "gif")
 			{
-			$header = '"Content-Type: image/gif"';
+			$header = 'Content-Type: image/gif';
 			}
 			elseif($mimetype == "bmp")
 			{
-			$header = '"Content-Type: image/bmp"';
+			$header = 'Content-Type: image/bmp';
 			}
 			elseif($mimetype == "tiff")
 			{
-			$header = '"Content-Type: image/tiff"';
+			$header = 'Content-Type: image/tiff';
 			}
 			return $header;
 		}
