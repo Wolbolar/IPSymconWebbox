@@ -218,15 +218,15 @@
 		
 		protected function HTMLBox($id)
 		{
-			// HTMLBox ausgeben
+		// HTMLBox ausgeben
 		$HTML = GetValue($objektid);
 		if ( strpos($HTML, '</html>'))
-		{
-		//echo utf8_encode($HTML);
-		echo $HTML;
-		}
+			{
+			//echo utf8_encode($HTML);
+			echo $HTML;
+			}
 		else
-		{
+			{
 		$HTMLHead = '<!doctype html>
 <html>
 <head>
@@ -238,10 +238,11 @@
 		$HTMLButtom = '
 </body>
 </html>';
-		$HTMLPage = $HTMLHead;
-		$HTMLPage .= $HTML;
-		$HTMLPage .= $HTMLButtom;
-			return $HTMLPage;
+			$HTMLPage = $HTMLHead;
+			$HTMLPage .= $HTML;
+			$HTMLPage .= $HTMLButtom;
+				return $HTMLPage;
+			}
 		}
 		
 		protected function MediaImage($imageid)
