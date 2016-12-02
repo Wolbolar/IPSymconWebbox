@@ -101,7 +101,7 @@
 					$_SERVER['PHP_AUTH_PW'] = "";
 					
 				if(($_SERVER['PHP_AUTH_USER'] != IPS_GetProperty($this->InstanceID, "Username")) || ($_SERVER['PHP_AUTH_PW'] != IPS_GetProperty($this->InstanceID, "Password"))) {
-					header('WWW-Authenticate: Basic Realm="Geofency WebHook"');
+					header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
 					header('HTTP/1.0 401 Unauthorized');
 					echo "Authorization required";
 					return;
@@ -109,7 +109,7 @@
 			}
 			
 			if(!isset($_POST['device']) || !isset($_POST['id']) || !isset($_POST['name'])) {
-				IPS_LogMessage("Geofency", "Malformed data: ".print_r($_POST, true));
+				IPS_LogMessage("Webbox", "Malformed data: ".print_r($_POST, true));
 				return;
 			}
 			
@@ -140,28 +140,177 @@
 					$_SERVER['PHP_AUTH_PW'] = "";
 					
 				if(($_SERVER['PHP_AUTH_USER'] != IPS_GetProperty($this->InstanceID, "Username")) || ($_SERVER['PHP_AUTH_PW'] != IPS_GetProperty($this->InstanceID, "Password"))) {
-					header('WWW-Authenticate: Basic Realm="Geofency WebHook"');
+					header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
 					header('HTTP/1.0 401 Unauthorized');
 					echo "Authorization required";
 					return;
 				}
 			}
-			
-			if(!isset($_POST['device']) || !isset($_POST['id']) || !isset($_POST['name'])) {
+			/*
+			if(!isset($_POST['type']) || !isset($_POST['id']) )
+				{
 				$this->SendDebug("Webbox", "Malformed data: ".print_r($_POST, true), 0);
 				return;
+				}
+			*/
+			
+			//Prüft ob POST oder GET
+			
+			if (isset($_POST["type"]))
+			{
+				$type = $_POST['type'];
+				if($type == "HTMLBox")
+				{
+					$id = $_POST['id'];
+					$id = (int)$id;
+					$htmlbox = $this->HTMLBox($id);
+					echo $htmlbox;
+				}
+				if($type == "MediaImage")
+				{
+					$id = $_POST['id'];
+					$id = (int)$id;
+					$mediaimage = $this->MediaImage($id);
+					$headhtml = $mediaimage["headhtml"];
+					$imgdata = $mediaimage["imgdata"];
+					header($headhtml);
+					echo $imgdata;
+				}	
+			}
+				
+			if (isset($_GET["type"]))
+			{
+				$type = $_GET['type'];
+				if($type == "HTMLBox")
+				{
+					$id = $_GET['id'];
+					$id = (int)$id;
+					$htmlbox = $this->HTMLBox($id);
+					echo $htmlbox;
+				}
+				if($type == "MediaImage")
+				{
+					$id = $_GET['id'];
+					$id = (int)$id;
+					$mediaimage = $this->MediaImage($id);
+					$headhtml = $mediaimage["headhtml"];
+					$imgdata = $mediaimage["imgdata"];
+					header($headhtml);
+					echo $imgdata;
+				}
 			}
 			
+			
+			/*
 			$deviceID = $this->CreateInstanceByIdent($this->InstanceID, $this->ReduceGUIDToIdent($_POST['device']), "Device");
 			SetValue($this->CreateVariableByIdent($deviceID, "Latitude", "Latitude", 2), $this->ParseFloat($_POST['latitude']));
 			SetValue($this->CreateVariableByIdent($deviceID, "Longitude", "Longitude", 2), $this->ParseFloat($_POST['longitude']));
 			SetValue($this->CreateVariableByIdent($deviceID, "Timestamp", "Timestamp", 1, "~UnixTimestamp"), intval(strtotime($_POST['date'])));
 			SetValue($this->CreateVariableByIdent($deviceID, $this->ReduceGUIDToIdent($_POST['id']), utf8_decode($_POST['name']), 0, "~Presence"), intval($_POST['entry']) > 0);
+			*/
+			
 			
 		}
 		
+		protected function HTMLBox($id)
+		{
+			// HTMLBox ausgeben
+		$HTML = GetValue($objektid);
+		if ( strpos($HTML, '</html>'))
+		{
+		//echo utf8_encode($HTML);
+		echo $HTML;
+		}
+		else
+		{
+		$HTMLHead = '<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTMLBox</title>
+<link href="css/neowebelement.css" rel="stylesheet" type="text/css">
+</head>
+<body marginheight="0" marginwidth="0">';
+		$HTMLButtom = '
+</body>
+</html>';
+		$HTMLPage = $HTMLHead;
+		$HTMLPage .= $HTML;
+		$HTMLPage .= $HTMLButtom;
+			return $HTMLPage;
+		}
 		
+		protected function MediaImage($imageid)
+		{
+		if(!IPS_MediaExists($imageid))
+			die("ID #".$imageid.") does not exists");
+
+		$media=IPS_GetMedia($imageid);
+
+		if($media['MediaType'] != 1)
+			die("ID #".$imageid." is not an image");
+
+		$imgbase64 = IPS_GetMediaContent($imageid); //liefert den Base64 kodierten Inhalt für das Medienobjekt
+		$imgdata = base64_decode($imgbase64); 
+		$mimetype = $this->getImageMimeType($imgdata);
+		$headhtml =  $this->getimgheader($mimetype);
+		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata)
+		return $mediaimage;
+		}
 		
+		protected function getimgheader($mimetype)
+		{
+			if($mimetype == "jpeg")
+			{
+			$header = '"Content-Type: image/jpeg"';
+			}
+			elseif($mimetype == "png")
+			{
+			$header = '"Content-Type: image/png"';
+			}
+			elseif($mimetype == "gif")
+			{
+			$header = '"Content-Type: image/gif"';
+			}
+			elseif($mimetype == "bmp")
+			{
+			$header = '"Content-Type: image/bmp"';
+			}
+			elseif($mimetype == "tiff")
+			{
+			$header = '"Content-Type: image/tiff"';
+			}
+			return $header;
+		}
+		
+		protected function getBytesFromHexString($hexdata)
+		{
+		  for($count = 0; $count < strlen($hexdata); $count+=2)
+			$bytes[] = chr(hexdec(substr($hexdata, $count, 2)));
+
+		  return implode($bytes);
+		}
+
+		protected function getImageMimeType($imagedata)
+		{
+		  $imagemimetypes = array( 
+			"jpeg" => "FFD8", 
+			"png" => "89504E470D0A1A0A", 
+			"gif" => "474946",
+			"bmp" => "424D", 
+			"tiff" => "4949",
+			"tiff" => "4D4D"
+		  );
+
+		  foreach ($imagemimetypes as $mime => $hexbytes)
+		  {
+			$bytes = $this->getBytesFromHexString($hexbytes);
+			if (substr($imagedata, 0, strlen($bytes)) == $bytes)
+			  return $mime;
+		  }
+
+		  return NULL;
+		}
 		
 		private function CreateWebHookScript()
     {
@@ -245,7 +394,9 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			 return $vid;
 		}
 		
-		private function CreateInstanceByIdent($id, $ident, $name, $moduleid = "{485D0419-BE97-4548-AA9C-C083EB82E61E}") {
+		/* Create Dummy Instanz */
+		private function CreateInstanceByIdent($id, $ident, $name, $moduleid = "{485D0419-BE97-4548-AA9C-C083EB82E61E}")
+		{
 			 $iid = @IPS_GetObjectIDByIdent($ident, $id);
 			 if($iid === false) {
 				 $iid = IPS_CreateInstance($moduleid);
