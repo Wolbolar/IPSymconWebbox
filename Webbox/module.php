@@ -308,7 +308,7 @@
 			$thumbimg = $thumb["img"];
 			$thumbwidth = $thumb["width"];
 			$thumbheight = $thumb["height"];
-			$ImageFile = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $picturename);
+			$ImageFile = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
 				
 			// HTMLBox ausgeben
 			$sonoscoverdetail = GetValue($detailobjectid);
