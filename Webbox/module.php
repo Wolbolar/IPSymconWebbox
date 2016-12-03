@@ -216,18 +216,126 @@
 					$slider = $this->Slider($id);
 					echo $slider;
 				}
+				if($type == "Toggle")
+				{
+					$id = $_GET['id'];
+					$id = (int)$id;
+					$toggle = $this->Toggle($id);
+					echo $toggle;
+				}
+				if($type == "Cover")
+				{
+					$id = $_GET['id'];
+					$id = (int)$id;
+					$detailid = $_GET['detailid'];
+					$detailid = (int)$detailid;
+					if(isset($_GET["size"]))
+						{
+						$size = $_GET["size"];
+						}
+					else
+						{
+						$size = 340;
+						}
+					$cover = $this->Cover($id, $size, $detailid);
+					echo $cover;
+				}
+				if($type == "Keypanel")
+				{
+					$id = $_GET['id'];
+					$id = (int)$id;
+					$keypanel = $this->Keypanel($id);
+					$headhtml = $keypanel["headhtml"];
+					$imgdata = $keypanel["imgdata"];
+					header($headhtml);
+					echo $keypanel;
+				}
+				if($type == "Navicursor")
+				{
+					$id = $_GET['id'];
+					$id = (int)$id;
+					$navicursor = $this->Navicursor($id);
+					$headhtml = $navicursor["headhtml"];
+					$imgdata = $navicursor["imgdata"];
+					header($headhtml);
+					echo $cover;
+				}
 			}
+		}
+		
+		protected function Keypanel()
+		{
 			
+		}
+		
+		protected function NaviCursor()
+		{
 			
-			/*
-			$deviceID = $this->CreateInstanceByIdent($this->InstanceID, $this->ReduceGUIDToIdent($_POST['device']), "Device");
-			SetValue($this->CreateVariableByIdent($deviceID, "Latitude", "Latitude", 2), $this->ParseFloat($_POST['latitude']));
-			SetValue($this->CreateVariableByIdent($deviceID, "Longitude", "Longitude", 2), $this->ParseFloat($_POST['longitude']));
-			SetValue($this->CreateVariableByIdent($deviceID, "Timestamp", "Timestamp", 1, "~UnixTimestamp"), intval(strtotime($_POST['date'])));
-			SetValue($this->CreateVariableByIdent($deviceID, $this->ReduceGUIDToIdent($_POST['id']), utf8_decode($_POST['name']), 0, "~Presence"), intval($_POST['entry']) > 0);
-			*/
+		}
+		
+		protected function Toggle()
+		{
 			
-			
+		}
+		
+		protected function base64_to_picture($base64_string, $output_file)
+		{
+			$ifp = fopen($output_file, "wb"); 
+
+			$data = explode(',', $base64_string);
+
+			fwrite($ifp, base64_decode($data[1])); 
+			fclose($ifp); 
+
+			return $output_file; 
+		}
+		
+		protected function Cover($imgobjectid, $size, $detailobjectid)
+		{
+			$name = IPS_GetName($objectid);
+			$mediaimage = $this->MediaImage($objectid);
+			//$headhtml = $mediaimage["headhtml"];
+			$imgdata = $mediaimage["imgdata"];
+			$mimetype = $mediaimage["mimetype"];
+			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."cover.".$mimetype;
+			$ImageFile = $this->base64_to_picture($imgdata, $output_file);
+			$imageinfo = $this->getimageinfo($ImageFile);
+			$image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
+			$thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
+			$thumbimg = $thumb["img"];
+			$thumbwidth = $thumb["width"];
+			$thumbheight = $thumb["height"];
+			$ImageFile = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $picturename);
+				
+			// HTMLBox ausgeben
+			$sonoscoverdetail = GetValue($detailobjectid);
+			if($sonoscoverdetail == "")
+			{
+				$img = imagecreatetruecolor($size, $size);
+				imagesavealpha($img, true);
+				$color = imagecolorallocatealpha($img, 0, 0, 0, 127);
+				imagefill($img, 0, 0, $color);
+				imagepng($img, 'transparentcover.png');
+				$cover = '<a href="sonos://"><img src="transparentcover.png" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
+			}
+			else
+			{
+				$cover = '<a href="sonos://"><img class="reflex" src="'.$ImageFile.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
+			}	
+
+			$content = '<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>'.$name.'</title>
+<script type="text/javascript" src="js/reflex.js"></script><script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<link href="css/neowebelement.css" rel="stylesheet" type="text/css">
+</head>
+<body marginheight="0" marginwidth="0">
+'.$cover.'
+</body>
+</html>';
+			return $content;
 		}
 		
 		protected function HTMLBox($objektid)
@@ -597,7 +705,7 @@ function cycle_example(){
 		$imgdata = base64_decode($imgbase64); 
 		$mimetype = $this->getImageMimeType($imgdata);
 		$headhtml =  $this->getimgheader($mimetype);
-		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata);
+		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata, "mimetype" => $mimetype);
 		return $mediaimage;
 		}
 		
@@ -653,6 +761,101 @@ function cycle_example(){
 		  }
 
 		  return NULL;
+		}
+		
+		protected function getimageinfo($imagefile)
+		{				
+			$imagesize = getimagesize($imagefile);
+			$imagewidth = $imagesize[0];
+			$imageheight = $imagesize[1];
+			$imagetype = $imagesize[2];
+			$imageinfo = array("imagewidth" => $imagewidth, "imageheight" => $imageheight, "imagetype" => $imagetype);
+			return $imageinfo;
+		}
+	
+		protected function createimage($imagefile, $imagetype)
+		{
+			switch ($imagetype)
+			{
+				// Bedeutung von $imagetype:
+				// 1 = GIF, 2 = JPG, 3 = PNG, 4 = SWF, 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order), 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF, 15 = WBMP, 16 = XBM
+				case 1: // GIF
+					$image = imagecreatefromgif($imagefile);
+					break;
+				case 2: // JPEG
+					$image = imagecreatefromjpeg($imagefile);
+					break;
+				case 3: // PNG
+					$image = imagecreatefrompng($imagefile);
+					//imagealphablending($image, true); // setting alpha blending on
+					//imagesavealpha($image, true); // save alphablending setting (important)
+					break;
+				default:
+					die('Unsupported imageformat');
+			}
+			return $image;
+		}
+  
+		protected function createthumbnail($mediaimgwidth, $mediaimgheight, $imagewidth, $imageheight)
+		{
+			// Maximalausmaße
+			$maxthumbwidth = $mediaimgwidth;
+			$maxthumbheight = $mediaimgheight;
+			// Ausmaße kopieren, wir gehen zuerst davon aus, dass das Bild schon Thumbnailgröße hat
+			$thumbwidth = $imagewidth;
+			$thumbheight = $imageheight;
+			// Breite skalieren falls nötig
+			if ($thumbwidth > $maxthumbwidth)
+			{                                    
+				$factor = $maxthumbwidth / $thumbwidth;
+				$thumbwidth *= $factor;
+				$thumbheight *= $factor;
+			}
+			// Höhe skalieren, falls nötig
+			if ($thumbheight > $maxthumbheight)
+			{
+					$factor = $maxthumbheight / $thumbheight;
+					$thumbwidth *= $factor;
+					$thumbheight *= $factor;
+			}
+			// Vergrößern Breite
+			if ($thumbwidth < $maxthumbwidth)
+			{
+				$factor = $maxthumbheight / $thumbheight;
+				$thumbwidth *= $factor;
+				$thumbheight *= $factor;
+			}
+			//vergrößern Höhe
+			if ($thumbheight < $maxthumbheight)
+			{
+					$factor = $maxthumbheight / $thumbheight;
+					$thumbwidth *= $factor;
+					$thumbheight *= $factor;
+			}
+
+			// Thumbnail erstellen
+			$thumbimg = imagecreatetruecolor($thumbwidth, $thumbheight);
+			imagesavealpha($thumbimg, true);
+			$trans_colour = imagecolorallocatealpha($thumbimg, 0, 0, 0, 127);
+			imagefill($thumbimg, 0, 0, $trans_colour);
+			$thumb = array("img" => $thumbimg, "width" => $thumbwidth, "height" => $thumbheight);
+			return $thumb;
+		}
+  
+		protected function copyimgtothumbnail($thumb, $image, $thumbwidth, $thumbheight, $imagewidth, $imageheight, $picturename)
+		{
+			imagecopyresampled(
+				$thumb,
+				$image,
+				0, 0, 0, 0, // Startposition des Ausschnittes
+				$thumbwidth, $thumbheight,
+				$imagewidth, $imageheight
+				);
+			// In Datei speichern
+			$thumbfile = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR."resampled_".$picturename.".png";  // Image-Datei
+			imagepng($thumb, $thumbfile);
+			imagedestroy($thumb);
+			return $thumbfile;
 		}
 		
 		private function CreateWebHookScript()
