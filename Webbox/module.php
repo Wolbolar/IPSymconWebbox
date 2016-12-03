@@ -292,8 +292,8 @@
 		
 		protected function Cover($imgobjectid, $size, $detailobjectid)
 		{
-			$name = IPS_GetName($objectid);
-			$mediaimage = $this->MediaImage($objectid);
+			$name = IPS_GetName($imgobjectid);
+			$mediaimage = $this->MediaImage($imgobjectid);
 			//$headhtml = $mediaimage["headhtml"];
 			$imgdata = $mediaimage["imgdata"];
 			$mimetype = $mediaimage["mimetype"];
