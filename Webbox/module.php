@@ -278,13 +278,14 @@
 			
 		}
 		
-		protected function base64_to_picture($base64_string, $output_file)
+		protected function savepicture($imgdata, $output_file)
 		{
 			$ifp = fopen($output_file, "wb"); 
 
-			$data = explode(',', $base64_string);
+			//$data = explode(',', $base64_string);
 
-			fwrite($ifp, base64_decode($data[1])); 
+			//fwrite($ifp, base64_decode($data[1])); 
+			fwrite($ifp, $imgdata); 
 			fclose($ifp); 
 
 			return $output_file; 
@@ -298,7 +299,7 @@
 			$imgdata = $mediaimage["imgdata"];
 			$mimetype = $mediaimage["mimetype"];
 			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."cover.".$mimetype;
-			$ImageFile = $this->base64_to_picture($imgdata, $output_file);
+			$ImageFile = $this->savepicture($imgdata, $output_file);
 			$imageinfo = $this->getimageinfo($ImageFile);
 			$image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
 			$thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
