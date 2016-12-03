@@ -855,10 +855,10 @@ function cycle_example(){
 				$imagewidth, $imageheight
 				);
 			// In Datei speichern
-			$thumbfile = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR."resampled_".$picturename.".png";  // Image-Datei
+			$thumbfile = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR."resampled_".$picturename."_temp.png";  // Image-Datei
 			imagepng($thumb, $thumbfile);
 			imagedestroy($thumb);
-			$tumbimagepath = "media".DIRECTORY_SEPARATOR."resampled_".$picturename.".png";  // Image-Datei
+			$tumbimagepath = "media".DIRECTORY_SEPARATOR."resampled_".$picturename."_temp.png";  // Image-Datei
 			return $tumbimagepath;
 		}
 		
