@@ -213,7 +213,7 @@
 				{
 					$id = $_GET['id'];
 					$id = (int)$id;
-					$slider = $this->Slider($id)
+					$slider = $this->Slider($id);
 					echo $slider;
 				}
 			}
