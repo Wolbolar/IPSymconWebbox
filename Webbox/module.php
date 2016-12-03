@@ -298,7 +298,7 @@
 			//$headhtml = $mediaimage["headhtml"];
 			$imgdata = $mediaimage["imgdata"];
 			$mimetype = $mediaimage["mimetype"];
-			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."cover.".$mimetype;
+			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."_temp.".$mimetype;
 			$ImageFile = $this->savepicture($imgdata, $output_file);
 			$imageinfo = $this->getimageinfo($ImageFile);
 			$mediaimgwidth = $size;
@@ -308,7 +308,7 @@
 			$thumbimg = $thumb["img"];
 			$thumbwidth = $thumb["width"];
 			$thumbheight = $thumb["height"];
-			$ImageFile = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
+			$coverimg = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
 				
 			// HTMLBox ausgeben
 			$sonoscoverdetail = GetValue($detailobjectid);
@@ -323,7 +323,7 @@
 			}
 			else
 			{
-				$cover = '<a href="sonos://"><img class="reflex" src="'.$ImageFile.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
+				$cover = '<a href="sonos://"><img class="reflex" src="'.$coverimg.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
 			}	
 
 			$content = '<!doctype html>
@@ -858,7 +858,8 @@ function cycle_example(){
 			$thumbfile = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR."resampled_".$picturename.".png";  // Image-Datei
 			imagepng($thumb, $thumbfile);
 			imagedestroy($thumb);
-			return $thumbfile;
+			$tumbimagepath = "media".DIRECTORY_SEPARATOR."resampled_".$picturename.".png";  // Image-Datei
+			return $tumbimagepath;
 		}
 		
 		private function CreateWebHookScript()
