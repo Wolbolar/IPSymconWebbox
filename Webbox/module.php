@@ -301,6 +301,8 @@
 			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."cover.".$mimetype;
 			$ImageFile = $this->savepicture($imgdata, $output_file);
 			$imageinfo = $this->getimageinfo($ImageFile);
+			$mediaimgwidth = $size;
+			$mediaimgheight = $size;
 			$image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
 			$thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
 			$thumbimg = $thumb["img"];
