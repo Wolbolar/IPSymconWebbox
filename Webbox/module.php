@@ -1107,7 +1107,6 @@ Raphael.colorwheel = function(target, color_wheel_size, no_segments){
     .example, .code {
       margin:10px 0;
       padding:10px 0;
-      border-top:2px #CCC solid;
     }
     h2 {
       font-size:16px;
