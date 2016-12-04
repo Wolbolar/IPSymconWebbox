@@ -693,91 +693,8 @@ function cycle_example(){
 	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/raphael.min.js"></script> -->
 	<script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" type="text/javascript"></script>
-	'.$this->ColorwheelJS().'
-	  <style type="text/css" media="screen">
-    body {
-      background:#FFF;
-      font:14px/20px helvetica, arial;
-      text-align:center;
-      margin:40px;
-      color:#666;
-    }
-
-    a {
-      color:#F60;
-    }
-
-    .demo {
-      text-align:left;
-      width:600px;
-      margin:0 auto;
-      padding:20px;
-      background:#FFFFEE;
-      -moz-box-shadow: #a6a6a6 0px 0px 4px;
-      box-shadow: #a6a6a6 0px 0px 4px;
-      -webkit-box-shadow: #a6a6a6 0px 0px 4px;
-    }
-    input {
-      font-family: monospace;
-      font-size:16px;
-    }
-    .swatch {
-      padding:10px;
-    }
-    .method {
-      margin-bottom:20px;
-    }
-    .code p{margin:0; padding:0; display:none;}
-
-    .source {
-      font-size:10px;
-      line-height:14px;
-    }
-
-    .example, .code {
-      margin:10px 0;
-      padding:10px 0;
-      border-top:2px #CCC solid;
-    }
-    h2 {
-      font-size:16px;
-    }
-    h1 {
-      color:#000;
-    }
-    .example h2, .example p {
-      margin:0 0 10px;
-    }
-     .example p {
-       width:300px;
-     }
-    .method b {
-      color:#2e5478;
-    }
-
-    .method div {
-      width:400px;
-    }
-
-    code {
-      display:none;
-      background:#FFF;
-      padding:10px;
-    }
-
-    .returns {
-      color:#237210;
-    }
-
-    .show_source {
-      margin:20px 0 0;
-      color:#999;
-      text-decoration:underline;
-      cursor:pointer;
-    }
-
-
-  </style>
+	'.$this->ColorwheelJS().$this->ColorwheelCSS().'
+	  
 </head>
 
 <body>
@@ -1333,6 +1250,95 @@ Raphael.colorwheel = function(target, color_wheel_size, no_segments){
 };
 			</script>';
 			return $JS;
+		}
+		
+		protected function ColorwheelCSS()
+		{
+			$CSS = '<style type="text/css" media="screen">
+    body {
+      background:#FFF;
+      font:14px/20px helvetica, arial;
+      text-align:center;
+      margin:40px;
+      color:#666;
+    }
+
+    a {
+      color:#F60;
+    }
+
+    .demo {
+      text-align:left;
+      width:600px;
+      margin:0 auto;
+      padding:20px;
+      background:#FFFFEE;
+      -moz-box-shadow: #a6a6a6 0px 0px 4px;
+      box-shadow: #a6a6a6 0px 0px 4px;
+      -webkit-box-shadow: #a6a6a6 0px 0px 4px;
+    }
+    input {
+      font-family: monospace;
+      font-size:16px;
+    }
+    .swatch {
+      padding:10px;
+    }
+    .method {
+      margin-bottom:20px;
+    }
+    .code p{margin:0; padding:0; display:none;}
+
+    .source {
+      font-size:10px;
+      line-height:14px;
+    }
+
+    .example, .code {
+      margin:10px 0;
+      padding:10px 0;
+      border-top:2px #CCC solid;
+    }
+    h2 {
+      font-size:16px;
+    }
+    h1 {
+      color:#000;
+    }
+    .example h2, .example p {
+      margin:0 0 10px;
+    }
+     .example p {
+       width:300px;
+     }
+    .method b {
+      color:#2e5478;
+    }
+
+    .method div {
+      width:400px;
+    }
+
+    code {
+      display:none;
+      background:#FFF;
+      padding:10px;
+    }
+
+    .returns {
+      color:#237210;
+    }
+
+    .show_source {
+      margin:20px 0 0;
+      color:#999;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+
+  </style>';
+			return $CSS;
 		}
 		
 		protected function Slider($id)
