@@ -696,7 +696,7 @@ function cycle_example(){
 	</head>
 
 	<body>
-		<div id="size" class="example">
+		<div id="size">
 			  <div class="colorwheel"></div>
 		</div>
 
