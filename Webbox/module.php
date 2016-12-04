@@ -206,7 +206,15 @@
 				{
 					$id = $_GET['id'];
 					$id = (int)$id;
-					$colorwheel = $this->Colorwheel($id);
+					if(isset($_GET["size"]))
+						{
+						$size = $_GET["size"];
+						}
+					else
+						{
+						$size = 100;
+						}
+					$colorwheel = $this->Colorwheel($id, $size);
 					echo $colorwheel;
 				}
 				if($type == "Slider")
@@ -370,7 +378,7 @@
 			}
 		}
 		
-		protected function Colorwheel($id)
+		protected function ColorwheelOLD($id)
 		{
 			$content =	'<!DOCTYPE html>
 	<html lang="de">
@@ -674,9 +682,657 @@ function cycle_example(){
 			return $content;
 		}
 		
+		protected function Colorwheel($id, $size)
+		{
+			$content =	'<!DOCTYPE html>
+	<html lang="de">
+	
+	<head>
+	<title>Colorwheel</title>
+	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/jquery-3.1.1.min.js"></script> -->
+	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/raphael.min.js"></script> -->
+	<script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" type="text/javascript"></script>
+	'.$this->ColorwheelJS().'
+	  <style type="text/css" media="screen">
+    body {
+      background:#FFF;
+      font:14px/20px helvetica, arial;
+      text-align:center;
+      margin:40px;
+      color:#666;
+    }
+
+    a {
+      color:#F60;
+    }
+
+    .demo {
+      text-align:left;
+      width:600px;
+      margin:0 auto;
+      padding:20px;
+      background:#FFFFEE;
+      -moz-box-shadow: #a6a6a6 0px 0px 4px;
+      box-shadow: #a6a6a6 0px 0px 4px;
+      -webkit-box-shadow: #a6a6a6 0px 0px 4px;
+    }
+    input {
+      font-family: monospace;
+      font-size:16px;
+    }
+    .swatch {
+      padding:10px;
+    }
+    .method {
+      margin-bottom:20px;
+    }
+    .code p{margin:0; padding:0; display:none;}
+
+    .source {
+      font-size:10px;
+      line-height:14px;
+    }
+
+    .example, .code {
+      margin:10px 0;
+      padding:10px 0;
+      border-top:2px #CCC solid;
+    }
+    h2 {
+      font-size:16px;
+    }
+    h1 {
+      color:#000;
+    }
+    .example h2, .example p {
+      margin:0 0 10px;
+    }
+     .example p {
+       width:300px;
+     }
+    .method b {
+      color:#2e5478;
+    }
+
+    .method div {
+      width:400px;
+    }
+
+    code {
+      display:none;
+      background:#FFF;
+      padding:10px;
+    }
+
+    .returns {
+      color:#237210;
+    }
+
+    .show_source {
+      margin:20px 0 0;
+      color:#999;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+
+  </style>
+</head>
+
+<body>
+    <div class="demo">
+      <div style="text-align:center">
+        <div id="show_off" style="width:200px; margin: 0 auto"></div>
+        <h1 class="title">Colorwheel</h1>
+        <p>
+          <b><a href="http://github.com/jweir/colorwheel/raw/master/colorwheel.js">Download</a>*</b> or
+          <b>bower install colorwheel</b>
+        </p>
+      </div>
+      <p>
+        A javascript color picker. The wheel is drawn using the Raphael js library. jQuery is used to assist with events.
+        The wheel size is set on creation. It supports a small set of callbacks and touch events.
+      </p>
+      <p>
+        It was created for the UI at <a href="http://famedriver.com">Fame Driver</a> and distributed with a MIT license.
+      </p>
+      <p>
+        Hope you enjoy it – <a href="mailto:john@famedriver.com">John Weir</a>
+      </p>
+      <p>
+        Source available on <a href="http://github.com/jweir/colorwheel">Github</a>.
+        Run <a href="test.html">simple test suite</a>.
+      </p>
+      <p>
+        * Requires <a href="http://jquery.com">jQuery</a> and <a href="http://raphaeljs.com/">Raphael</a> version 2.1.0 or greater.
+      </p>
+      <div class="code">
+        <h2>Usage and methods</h2>
+        <div class="method">
+        <b>var cw = Raphael.colorwheel(dom_element, height_width [, segments]);</b>
+        <div>The wheel is drawn into a square, so only one dimension is required. <b>segments</b> is an option to increase, or decrease, the smoothness of the hue ring. 60 is the default.</div>
+        </div>
+
+        <div class="method">
+        <b>cw.input(dom_element)</b> <span class="returns">&rArr; cw</span>
+        <div>Binds a text input for setting and receiving the color as a hex value.  This will allow the user to input a hex value and update the wheel.</div>
+        </div>
+
+        <div class="method">
+        <b>cw.onchange(callback)</b> <span class="returns">&rArr; cw</span>
+        <div>Set a callback for any change received.  Callback takes one argument, a Raphael RGB color object.</div>
+        </div>
+
+        <div class="method">
+        <b>cw.ondrag(start, stop)</b> <span class="returns">&rArr; cw</span>
+        <div>Set a start and stop callback for dragging. The callbacks take one argument, a Raphael RGB color object.</div>
+        </div>
+
+        <div class="method">
+        <b>cw.color()</b> <span class="returns">&rArr; Raphael color object</span>
+        <div>Get the current color as RGB object</div>
+        </div>
+
+        <div class="method">
+        <b>cw.color(hex_value)</b> <span class="returns">&rArr; cw</span>
+        <div>Set the current color via a hex value</div>
+        </div>
+      </div>
+
+      <div id="input_example" class="example">
+        <h2>Input</h2>
+        <p>Assigning an input to a colorwheel will allow the user to directly change the hex color value.</p>
+        <p>When the input is set the colorwheel will set its color to the input\'s value</p>
+        <div>
+          <div style="float:left; width:100%; margin-bottom:20px">
+            <div class="colorwheel" style="float:left; margin-right:20px; width:300px; text-align:left;"></div>
+            <div style="float:left; width:50%">
+              <input name="input_example" value="#FF9900" size="7"><br/>
+              Enter a hex value above
+            </div>
+          </div>
+        </div>
+        <div class="show_source">Show Source</div>
+        <code><pre class="source"></pre></code>
+      </div>
+
+      <div id="callback_example" class="example">
+        <h2>Callbacks</h2>
+        <p>Simple example using the callback to update an element\'s text and css.</p>
+        <div >
+          <div style="float:left; width:100%; margin-bottom:20px">
+            <div class="colorwheel" style="float:left; margin-right:20px; width:300px; text-align:left;"></div>
+            <div style="float:left; width:50%">
+              <span class="onchange" style="padding:5px; color:#FFF"></span>
+              <div class="ondrag" style="display:none;"><b>You are dragging the wheel</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="show_source">Show Source</div>
+        <code><pre class="source"></pre></code>
+      </div>
+
+      <div id="size_example" class="example">
+        <h2>Sizes</h2>
+        <p>The wheel can be scaled to suit your needs.  The large ring has larger number of segments, to make it smoother.</p>
+        <div style="float:left; width:100%">
+          <div class="colorwheel_small" style="text-align:left; float:left;margin-right:30px; margin-top:125px"></div>
+          <div class="colorwheel_large" style="text-align:left; float:left;margin-right:30px; float:left;"></div>
+          <div class="colorwheel_medium" style="text-align:left; margin-top:75px; float:left"></div>
+
+        </div>
+        <div class="show_source">Show Source</div>
+        <code><pre class="source"></pre></code>
+      </div>
+
+      <div id="cycle_example" class="example">
+        <h2>A more advanced callback</h2>
+        <p>When the color is changed a callback is used to change the colors of each letter below.</p>
+        <div style="text-align:left; float:left; height:180px; width:100%">
+          <div class="colorwheel" style="text-align:left; float:left; width:200px"></div>
+          <div class="cycle" style="float:left; width: 200px; padding:5px; background:#666; margin:40px; font-size:18px; font-weight:bold">These letters will get cycled through... and through...</div>
+        </div>
+        <div class="show_source">Show Source</div>
+        <code><pre class="source"></pre></code>
+      </div>
+
+
+    <script>
+
+      function show_source(target){
+        target.slideDown();
+      }
+
+      function set_source(f, target){
+        f();
+        target.text(f.toString())
+      }
+
+function size_example(){
+  Raphael.colorwheel($("#size_example .colorwheel_small")[0],50).color("#F00");
+  Raphael.colorwheel($("#size_example .colorwheel_medium")[0],150).color("#0F0");
+  Raphael.colorwheel($("#size_example .colorwheel_large")[0],300, 180).color("#00F");
+}
+
+function input_example(){
+  var cw = Raphael.colorwheel($("#input_example .colorwheel")[0],150);
+  cw.input($("#input_example input")[0]);
+}
+
+function callback_example(){
+  var cw = Raphael.colorwheel($("#callback_example .colorwheel")[0],150),
+      onchange_el = $("#callback_example .onchange"),
+      ondrag_el = $("#callback_example .ondrag");
+      cw.color("#F00");
+
+  function start(){ondrag_el.show()}
+  function stop(){ondrag_el.hide()}
+
+  cw.ondrag(start, stop);
+  cw.onchange(function(color)
+    {
+      var colors = [parseInt(color.r), parseInt(color.g), parseInt(color.b)]
+      onchange_el.css("background", color.hex).text("RGB:"+colors.join(", "))
+    })
+
+}
+
+function cycle_example(){
+  var position = 0,
+      letters = [],
+      colorwheel;
+
+
+  function setup_the_letters(){
+    var cycle = $(".cycle"),
+        l = cycle.text().split("");
+
+    cycle.html("");
+
+    for (var i=0; i < l.length; i++) {
+      var letter = $("<span>"+l[i]+"</span>");
+      cycle.append(letter);
+      letters.push(letter);
+    };
+  }
+
+  function update(color){
+    position++;
+    if(position > letters.length-1){ position = 0; }
+    letters[position].css("color", color.hex);
+  }
+
+  colorwheel = Raphael.colorwheel($("#cycle_example .colorwheel")[0],150);
+  setup_the_letters();
+  colorwheel.onchange(update).color("#864343");
+}
+
+      $(document).ready(function(){
+        Raphael.colorwheel($("#show_off")[0],200).color("#FF6600").onchange(function(c){$(".title").css("color",c.hex)});
+        set_source(input_example, $("#input_example .source"))
+        set_source(size_example, $("#size_example .source"))
+        set_source(callback_example, $("#callback_example .source"))
+        set_source(cycle_example, $("#cycle_example .source"))
+        $(".show_source").click(function(){
+          $(this).parents().filter(\'.example\').find("code").slideDown();
+        });
+      })
+    </script>
+
+	</body>
+	</html>
+	';
+			return $content;
+		}
+		
 		protected function ColorwheelJS()
 		{
-			
+			$JS = '<script>
+			/*
+* Colorwheel
+* Copyright (c) 2010 John Weir (http://famedriver.com)
+* Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
+*
+* requires jQuery & Raphael
+*   http://jquery.com http://raphaeljs.com
+*
+* see http://jweir.github.com/colorwheel for Usage
+*
+*/
+
+Raphael.colorwheel = function(target, color_wheel_size, no_segments){
+  var canvas,
+      current_color,
+      current_color_hsb,
+      size,
+      segments = no_segments || 60,
+      bs_square = {},
+      hue_ring = {},
+      tri_size,
+      cursor = {},
+      drag_target,
+      input_target,
+      center,
+      parent,
+      change_callback,
+      drag_callbacks = [function(){}, function(){}],
+      offset,
+      padding = 2,
+      sdim; // holds the dimensions for the saturation square
+
+  function point(x, y){ return {x:x, y:y};}
+  function radians(a){ return a * (Math.PI/180);}
+
+  function angle(x,y){
+    var q = x > 0 ? 0 : 180;
+    return q+Math.atan((0 - y)/(0 - x))*180/(Math.PI);
+  }
+
+  function create(target, color_wheel_size){
+    size     = color_wheel_size;
+    tri_size = size/20;
+    center   = size/2;
+    parent   = $(target);
+    canvas   = Raphael(parent[0],size, size);
+    canvas.safari();
+
+    create_bs_square();
+    create_hue_ring();
+    hue_ring.cursor = cursor_create(tri_size);
+    bs_square.cursor = cursor_create(tri_size*0.5);
+    events_setup();
+    parent.css({height:size+"px", width:size+"px"});
+    disable_select(parent);
+    return public_methods();
+  }
+
+  function disable_select(target){
+    $(target).css({"unselectable": "on","-moz-user-select": "none","-webkit-user-select": "none"});
+  }
+
+  function public_methods(){
+    return {
+      input: input,
+      onchange: onchange,
+      ondrag : ondrag,
+      color : public_set_color,
+      color_hsb : public_set_color_hsb
+    };
+  }
+
+  // Sets a textfield for user input of hex color values
+  // TODO don\'t clear the change callback
+  // TODO allow a null target to unbind the input
+  function input(target){
+    change_callback = null;
+    input_target = target;
+    $(target).keyup(function(){
+      if(this.value.match(/^#([0-9A-F]){3}$|^#([0-9A-F]){6}$/img)){
+        set_color(this.value);
+        update_color(true);
+		run_onchange_event();
+      }
+    });
+    set_color(target.value);
+    update_color(true);
+
+    return public_methods();
+  }
+
+  function onchange(callback){
+    change_callback = callback;
+    update_color(false);
+    return public_methods();
+  }
+
+  function ondrag(start_callback, end_callback){
+    drag_callbacks = [start_callback || function(){}, end_callback || function(){}];
+    return public_methods();
+  }
+
+  function drag(e){
+    var x, y, page;
+
+    e.preventDefault(); // prevents scrolling on touch
+
+    page = e.originalEvent.touches ? e.originalEvent.touches[0] : e;
+
+    x = page.pageX - (parent.offset().left + center);
+    y = page.pageY - (parent.offset().top + center);
+
+    if(drag_target == hue_ring){
+      set_hue_cursor(x,y);
+      update_color();
+      run_onchange_event();
+      return true;
+    }
+    if(drag_target == bs_square){
+      set_bs_cursor(x,y);
+      update_color();
+      run_onchange_event();
+      return true;
+    }
+  }
+
+  function start_drag(event, target){
+    event.preventDefault(); // prevents scrolling on touch
+
+    $(document).on(\'mouseup touchend\',stop_drag);
+    $(document).on(\'mousemove touchmove\',drag);
+    drag_target = target;
+    drag(event);
+    drag_callbacks[0](current_color);
+  }
+
+  function stop_drag(event){
+    event.preventDefault(); // prevents scrolling on touch
+
+    $(document).off("mouseup touchend",stop_drag);
+    $(document).off("mousemove touchmove",drag);
+    drag_callbacks[1](current_color);
+    run_onchange_event();
+  }
+
+  function events_setup(){
+    $([hue_ring.event.node,hue_ring.cursor[0].node]).on("mousedown touchstart",
+                                                        function(e){start_drag(e,hue_ring);});
+    $([bs_square.b.node, bs_square.cursor[0].node]).on("mousedown touchstart",
+                                                       function(e){start_drag(e,bs_square);});
+  }
+
+  function cursor_create(size){
+    var set = canvas.set().push(
+        canvas.circle(0, 0, size).attr({"stroke-width":4, stroke:"#333"}),
+        canvas.circle(0, 0, size+2).attr({"stroke-width":1, stroke:"#FFF", opacity:0.5})
+    );
+
+    set[0].node.style.cursor = "crosshair";
+
+    return set;
+  }
+
+  function set_bs_cursor(x,y){
+    x = x+center;
+    y = y+center;
+    if(x < sdim.x){x = sdim.x}
+    if(x > sdim.x+sdim.l){x = sdim.x+sdim.l}
+    if(y < sdim.y){y = sdim.y}
+    if(y > sdim.y+sdim.l){y = sdim.y + sdim.l}
+
+    bs_square.cursor.attr({cx:x, cy:y}).transform("t0,0");
+  }
+
+
+  function set_hue(color){
+    var hex = Raphael.getRGB(color).hex;
+    bs_square.h.attr("fill", hex);
+  }
+
+  function hue(){
+    return Raphael.rgb2hsb(bs_square.h.attr("fill")).h;
+  }
+
+  function public_set_color(value){
+    var ret = set_color(value, false);
+    update_color(false);
+    return ret;
+  }
+
+  function public_set_color_hsb(hsb){
+    var ret = set_color(hsb, true);
+    update_color(false);
+    return ret;
+  }
+
+  function set_color(value, is_hsb){
+    if(value === undefined){
+        if(is_hsb){
+            return current_color_hsb;
+        } else {
+            return current_color;
+        }
+    }
+
+    var hsb, hex;
+    if(is_hsb){
+        hsb = value;
+        // Allow v (value) instead of b (brightness), as v is sometimes
+        // used by Raphael.
+        if(hsb.b === undefined){ hsb.b = hsb.v; }
+        var rgb = canvas.raphael.hsb2rgb(hsb.h, hsb.s, hsb.b);
+        hex = rgb.hex;
+    } else {
+        hex = value;
+        hsb = canvas.raphael.rgb2hsb(hex);
+    }
+    var temp = canvas.rect(1,1,1,1).attr({fill:hex});
+
+    set_bs_cursor(
+      (0-sdim.l/2) + (sdim.l*hsb.s),
+      sdim.l/2 - (sdim.l*hsb.b));
+    set_hue_cursor((360*(hsb.h))-90);
+    temp.remove();
+    return public_methods();
+  }
+
+  // Could optimize this method
+  function update_color(dont_replace_input_value){
+    var x = bs_square.cursor.items[0].attr("cx"),
+        y = bs_square.cursor.items[0].attr("cy"),
+        hsb = {
+          b: 1-(y-sdim.y)/sdim.l,
+          s: (x-sdim.x)/sdim.l,
+          h: hue()
+        };
+
+    current_color_hsb = hsb;
+    current_color = Raphael.hsb2rgb(hsb.h, hsb.s,hsb.b);
+
+    if(input_target){
+      var c = current_color.hex;
+      if(dont_replace_input_value !== true) { input_target.value = c;}
+       if(hsb.b < 0.5){
+        $(input_target).css("color", "#FFF");
+      } else {
+        $(input_target).css("color", "#000");
+      }
+      input_target.style.background = c;
+    }
+
+  }
+
+  // accepts either x,y or d (degrees)
+  function set_hue_cursor(mixed_args){
+    var d;
+    if(arguments.length == 2){
+      d = angle(arguments[0],arguments[1]);
+    } else {
+      d = arguments[0];
+    }
+
+    var x = Math.cos(radians(d)) * (center-tri_size-padding);
+    var y = Math.sin(radians(d)) * (center-tri_size-padding);
+    hue_ring.cursor.attr({cx:x+center, cy:y+center}).transform("t0,0");
+    set_hue("hsb("+(d+90)/360+",1,1)");
+  }
+
+  function bs_square_dim(){
+    if(sdim){ return sdim;}
+    var s = size - (tri_size * 4);
+    sdim = {
+      x:(s/6)+tri_size*2+padding,
+      y:(s/6)+tri_size*2+padding,
+      l:(s * 2/3)-padding*2
+    };
+    return sdim;
+  }
+
+  function create_bs_square(){
+    bs_square_dim();
+    box = [sdim.x, sdim.y, sdim.l, sdim.l];
+
+    bs_square.h = canvas.rect.apply(canvas, box).attr({
+      stroke:"#EEE", gradient: "0-#FFF-#000", opacity:1});
+    bs_square.s = canvas.rect.apply(canvas, box).attr({
+      stroke:null, gradient: "0-#FFF-#FFF", opacity:0});
+    bs_square.b = canvas.rect.apply(canvas, box).attr({
+      stroke:null, gradient: "90-#000-#FFF", opacity:0});
+    bs_square.b.node.style.cursor = "crosshair";
+  }
+
+  function hue_segement_shape(){
+    var path = "M -@W 0 L @W 0 L @W @H L -@W @H z";
+    return path.replace(/@H/img, tri_size*2).replace(/@W/img,tri_size);
+  }
+
+  function copy_segment(r, d, k){
+    var n = r.clone();
+    var hue = d*(255/k);
+
+    var s = size/2,
+      t = tri_size,
+      p = padding;
+
+    n.transform("t"+s+","+(s-t)+"r"+(360/k)*d+"t0,-"+(s-t-p)+"");
+
+    n.attr({"stroke-width":0, fill:"hsb("+d*(1/k)+", 1, 0.85)"});
+    hue_ring.hues.push(n);
+  }
+
+  function create_hue_ring(){
+    var s = hue_segement_shape(),
+        tri = canvas.path(s).attr({stroke:"rgba(0,0,0,0)"}).transform("t"+(size/2)+","+padding),
+        k = segments; // # of segments to use to generate the hues
+
+    hue_ring.hues = canvas.set();
+
+    for(n=0; n<k; n++){ copy_segment(tri, n, k); }
+
+    // IE needs a slight opacity to assign events
+    hue_ring.event = canvas.circle(
+      center,
+      center,
+      center-tri_size-padding).attr({"stroke-width":tri_size*2, opacity:0.01});
+
+    hue_ring.outline = canvas.circle(
+      center,
+      center,
+      center-tri_size-padding).attr({"stroke":"#000", "stroke-width":(tri_size*2)+3, opacity:0.1});
+    hue_ring.outline.toBack();
+    hue_ring.event.node.style.cursor = "crosshair";
+  }
+
+  function run_onchange_event(){
+    if (({}).toString.call(change_callback).match(/function/i)){
+      change_callback(current_color);
+    }
+  }
+
+  return create(target, color_wheel_size);
+};
+			</script>';
+			return $JS;
 		}
 		
 		protected function Slider($id)
