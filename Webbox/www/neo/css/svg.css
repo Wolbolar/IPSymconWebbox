@@ -1,0 +1,28 @@
+@charset "utf-8";
+#pagewrapper {
+	position: relative;
+}
+#button1 {
+	position: absolute;
+	left: 139px;
+	top: 98px;
+}
+.buttonA {
+	width: 100px;
+	height: 50px;
+	background-color: rgba(183,115,116,1.00);
+	border-radius: 20px;
+	display: block;
+	text-align: center;
+	line-height: 50px;
+}
+#button2 {
+	position: absolute;
+	left: 180px;
+	top: 233px;
+}
+#button3 {
+	position: absolute;
+	left: 210px;
+	top: 160px;
+}

@@ -1,0 +1,130 @@
+@charset "utf-8";
+#oc3buttom {
+	position: relative;
+	height: 100px;
+	border-radius: 25px;
+	width: 1173px;
+	-webkit-box-shadow: 2px 2px 5px rgba(83,76,76,1.00);
+	box-shadow: 2px 2px 5px rgba(83,76,76,1.00);
+	background-image: url(url), -webkit-linear-gradient(270deg,rgba(232,230,230,0.10) 0%,rgba(105,100,100,0.30) 100%);
+	background-image: url(url), -moz-linear-gradient(270deg,rgba(232,230,230,0.10) 0%,rgba(105,100,100,0.30) 100%);
+	background-image: url(url), -o-linear-gradient(270deg,rgba(232,230,230,0.10) 0%,rgba(105,100,100,0.30) 100%);
+	background-image: url(url), linear-gradient(180deg,rgba(232,230,230,0.10) 0%,rgba(105,100,100,0.30) 100%);
+	line-height: 100px;
+}
+.oc3icon {
+	position: absolute;
+	opacity: 1;
+	top: 9px;
+	height: 75px;
+	display: block;
+	margin-top: 6px;
+}
+.oc3buttomtext {
+	position: absolute;
+	font-family: source-sans-pro;
+	font-style: normal;
+	font-weight: 600;
+	color: rgba(242,242,247,1.00);
+	text-shadow: 1px 1px 1px rgba(55,52,53,1.00);
+	font-size: x-large;
+}
+.oc3buttomvalue {
+	position: absolute;
+	font-family: source-sans-pro;
+	font-style: normal;
+	font-weight: 600;
+	color: rgba(242,242,247,1.00);
+	text-shadow: 1px 1px 1px rgba(55,52,53,1.00);
+	font-size: x-large;
+}
+#oc3buttom #tempicon {
+	left: 1px;
+}
+.scaling-svg-oc3 {
+	position: relative;
+	height: 0; 
+ 	width: 100%; 
+ 	padding: 0;
+ 	padding-bottom: 100%; 
+ 	/* override this inline for aspect ratio other than square */
+}
+.svg-oc3 {
+	position: absolute; 
+ 	height: 100%; 
+ 	width: 100%; 
+ 	left: 0; 
+ 	top: 0;
+}
+
+
+#oc3buttom #tempvalue {
+	left: 203px;
+}
+#oc3buttom #humidityvalue {
+	left: 291px;
+}
+#oc3buttom #temp {
+	left: 69px;
+}
+#oc3buttom #humidityicon {
+	left: 267px;
+}
+#oc3buttom #humidity {
+	left: 336px;
+}
+#oc3buttom #humidityvalue {
+	left: 459px;
+}
+#oc3buttom #windicon {
+	left: 513px;
+}
+#oc3buttom #wind {
+	left: 598px;
+}
+#oc3buttom #windvalue {
+	left: 727px;
+}
+#oc3buttom #rainicon {
+	left: 836px;
+}
+#oc3buttom #rain {
+	left: 926px;
+}
+#oc3buttom #rainvalue {
+	left: 1065px;
+}
+.temp1 {
+	fill: red;
+}
+.drop1 {
+	fill: #ace63c;
+}
+.drop1:hover {
+	fill: #896d3d;
+}
+.drop2 {
+	fill: #ace63c;
+}
+.drop2:hover {
+	fill: #896d3d;
+}
+
+.temp1:hover {
+  fill: #ace63c; 
+}
+
+.temp2 {
+  fill: #787f6a;
+}
+.temp2:hover {
+  filter: url(#pictureFilter);
+  fill: #896d3d;
+}
+.temp {
+  filter: url(#f3);
+}
+
+body {
+  padding: 20px;
+}

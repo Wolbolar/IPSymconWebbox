@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Slider - jQuery Mobile Demos</title>
+    <!--<link href="css/jqm-demos.css" rel="stylesheet" type="text/css">-->
+    <!--<script type="text/javascript" src="js/indexslider.js"></script>-->
+    <!--<script type="text/javascript" src="js/jquery-ui.min.js"></script>-->
+	<!--<script type="text/javascript" src="js/jquery-ui.js"></script>-->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <style id="full-width-slider">
+        /* Hide the number input */
+        .full-width-slider input {
+            display: none;
+        }
+		/* Slider verschieben 15 px */
+        .full-width-slider .ui-slider-track {
+            margin-left: 150px;
+        }
+    </style>
+    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+    <!--<script id="dynamic-slider">
+$( document ).on( "pagecreate", function() {
+	$( "<input type='number' data-type='range' min='0' max='100' step='1' value='17'>" )
+		.appendTo( "#dynamic-slider-form" )
+		.slider()
+		.textinput()
+});
+	</script>-->
+</head>
+<body>
+<div data-role="page">
+<div data-role="header"></div>
+<div data-role="content">
+
+<h2>Metallslider</h2>
+
+                
+				<form class="full-width-slider">
+                <section>
+                <label class="ui-hidden-accessible" for="slider">Metallslider:</label> <!--Versteckt-->
+                <input type="range" name="slider" id="slider" data-highlight="true" data-popup-enabled="true" step="1" min="0" max="100" value="50"> <!--Slider Value Startwert-->
+                    <!-- Step Schritt der Erhöhung, -->
+                    <span class="volume"></span> <!-- Volume -->
+                </section>
+                </form>
+                <!-- /Metalslider -->
+                <!--
+                <script>
+		$(function() {
+
+			//Store frequently elements in variables
+			var slider  = $('#slider'),
+				tooltip = $('.tooltip');
+
+			//Hide the Tooltip at first
+			tooltip.hide();
+
+			//Call the Slider
+			slider.slider({
+				//Config
+				range: "min",
+				min: 1,
+				value: 35,
+
+				start: function(event,ui) {
+				    tooltip.fadeIn('fast');
+				},
+
+				//Slider Event
+				slide: function(event, ui) { //When the slider is sliding
+
+					var value  = slider.slider('value'),
+						volume = $('.volume');
+
+					tooltip.css('left', value).text(ui.value);  //Adjust the tooltip accordingly
+
+					if(value <= 5) { 
+						volume.css('background-position', '0 0');
+					} 
+					else if (value <= 25) {
+						volume.css('background-position', '0 -25px');
+					} 
+					else if (value <= 75) {
+						volume.css('background-position', '0 -50px');
+					} 
+					else {
+						volume.css('background-position', '0 -75px');
+					};
+
+				},
+
+				stop: function(event,ui) {
+				    tooltip.fadeOut('fast');
+				},
+			});
+
+		});
+		// Einstellungen des Sliders mit Grafiken in der CSS Datei
+	</script>
+      -->          
+	
+                <h2>Highlight</h2>
+
+                
+				<form>
+                    <label for="slider-4">Slider (default is "false"):</label>
+                    <input type="range" name="slider-4" id="slider-4" data-highlight="true" min="0" max="100" value="50">
+				</form>
+                
+                
+                <h2>Theme Test</h2>
+				<form>
+                    <label for="slider-2">Slider:</label>
+                    <input type="range" name="slider-2" id="slider-2" data-highlight="true" data-track-theme="c" data-theme="c" min="0" max="100" value="50">
+				</form>
+            
+
+                <h2>Theme</h2>
+
+                
+				<form>
+                    <label for="slider-3">Slider:</label>
+                    <input type="range" name="slider-3" id="slider-3" data-track-theme="b" data-theme="b" min="0" max="100" value="50">
+				</form>
+                
+</div>
+<div data-role="footer"></div>
+</div>
+</body>
+</html>

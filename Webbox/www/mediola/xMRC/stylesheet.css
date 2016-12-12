@@ -1,0 +1,117 @@
+/* resetting some CSS */
+html, body, div, p, a, img, small, ul, li, form, table, tr, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-family: Arial;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+body {
+	line-height: 1;
+	background-color: #ffffff;
+}
+
+ul {
+	list-style: none;
+}
+
+#header {
+	background-color: #e8e8e8;
+}
+
+#logo {
+	padding: 4px 0 0 0;
+	float: left;
+	width: 50%;
+	border-bottom: 1px solid #c8c8c8;
+}
+
+#logo_title {
+	padding: 4px 0 0 0;
+	float: right;
+	text-align: right;
+	width: 50%;
+	border-bottom: 1px solid #c8c8c8;
+}
+
+#home ul li, #showlist ul li, #shoutcast ul li, #screenshot ul li, #favorites ul li {
+    margin: 0;
+    border-bottom: 1px solid #c8c8c8;
+    padding: 0;
+    list-style: none;
+    overflow-x: hidden;
+    white-space: nowrap;
+	background-color: #ffffff;
+}
+
+#home ul li a, #showlist ul li a, #shoutcast ul li a, #screenshot ul li a, #favorites ul li a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+#about {
+    padding: 10px;
+	background-color: #ffffff;
+}
+
+#about p, #settings p {
+	padding: 0 0 10px 0;
+}
+
+#settings select, #settings textarea {
+	font-family: Arial;
+	font-size: 14px;
+	background-image: url(../images/clear.png);
+	background-color: #e8e8e8;
+	border:1px solid #c8c8c8;
+	width: 95%;
+	overflow-x: hidden;
+}
+
+#settings #section {
+	padding: 10px 10px 0 10px;
+	border-bottom: 1px solid #c8c8c8;
+	background-color: #ffffff;
+}
+
+#shoutcast ul li input {
+	font-size: 16px;
+    padding: 11px;
+    border: 0;
+	width: 100%;
+	background-image: url(../images/clear.png);
+}
+
+#settings small, #shoutcast small, #screenshot small, #showlist small, #home small {
+	color: #c0c0c0;
+	font-size: 14px;
+}
+
+#toolbar {
+	background-color: #ffffff;
+}
+
+#toolbar img {
+	margin: 4px 0 0 0;
+}
+
+#bottom {
+	display: none;
+}
+
+#host {
+	display: none;
+}
+
+#showlist a img.cover {
+	padding-right: 10px;
+}
+
+#home a img.icon {
+	padding-right: 10px;
+}

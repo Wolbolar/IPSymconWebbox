@@ -1,0 +1,36 @@
+a.folder {
+	background: url(images/icon_arrow.png) no-repeat right center;
+}
+
+body {
+	background: url(images/background_body.png);
+}
+
+#header {
+	background: url(images/background_header.png);
+}
+
+#bottom {
+	display: block;
+	height: 50px;
+	background: url(images/background_bottom.png) repeat-x;
+}
+
+#host {
+	display: block;
+	position: absolute;
+	top: 20px;
+	left: 111px;
+	color: #DFDFDF;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#rating {
+	position: relative;
+	float: left;
+	margin: 3px 5px 0 0;
+	background-image: url(images/stars.png);
+	background-repeat: no-repeat;
+}

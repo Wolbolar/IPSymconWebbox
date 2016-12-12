@@ -1,0 +1,564 @@
+@charset "utf-8";
+
+body {
+	color:white;
+	font-size: 17px;
+	font-family: 'PT Sans', 'Droid Sans', arial, sans-serif;
+	margin:0;
+	padding:0;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+}
+
+a:link, a:visited, a:active, a:hover {
+	color: #7faaff;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #4f7acf;
+}
+
+.standardContainer {
+	position: relative;
+	line-height: 36px;
+	min-height: 36px;
+	margin: 10px;
+	padding: 0 10px;
+	overflow: visible;
+	cursor: default;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.25);
+}
+
+p {
+	margin: 10px;
+}
+
+.EPGSender {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	color: #009;
+}
+
+#Container
+{
+	width: 100%; 
+	height: 100%; 
+	height: auto; 
+	min-height: 80%;
+	position: relative; 
+	overflow: auto; 
+}
+
+#listContainer
+{
+	width: 100%; 
+	position: absolute; 
+	top: 0px;
+}
+
+#controlContainer
+{
+	float: right;
+}
+
+.menu
+{
+	position: relative;
+	padding: 5px;
+	height: auto;
+	overflow: hidden;
+	white-space: normal;
+	
+}
+
+.menu .item
+{
+	font: normal 16px verdana;
+	position: relative;
+	margin: 5px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 20px;
+	width: 83px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+	float: left;
+  background-image: url(/template/img/topBackground.png);
+}
+
+.menu .item:active{
+  background: none repeat scroll 0 0 #AAAAAA
+}
+
+.menu .item2
+{
+	font: normal 16px verdana;
+	position: relative ;
+	right: 270px;	
+	margin: 5px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 18px;
+	width: 50px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+	float: left;
+}
+
+.menu img
+{
+	top: 20px;
+	right: 0px;
+	position: absolute;
+	float: right;
+}
+
+.dbimg
+{
+	top: 3px;
+	right: 10px;
+	position: absolute;
+	float: right;
+}
+
+.genre
+{
+	font: normal 16px verdana;
+	position: relative;
+	margin: 10px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 35px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.genre:active{
+background: none repeat scroll 0 0 #AAAAAA
+}
+
+.channel
+{
+	font: normal 14px verdana;
+	position: relative;
+	margin: 10px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 35px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.channel .description
+{
+	position: relative;
+	height: 33px;
+	left: 70px;
+	width: 86%;
+	overflow: hidden;
+}
+
+.channel .description .title, .channel .description .titleHigh
+{
+	font-size: 11pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.channel .description .titleHigh
+{
+	line-height: 33px;
+}
+
+.channel .description .subtext
+{
+	font-size: 9pt;
+	font-family: sans-serif;
+}
+
+.channel .description .subtext2
+{
+	font-size: 7pt;
+	font-family: sans-serif;
+}
+
+.channel .category  
+{
+	position: relative;
+	height: 33px;
+}
+
+.channel .category .name, .channel .category .nameHigh
+{
+	font-size: 17pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.channel .play
+{
+	position: absolute;
+	top: 2px;
+	right: 13px;
+	width: 47px;
+	height: 47px;
+	border: 1px solid #485052;	
+	text-align: center;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+.channel .play img
+{
+	top:0;
+	position: relative;
+}
+
+.channel .icon
+{
+	position: absolute;
+	top:0;
+	left: 10px;
+	width: 55px;
+	height: 53px;	
+	text-align: center;
+}
+
+.channel .icon img
+{
+	top: 10px;
+	position: relative;
+}
+
+.epg
+{
+	font: normal 14px verdana;
+	position: relative;
+	margin: 10px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 60px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.epg .description
+{
+	position: relative;
+	height: 33px;
+	left: 70px;
+	width: 70%;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.epg .description .title, .epg .description .titleHigh
+{
+	font-size: 11pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.epg .description .titleHigh
+{
+	line-height: 53px;
+}
+
+.epg .description .subtext
+{
+	font-size: 9pt;
+	font-family: sans-serif;
+}
+
+.epg .starttime
+{
+	font-size: 16pt;
+	font-family: sans-serif;
+	position: absolute;
+	top:10px;
+	left: 10px;
+	width: 60px;
+	height: 25px;	
+	text-align: center;
+}
+
+.epg .category  
+{
+	position: relative;
+	height: 53px;
+}
+
+.epg .category .name, .epg .category .nameHigh
+{
+	font-size: 17pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.epg .play
+{
+	position: absolute;
+	top: 2px;
+	right: 13px;
+	width: 47px;
+	height: 47px;
+	border: 1px solid #485052;	
+	text-align: center;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+.epg .play img
+{
+	top: 8px;
+	position: relative;
+}
+
+.epg .icon
+{
+	position: absolute;
+	top:0;
+	left: 10px;
+	width: 55px;
+	height: 53px;	
+	text-align: center;
+}
+
+.epg .icon img
+{
+	top: 10px;
+	position: relative;
+}
+
+.timer
+{
+	font: normal 14px verdana;
+	position: relative;
+	margin: 10px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 61px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.timer .description
+{
+	position: relative;
+	height: 33px;
+	left: 70px;
+	width: 70%;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.timer .description .title, .timer .description .titleHigh
+{
+	font-size: 11pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.timer .description .titleHigh
+{
+	line-height: 53px;
+}
+
+.timer .description .subtext
+{
+	font-size: 9pt;
+	font-family: sans-serif;
+}
+
+.timer .starttime
+{
+	font-size: 16pt;
+	font-family: sans-serif;
+	position: absolute;
+	top:10px;
+	left: 10px;
+	width: 60px;
+	height: 25px;
+	text-align: center;
+}
+
+.timer .category
+{
+	position: relative;
+	height: 53px;
+}
+
+.timer .category .name, .timer .category .nameHigh
+{
+	font-size: 17pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.timer .del
+{
+	position: absolute;
+	top: 2px;
+	right: 50px;
+	width: 35px;
+	height: 35px;
+	border: 1px solid #485052;
+	text-align: center;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+.timer .del img
+{
+	top: 5px;
+	position: relative;
+}
+
+.timer .icon
+{
+	position: absolute;
+	top:0;
+	left: 10px;
+	width: 55px;
+	height: 53px;
+	text-align: center;
+}
+
+.timer .icon img
+{
+	top: 10px;
+	position: relative;
+}
+
+
+.movie
+{
+	font: normal 14px verdana;
+	position: relative;
+	margin: 10px 5px;
+	padding: 10px;
+	border: 1px solid #485052;
+	height: 61px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.movie .description
+{
+	position: relative;
+	height: 33px;
+	left: 70px;
+	width: 70%;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.movie .description .title, .movie .description .titleHigh
+{
+	font-size: 11pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.movie .description .titleHigh
+{
+	line-height: 53px;
+}
+
+.movie .description .subtext
+{
+	font-size: 9pt;
+	font-family: sans-serif;
+}
+
+.movie .starttime
+{
+	font-size: 16pt;
+	font-family: sans-serif;
+	position: absolute;
+	top:10px;
+	left: 10px;
+	width: 60px;
+	height: 25px;
+	text-align: center;
+}
+
+.movie .category
+{
+	position: relative;
+	height: 53px;
+}
+
+.movie .category .name, .movie .category .nameHigh
+{
+	font-size: 17pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.movie .play
+{
+	position: absolute;
+	top: 2px;
+	right: 13px;
+	width: 47px;
+	height: 47px;
+	border: 1px solid #485052;
+	text-align: center;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+.movie .play img
+{
+	top: 8px;
+	position: relative;
+}
+
+.movie .icon
+{
+	position: absolute;
+	top:0;
+	left: 10px;
+	width: 55px;
+	height: 53px;
+	text-align: center;
+}
+
+.movie .icon img
+{
+	top: 10px;
+	position: relative;
+}

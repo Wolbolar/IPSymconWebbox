@@ -1,0 +1,2331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<devices listversion="1.2">
+  <locations>
+    <location id="Bad">
+      <device id="DekolichtSW" data="switch" gateway="Gateway_V3" type="HM" address="181A3C01" sensor="off" gatewaytype="aiogateway"/>
+      <device id="Dekolicht" data="blswitch" gateway="Homematic" type="HM" address="JEQ0698103:1" sensor="off" isBranch="false"/>
+      <device id="HZRT_Transceiver" data="state" gateway="IP-Symcon" type="IPS" address="23024" sensor="off" isBranch="false" showName="Mittelgeschoss.Bad.Heizung.Heizung Bad RT_TRANSCEIVER">
+        <states id="States">
+          <state id="13028" name="PARTY_STOP_DAY"/>
+          <state id="13447" name="ACTUAL_TEMPERATURE"/>
+          <state id="13812" name="PARTY_STOP_MONTH"/>
+          <state id="20283" name="BATTERY_STATE"/>
+          <state id="25131" name="PARTY_START_DAY"/>
+          <state id="25184" name="CONTROL_MODE"/>
+          <state id="29803" name="BOOST_STATE"/>
+          <state id="32975" name="PARTY_STOP_TIME"/>
+          <state id="36959" name="PARTY_START_TIME"/>
+          <state id="38880" name="PARTY_START_YEAR"/>
+          <state id="40741" name="VALVE_STATE"/>
+          <state id="43868" name="SET_TEMPERATURE"/>
+          <state id="47992" name="PARTY_STOP_YEAR"/>
+          <state id="54197" name="PARTY_TEMPERATURE"/>
+          <state id="57349" name="PARTY_START_MONTH"/>
+          <state id="57641" name="FAULT_REPORTING"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Thermostat" data="state" gateway="IP-Symcon" type="IPS" address="55178" sensor="off" isBranch="false" showName="Mittelgeschoss.Bad.Heizung.Temp Bad Heizungsthermostat">
+        <states id="States">
+          <state id="11788" name="PARTY_START_TIME"/>
+          <state id="12347" name="BOOST_STATE"/>
+          <state id="13445" name="ACTUAL_TEMPERATURE"/>
+          <state id="15513" name="PARTY_START_MONTH"/>
+          <state id="17979" name="PARTY_STOP_MONTH"/>
+          <state id="18694" name="PARTY_TEMPERATURE"/>
+          <state id="19568" name="PARTY_START_YEAR"/>
+          <state id="20910" name="PARTY_STOP_YEAR"/>
+          <state id="27850" name="PARTY_START_DAY"/>
+          <state id="29927" name="WINDOW_OPEN_REPORTING"/>
+          <state id="32502" name="CONTROL_MODE"/>
+          <state id="33406" name="PARTY_STOP_TIME"/>
+          <state id="37125" name="BATTERY_STATE"/>
+          <state id="39755" name="LOWBAT_REPORTING"/>
+          <state id="46865" name="ACTUAL_HUMIDITY"/>
+          <state id="49141" name="COMMUNICATION_REPORTING"/>
+          <state id="55270" name="SET_TEMPERATURE"/>
+          <state id="55802" name="PARTY_STOP_DAY"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Thermostatsensor" data="state" gateway="IP-Symcon" type="IPS" address="57624" sensor="off" isBranch="false" showName="Mittelgeschoss.Bad.Heizung.Temp Bad Temperatursensor">
+        <states id="States">
+          <state id="19470" name="TEMPERATURE"/>
+          <state id="41079" name="HUMIDITY"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Rolladen" data="blind" gateway="Homematic" type="HM" address="KEQ1019505:1" sensor="off" isBranch="false"/>
+      <device id="Boost" data="prog" gateway="Homematic" type="HM" address="9038" sensor="off" isBranch="false"/>
+      <device id="HZ_Bad_Auto" data="prog" gateway="Homematic" type="HM" address="10740" sensor="off" isBranch="false"/>
+      <device id="HZ_Bad_Manu" data="prog" gateway="Homematic" type="HM" address="10748" sensor="off" isBranch="false"/>
+      <device id="HZAutoStatus" data="blvar" gateway="Homematic" type="HM" address="10611" sensor="off" isBranch="false"/>
+      <device id="HZManuStatus" data="blvar" gateway="Homematic" type="HM" address="10610" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Computer">
+      <device id="Homeserver" data="" gateway="" type="EventGhost" address="192.168.55.10:9999" sensor="off" user="" pwd="" gatewaytype="null"/>
+    </location>
+    <location id="Dach">
+      <device id="Veluxdachfenster" type="CODE" data="VeluxDach" address="IR:01" gateway="Gateway_V3" gatewaytype="aiogateway"/>
+    </location>
+    <location id="Garten">
+      <device id="FS20Baum" data="switch" gateway="Gateway_V4" type="FS20" address="B4.4E.02" gatewaytype="aiogateway"/>
+      <device id="FS20Dimmer" data="dimmer" gateway="Gateway_V4" type="FS20" address="B4.4E.03" gatewaytype="aiogateway"/>
+      <device id="FS20Quellstein" data="switch" gateway="Gateway_V4" type="FS20" address="B4.4E.01" gatewaytype="aiogateway"/>
+      <device id="FS20Terasse" type="FS20" data="switch" address="B4.4E.00" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="Helligkeit" data="brightness" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="Lufttemperatur" data="temperature" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="Regen" data="raining" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="Regen_gestern" data="var" gateway="Homematic" type="HM" address="1440" sensor="off"/>
+      <device id="Regen_heute" data="var" gateway="Homematic" type="HM" address="1439" sensor="off"/>
+      <device id="Regenmenge" data="rain_counter" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="Rel_Luftfeuchte" data="humidity" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="Sonnendauer" data="sunshineduration" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="Windrichtung" data="wind_direction" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="W_Speed" data="wind_speed" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="W_Schwankungsbre" data="wind_direction_range" gateway="Homematic" type="HM" address="IEQ0547277:1" sensor="off"/>
+      <device id="OC3" data="state" gateway="IP-Symcon" type="IPS" address="52005" sensor="off" isBranch="false" showName="Garten.Wetterstation.Wetter OC3">
+        <states id="States">
+          <state id="10854" name="Sonnendauer"/>
+          <state id="21024" name="Helligkeit"/>
+          <state id="24467" name="Windrichtung Schwankungsbreite"/>
+          <state id="26594" name="Regenmenge"/>
+          <state id="33880" name="Windgeschwindigkeit"/>
+          <state id="37442" name="Temperatur"/>
+          <state id="42624" name="Feuchtigkeit"/>
+          <state id="43622" name="Regen"/>
+          <state id="52242" name="Wind Richtung"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Eingangslampe" data="blswitch" gateway="Homematic" type="HM" address="JEQ0095812:1" sensor="off" isBranch="false"/>
+      <device id="Bewegung" data="motion" gateway="Homematic" type="HM" address="JEQ0125582:1" sensor="off" isBranch="false"/>
+      <device id="Helligkeit" data="brightness" gateway="Homematic" type="HM" address="JEQ0125582:1" sensor="off" isBranch="false"/>
+      <device id="Koubachi_H" data="com" gateway="IP-Symcon" type="IPS" address="18772" sensor="off" isBranch="false" showName="Garten.Koubachi Hinten">
+        <states id="States">
+          <state id="16872" name="Jetzt giessen"/>
+          <state id="17867" name="Jetzt düngen"/>
+          <state id="20758" name="Dünge-Anleitung"/>
+          <state id="23193" name="Bodenfeuchte"/>
+          <state id="29016" name="aktuelle Pflanze"/>
+          <state id="31620" name="Temperaturverhältnisse"/>
+          <state id="31825" name="Jetzt besprühen"/>
+          <state id="32098" name="Besprüh-Hinweis"/>
+          <state id="37144" name="Giess-Anleitung"/>
+          <state id="37972" name="MAC-Adresse"/>
+          <state id="45233" name="Daten von"/>
+          <state id="50841" name="Batterielevel"/>
+          <state id="53121" name="Lichtstärke"/>
+          <state id="55041" name="Lichtverhältnisse"/>
+          <state id="59502" name="Temperatur"/>
+        </states>
+        <commands id="Commands">
+          <command id="23524" code="W23524" name="f_api_koubachi"/>
+          <command id="24693" code="W24693" name="Abfrage 2"/>
+          <command id="46369" code="W46369" name="API Koubachi"/>
+          <command id="48921" code="W48921" name="konstanten_koubachi"/>
+          <command id="58645" code="W58645" name="Abfrage"/>
+        </commands>
+      </device>
+      <device id="Koubachi_V" data="com" gateway="IP-Symcon" type="IPS" address="21760" sensor="off" isBranch="false" showName="Garten.Koubachi Vorne">
+        <states id="States">
+          <state id="15848" name="Daten von"/>
+          <state id="36798" name="Lichtstärke"/>
+          <state id="42327" name="Bodenfeuchte"/>
+          <state id="45422" name="Temperatur"/>
+          <state id="55140" name="Batterielevel"/>
+        </states>
+        <commands id="Commands">
+          <command id="12460" code="W12460" name="API Koubachi"/>
+          <command id="47118" code="W47118" name="Abfrage"/>
+        </commands>
+      </device>
+      <device id="WasserVorne" data="blswitch" gateway="Homematic" type="HM" address="KEQ0122325:1" sensor="off" isBranch="false"/>
+      <device id="WasserRechts" data="blswitch" gateway="Homematic" type="HM" address="KEQ0122325:2" sensor="off" isBranch="false"/>
+      <device id="WasserLinks" data="blswitch" gateway="Homematic" type="HM" address="KEQ0122325:3" sensor="off" isBranch="false"/>
+      <device id="WasserUnbelegt" data="blswitch" gateway="Homematic" type="HM" address="KEQ0122325:4" sensor="off" isBranch="false"/>
+      <device id="Eingang" data="com" gateway="IP-Symcon" type="IPS" address="51151" sensor="off" isBranch="false" showName="Garten.Eingangsbeleuchtung">
+        <states id="States">
+          <state id="22106" name="STATE"/>
+          <state id="45743" name="WORKING"/>
+          <state id="55984" name="INHIBIT"/>
+        </states>
+        <commands id="Commands">
+          <command id="22215" code="W22215" name="STATE.toggle"/>
+          <command id="23341" code="W23341" name="STATE.Push_State"/>
+          <command id="26823" code="W26823" name="STATE.ausschalten"/>
+          <command id="32404" code="W32404" name="STATE.einschalten"/>
+          <command id="41336" code="W41336" name="STATE.Zeitschaltung"/>
+        </commands>
+      </device>
+      <device id="Quellstein" data="com" gateway="IP-Symcon" type="IPS" address="34500" sensor="off" isBranch="false" showName="Garten.Quellstein">
+        <states id="States">
+          <state id="13645" name="Hexcode"/>
+          <state id="16101" name="Status Pumpe"/>
+          <state id="17967" name="Status Beleuchtung"/>
+          <state id="20763" name="Slider 60"/>
+          <state id="28422" name="Slider 100"/>
+          <state id="31995" name="Slider 30"/>
+          <state id="34262" name="Status Helligkeit"/>
+          <state id="35896" name="Slider 50"/>
+          <state id="41816" name="Slider 70"/>
+          <state id="47043" name="Slider10"/>
+          <state id="47148" name="Slider 40"/>
+          <state id="48558" name="Hexcode Beleuchtung"/>
+          <state id="48993" name="Slider 80"/>
+          <state id="50707" name="Slider 90"/>
+          <state id="51396" name="Slider 20"/>
+        </states>
+        <commands id="Commands">
+          <command id="33432" code="W33432" name="Status Pumpe.tooglewif"/>
+          <command id="35808" code="W35808" name="Status Pumpe.Brunnen ein"/>
+          <command id="36628" code="W36628" name="Status Pumpe.Push_Status"/>
+          <command id="37511" code="W37511" name="Status Pumpe.Brunnen aus"/>
+          <command id="38708" code="W38708" name="Status Pumpe.toggle"/>
+          <command id="16972" code="W16972" name="Status Beleuchtung.Brunnenlicht ein"/>
+          <command id="19178" code="W19178" name="Status Beleuchtung.Beleuchtung Dimmen"/>
+          <command id="24630" code="W24630" name="Status Beleuchtung.toggleBeleuchtung"/>
+          <command id="54742" code="W54742" name="Status Beleuchtung.togglewif"/>
+          <command id="58384" code="W58384" name="Status Beleuchtung.Push_Status"/>
+          <command id="59970" code="W59970" name="Status Beleuchtung.Brunnenlicht aus"/>
+          <command id="16986" code="W16986" name="Status Helligkeit.dim50"/>
+          <command id="21392" code="W21392" name="Status Helligkeit.dim80"/>
+          <command id="22622" code="W22622" name="Status Helligkeit.dim20"/>
+          <command id="25364" code="W25364" name="Status Helligkeit.dim30"/>
+          <command id="25543" code="W25543" name="Status Helligkeit.dimdown"/>
+          <command id="27227" code="W27227" name="Status Helligkeit.dim10"/>
+          <command id="30340" code="W30340" name="Status Helligkeit.Push_Helligkeit"/>
+          <command id="30919" code="W30919" name="Status Helligkeit.Beleuchtung ein"/>
+          <command id="35373" code="W35373" name="Status Helligkeit.dim60"/>
+          <command id="38955" code="W38955" name="Status Helligkeit.dim90"/>
+          <command id="41691" code="W41691" name="Status Helligkeit.SliderFS20"/>
+          <command id="44633" code="W44633" name="Status Helligkeit.dimup"/>
+          <command id="45647" code="W45647" name="Status Helligkeit.Beleuchtung aus"/>
+          <command id="51286" code="W51286" name="Status Helligkeit.dim70"/>
+          <command id="56628" code="W56628" name="Status Helligkeit.dim40"/>
+        </commands>
+      </device>
+      <device id="Terasse" data="com" gateway="IP-Symcon" type="IPS" address="52618" sensor="off" isBranch="false" showName="Garten.Terassenbeleuchtung">
+        <states id="States">
+          <state id="13487" name="Status"/>
+          <state id="42069" name="Hexcode"/>
+        </states>
+        <commands id="Commands">
+          <command id="16001" code="W16001" name="Status.Licht an"/>
+          <command id="29064" code="W29064" name="Status.Push_Status"/>
+          <command id="30167" code="W30167" name="Status.Licht aus"/>
+          <command id="35368" code="W35368" name="Status.toggle"/>
+          <command id="41208" code="W41208" name="Status.togglewif"/>
+        </commands>
+      </device>
+      <device id="Apfelbaum" data="com" gateway="IP-Symcon" type="IPS" address="38152" sensor="off" isBranch="false" showName="Garten.Apfelbaum">
+        <states id="States">
+          <state id="47421" name="Hexcode"/>
+          <state id="50713" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="11090" code="W11090" name="Status.Beleuchtung aus"/>
+          <command id="21552" code="W21552" name="Status.toggle"/>
+          <command id="44613" code="W44613" name="Status.Push_Status"/>
+          <command id="46026" code="W46026" name="Status.Beleuchtung an"/>
+          <command id="54872" code="W54872" name="Status.togglewif"/>
+        </commands>
+      </device>
+      <device id="Neu" data="" gateway="" type="" address="" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Schlafzimmer">
+      <device id="Schranklicht" data="blswitch" gateway="Homematic" type="HM" address="JEQ0035048:1" sensor="off"/>
+      <device id="Wandschrank" data="com" gateway="IP-Symcon" type="IPS" address="30950" sensor="off" isBranch="false" showName="Mittelgeschoss.Wandschrank.Wandschrank">
+        <states id="States">
+          <state id="41428" name="STATE"/>
+          <state id="53371" name="INHIBIT"/>
+          <state id="54137" name="WORKING"/>
+        </states>
+        <commands id="Commands">
+          <command id="10321" code="W10321" name="STATE.Zeitschaltung"/>
+          <command id="33056" code="W33056" name="STATE.ausschalten"/>
+        </commands>
+      </device>
+      <device id="Tischlampe" data="" gateway="Philips_Hue" type="HUE" address="4" sensor="off" isBranch="false" gatewaytype="hue"/>
+    </location>
+    <location id="Steckdosen">
+      <device id="Badlicht" data="switch" gateway="Gateway_V4" type="IT" address="1.0" gatewaytype="aiogateway"/>
+      <device id="Beamer" type="IT" data="switch" address="0.2" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="Deckenfluter" type="IT" data="switch" address="4.0" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="SqueezeboxEvelyn" data="switch" gateway="Gateway_V4" type="IT" address="1.1" gatewaytype="aiogateway"/>
+      <device id="Steckdose2" data="switch" gateway="Gateway_V4" type="IT" address="1.2" gatewaytype="aiogateway"/>
+      <device id="Subwoofer" type="IT" data="switch" address="0.0" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="Wohnzimmerlampe" type="IT" data="switch" address="0.1" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="Unitech1" data="" gateway="Gateway_V4" type="CODE" address="IR:01" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+      <device id="Unitech2" data="" gateway="Gateway_V4" type="CODE" address="IR:01" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+      <device id="Unitech3" data="" gateway="Gateway_V4" type="CODE" address="IR:01" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+    </location>
+    <location id="Wohnzimmer">
+      <device id="AVR4311" type="CODE" data="AVR_4311" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="Dreambox" type="CODE" data="Dreambox_8000" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="Dreambox8000" data="" gateway="" type="dream3" address="192.168.55.37:80" user="" pwd="" gatewaytype="null"/>
+      <device id="DreamboxPower" data="" gateway="" type="dreampower" address="192.168.55.37:80" user="" pwd="" gatewaytype="null"/>
+      <device id="DreamboxZap" data="" gateway="" type="dreamzap" address="192.168.55.37:80" sensor="off" user="" pwd="" gatewaytype="null"/>
+      <device id="DVD" type="CODE" data="ToshibaDVD" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+      <device id="EH-TW3600" data="EH-TW3600" gateway="Gateway_V4" type="CODE" address="IR:01" gatewaytype="aiogateway"/>
+      <device id="Eventghost" data="" gateway="" type="EventGhost" address="192.168.55.109:9999" sensor="off" user="" pwd=""/>
+      <device id="LE40C750_IR" data="LE40C750_IR" gateway="Gateway_V4" type="CODE" address="IR:01" gatewaytype="aiogateway"/>
+      <device id="Sat" type="CODE" data="SatSmart" address="IR:01" gateway="Gateway_V3" gatewaytype="aiogateway"/>
+      <device id="Squeezebox" type="CODE" data="Squeezebox" address="IR:01" gateway="Gateway_V3" gatewaytype="aiogateway"/>
+      <device id="UPNP_AVR4311" data="Denon AVR" gateway="" type="generic_upnp" address="192.168.55.30:80" user="" pwd="" udn="uuid:5f9ec1b3-ff59-19bb-8530-0005cd26485b" gatewaytype="null"/>
+      <device id="Xtreamer" type="CODE" data="Xtreamer" address="IR:01" gateway="Gateway_V3" gatewaytype="aiogateway"/>
+      <device id="YamahaReciever" type="CODE" data="YamahaReciever" address="IR:01" gateway="Gateway_V3" gatewaytype="aiogateway"/>
+      <device id="ProdigyLAN" data="" gateway="" type="prodigy" address="192.168.55.42:80" sensor="off" user="" pwd="" gatewaytype="null"/>
+      <device id="Prodigy" data="Prodigy" gateway="Gateway_V3" type="CODE" address="IR:01" sensor="off" gatewaytype="aiogateway"/>
+      <device id="LED_Remote" data="switch" gateway="Gateway_V4" type="LEDS" address="FDC" sensor="off" gatewaytype="aiogateway"/>
+      <device id="Dualmask" data="Dualmaskscreen" gateway="Gateway_V4" type="CODE" address="IR:01" sensor="off" gatewaytype="aiogateway"/>
+      <device id="LE40C750_LAN" data="Samsung TV" gateway="" type="samsung_tv" address="192.168.55.20:55000" sensor="off" ip="192.168.55.24" port="55000" udn="uuid:d8b67f16-f580-a0fc-a244-26b8e96a0a83" gatewaytype="null" user="" pwd=""/>
+      <device id="DenonAVR4311" data="com" gateway="IP-Symcon" type="IPS" address="16720" sensor="off" isBranch="false" showName="DENON.Main Zone">
+        <states id="States">
+          <state id="11026" name="InputMode"/>
+          <state id="11874" name="ChannelVolumeSBL"/>
+          <state id="14945" name="CinemaEQ"/>
+          <state id="15024" name="ChannelVolumeFWR"/>
+          <state id="15634" name="BassLevel"/>
+          <state id="15832" name="ToneCTRL"/>
+          <state id="17253" name="ChannelVolumeFR"/>
+          <state id="18191" name="ChannelVolumeSW"/>
+          <state id="19928" name="DynamicRange"/>
+          <state id="20524" name="DynamicCompressor"/>
+          <state id="26036" name="FrontHeight"/>
+          <state id="27623" name="AudioRestorer"/>
+          <state id="28370" name="ChannelVolumeFHR"/>
+          <state id="29770" name="DynamicVolume"/>
+          <state id="29900" name="DynamicEQ"/>
+          <state id="30926" name="VideoAspect"/>
+          <state id="32163" name="ChannelVolumeFHL"/>
+          <state id="32732" name="SurroundMode"/>
+          <state id="36535" name="ChannelVolumeFL"/>
+          <state id="37573" name="DigitalInputMode"/>
+          <state id="38551" name="Power"/>
+          <state id="39617" name="MainZonePower"/>
+          <state id="39899" name="ChannelVolumeSB"/>
+          <state id="42345" name="TrebleLevel"/>
+          <state id="42790" name="MultiEQMode"/>
+          <state id="43337" name="MainMute"/>
+          <state id="44586" name="QuickSelect"/>
+          <state id="44971" name="ChannelVolumeC"/>
+          <state id="46039" name="LFELevel"/>
+          <state id="46217" name="HDMIMonitor"/>
+          <state id="46721" name="ChannelVolumeSR"/>
+          <state id="48127" name="Panorama"/>
+          <state id="50325" name="SurroundBackMode"/>
+          <state id="50975" name="Scaler"/>
+          <state id="51005" name="Dimension"/>
+          <state id="52197" name="RoomSize"/>
+          <state id="52371" name="C.Width"/>
+          <state id="53199" name="SurroundPlayMode"/>
+          <state id="53790" name="VideoSelect"/>
+          <state id="54164" name="ChannelVolumeSBR"/>
+          <state id="54978" name="InputSource"/>
+          <state id="55266" name="AudioDelay"/>
+          <state id="56959" name="MasterVolume"/>
+          <state id="59412" name="ChannelVolumeFWL"/>
+          <state id="59596" name="ChannelVolumeSL"/>
+        </states>
+        <commands id="Commands">
+          <command id="19386" code="W19386" name="DynamicVolume.DynamicVolumeNacht"/>
+          <command id="44774" code="W44774" name="DynamicVolume.profile"/>
+          <command id="52551" code="W52551" name="DynamicVolume.DynamicVolumeAbend"/>
+          <command id="54559" code="W54559" name="DynamicVolume.DynamicVolumeoff"/>
+          <command id="56491" code="W56491" name="DynamicVolume.Push_DynamicVolume"/>
+          <command id="57576" code="W57576" name="DynamicVolume.DynamicVolumeTag"/>
+          <command id="14360" code="W14360" name="SurroundMode.Direct"/>
+          <command id="14587" code="W14587" name="SurroundMode.Push_SurroundMode"/>
+          <command id="15249" code="W15249" name="SurroundMode.MCH Stereo"/>
+          <command id="16224" code="W16224" name="SurroundMode.PureDirect"/>
+          <command id="16757" code="W16757" name="SurroundMode.Mono Movie"/>
+          <command id="18657" code="W18657" name="SurroundMode.Rock Arena"/>
+          <command id="18993" code="W18993" name="SurroundMode.Matrix"/>
+          <command id="27135" code="W27135" name="SurroundMode.Standard"/>
+          <command id="28501" code="W28501" name="SurroundMode.Video Game"/>
+          <command id="28603" code="W28603" name="SurroundMode.Virtual"/>
+          <command id="29108" code="W29108" name="SurroundMode.Classic Concert"/>
+          <command id="33184" code="W33184" name="SurroundMode.Dolby Digital"/>
+          <command id="33469" code="W33469" name="SurroundMode.Jazz Club"/>
+          <command id="36519" code="W36519" name="SurroundMode.Wide Screen"/>
+          <command id="46391" code="W46391" name="SurroundMode.Super Stadium"/>
+          <command id="57947" code="W57947" name="SurroundMode.Stereo"/>
+          <command id="59609" code="W59609" name="SurroundMode.DTS"/>
+          <command id="25023" code="W25023" name="Power.Push_Power"/>
+          <command id="33143" code="W33143" name="Power.poweron"/>
+          <command id="46015" code="W46015" name="Power.powertoggle"/>
+          <command id="54375" code="W54375" name="Power.poweroff"/>
+          <command id="34043" code="W34043" name="MainZonePower.Push_MainzonePower"/>
+          <command id="31431" code="W31431" name="MainMute.mutetoggle"/>
+          <command id="50652" code="W50652" name="MainMute.Push_MainMute"/>
+          <command id="12128" code="W12128" name="InputSource.SONOS"/>
+          <command id="17789" code="W17789" name="InputSource.TV"/>
+          <command id="24400" code="W24400" name="InputSource.Push_InputSource"/>
+          <command id="26417" code="W26417" name="InputSource.Xtreamer"/>
+          <command id="26637" code="W26637" name="InputSource.Dreambox"/>
+          <command id="27608" code="W27608" name="InputSource.AppleTV"/>
+          <command id="32300" code="W32300" name="InputSource.Favorites"/>
+          <command id="34279" code="W34279" name="InputSource.Server"/>
+          <command id="36969" code="W36969" name="InputSource.IRadio"/>
+          <command id="55435" code="W55435" name="InputSource.Net USB"/>
+          <command id="12701" code="W12701" name="MasterVolume.Vol 20"/>
+          <command id="13410" code="W13410" name="MasterVolume.Vol 40"/>
+          <command id="14401" code="W14401" name="MasterVolume.Vol 45"/>
+          <command id="18244" code="W18244" name="MasterVolume.Volume up"/>
+          <command id="20357" code="W20357" name="MasterVolume.Vol 75"/>
+          <command id="25095" code="W25095" name="MasterVolume.Vol 25"/>
+          <command id="25539" code="W25539" name="MasterVolume.Vol 35"/>
+          <command id="28272" code="W28272" name="MasterVolume.Vol 05"/>
+          <command id="28294" code="W28294" name="MasterVolume.Vol 50"/>
+          <command id="31718" code="W31718" name="MasterVolume.Vol 55"/>
+          <command id="36165" code="W36165" name="MasterVolume.Vol 70"/>
+          <command id="42212" code="W42212" name="MasterVolume.Vol 10"/>
+          <command id="43423" code="W43423" name="MasterVolume.Vol 60"/>
+          <command id="43938" code="W43938" name="MasterVolume.Vol 80"/>
+          <command id="45140" code="W45140" name="MasterVolume.Vol 15"/>
+          <command id="52951" code="W52951" name="MasterVolume.Push_Vol"/>
+          <command id="53368" code="W53368" name="MasterVolume.Vol 65"/>
+          <command id="53666" code="W53666" name="MasterVolume.Volume down"/>
+          <command id="54938" code="W54938" name="MasterVolume.Vol 00"/>
+          <command id="58165" code="W58165" name="MasterVolume.Vol 30"/>
+        </commands>
+      </device>
+      <device id="DenonDisplay" data="state" gateway="IP-Symcon" type="IPS" address="16128" sensor="off" isBranch="false" showName="DENON.Display">
+        <states id="States">
+          <state id="17940" name="current Position"/>
+          <state id="32600" name="Line8"/>
+          <state id="36317" name="Line5"/>
+          <state id="40996" name="Line7"/>
+          <state id="41489" name="Line4"/>
+          <state id="45731" name="Line2"/>
+          <state id="50084" name="Line1"/>
+          <state id="53829" name="Line6"/>
+          <state id="58956" name="Line3"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="StromBeamer" data="com" gateway="IP-Symcon" type="IPS" address="19620" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Steckdosen.Beamer.Steckdose Beamer">
+        <states id="States">
+          <state id="57058" name="Hexcode"/>
+          <state id="59482" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="12119" code="W12119" name="Status.toggle"/>
+          <command id="19111" code="W19111" name="Status.Strom aus"/>
+          <command id="19261" code="W19261" name="Status.Strom an"/>
+          <command id="27953" code="W27953" name="Status.Harmony Activity Steckdose Beamer schalten"/>
+          <command id="49045" code="W49045" name="Status.togglewif"/>
+          <command id="54930" code="W54930" name="Status.Push_Status"/>
+        </commands>
+      </device>
+      <device id="Subwoofer" data="com" gateway="IP-Symcon" type="IPS" address="27725" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Steckdosen.Subwoofer.Subwoofer">
+        <states id="States">
+          <state id="43470" name="Hexcode"/>
+          <state id="47227" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="19567" code="W19567" name="Status.Harmony Activity Subwoofer schalten"/>
+          <command id="21293" code="W21293" name="Status.togglewif"/>
+          <command id="26035" code="W26035" name="Status.Strom aus"/>
+          <command id="32354" code="W32354" name="Status.toggle"/>
+          <command id="32675" code="W32675" name="Status.Push_Status"/>
+          <command id="49305" code="W49305" name="Status.Strom an"/>
+        </commands>
+      </device>
+      <device id="DenonSteuerung" data="com" gateway="IP-Symcon" type="IPS" address="31641" sensor="off" isBranch="false" showName="DENON.Steuerung">
+        <states id="States">
+          <state id="30737" name="CursorUp"/>
+          <state id="35088" name="CursorRight"/>
+          <state id="36997" name="Return"/>
+          <state id="39999" name="CursorDown"/>
+          <state id="46387" name="Enter"/>
+          <state id="51733" name="CursorLeft"/>
+        </states>
+        <commands id="Commands">
+          <command id="58218" code="W58218" name="CursorUp.Up"/>
+          <command id="52686" code="W52686" name="CursorRight.Right"/>
+          <command id="18117" code="W18117" name="Return.Return"/>
+          <command id="45606" code="W45606" name="CursorDown.Down"/>
+          <command id="52081" code="W52081" name="Enter.Enter"/>
+          <command id="11069" code="W11069" name="CursorLeft.Left"/>
+        </commands>
+      </device>
+      <device id="XtreamerIPS" data="com" gateway="IP-Symcon" type="IPS" address="36920" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Xtreamer" gatewaytype="ips">
+        <states id="States">
+          <state id="25953" name="Status"/>
+          <state id="32892" name="Formular"/>
+          <state id="33423" name="IP"/>
+          <state id="49561" name="command"/>
+        </states>
+        <commands id="Commands">
+          <command id="11572" code="W11572" name="f_prodigy"/>
+          <command id="10005" code="W10005" name="Status.Xtreamer On"/>
+          <command id="15002" code="W15002" name="Status.toggle"/>
+          <command id="22151" code="W22151" name="Status.codes"/>
+          <command id="34126" code="W34126" name="Status.Xtreamer Off"/>
+          <command id="43271" code="W43271" name="Status.Push_Status"/>
+          <command id="51150" code="W51150" name="Status.Xtreamer togglewif"/>
+          <command id="10139" code="W10139" name="command.playattime"/>
+          <command id="11216" code="W11216" name="command.rewind"/>
+          <command id="12138" code="W12138" name="command.right"/>
+          <command id="12306" code="W12306" name="command.setup"/>
+          <command id="12417" code="W12417" name="command.7"/>
+          <command id="13196" code="W13196" name="command.frwd"/>
+          <command id="13360" code="W13360" name="command.search"/>
+          <command id="14095" code="W14095" name="command.syncRight"/>
+          <command id="15136" code="W15136" name="command.audio"/>
+          <command id="15749" code="W15749" name="command.down"/>
+          <command id="15893" code="W15893" name="command.red"/>
+          <command id="16258" code="W16258" name="command.mute"/>
+          <command id="16814" code="W16814" name="command.enter"/>
+          <command id="17474" code="W17474" name="command.yellow"/>
+          <command id="19412" code="W19412" name="command.send_command"/>
+          <command id="21485" code="W21485" name="command.prev"/>
+          <command id="22087" code="W22087" name="command.pageDown"/>
+          <command id="22494" code="W22494" name="command.next_file"/>
+          <command id="22616" code="W22616" name="command.timelogging"/>
+          <command id="22648" code="W22648" name="command.guide"/>
+          <command id="23973" code="W23973" name="command.zoom"/>
+          <command id="24643" code="W24643" name="command.a-b"/>
+          <command id="26443" code="W26443" name="command.eject"/>
+          <command id="27698" code="W27698" name="command.volumeUp"/>
+          <command id="29979" code="W29979" name="command.instant_replay"/>
+          <command id="30071" code="W30071" name="command.9"/>
+          <command id="30495" code="W30495" name="command.up"/>
+          <command id="31970" code="W31970" name="command.subtitle"/>
+          <command id="32341" code="W32341" name="command.3"/>
+          <command id="32972" code="W32972" name="command.4"/>
+          <command id="34285" code="W34285" name="command.zoom_out"/>
+          <command id="34784" code="W34784" name="command.cmskip"/>
+          <command id="34874" code="W34874" name="command.hdcp_off"/>
+          <command id="34972" code="W34972" name="command.schedule"/>
+          <command id="35148" code="W35148" name="command.pageUp"/>
+          <command id="35167" code="W35167" name="command.shuffle"/>
+          <command id="35296" code="W35296" name="command.volumeDown"/>
+          <command id="35949" code="W35949" name="command.stop"/>
+          <command id="36288" code="W36288" name="command.play"/>
+          <command id="36469" code="W36469" name="command.rotate"/>
+          <command id="38483" code="W38483" name="command.5"/>
+          <command id="38943" code="W38943" name="command.pause"/>
+          <command id="38996" code="W38996" name="command.1"/>
+          <command id="39206" code="W39206" name="command.left"/>
+          <command id="40844" code="W40844" name="command.play_pause"/>
+          <command id="41284" code="W41284" name="command.menu"/>
+          <command id="41462" code="W41462" name="command.6"/>
+          <command id="43145" code="W43145" name="command.power"/>
+          <command id="43570" code="W43570" name="command.file_copy"/>
+          <command id="44001" code="W44001" name="command.prev_file"/>
+          <command id="45902" code="W45902" name="command.source"/>
+          <command id="45986" code="W45986" name="command.srwd"/>
+          <command id="46239" code="W46239" name="command.IM_Status"/>
+          <command id="46679" code="W46679" name="command.option"/>
+          <command id="47495" code="W47495" name="command.0"/>
+          <command id="47587" code="W47587" name="command.hdd"/>
+          <command id="47898" code="W47898" name="command.info"/>
+          <command id="48259" code="W48259" name="command.home"/>
+          <command id="49232" code="W49232" name="command.zoom_in"/>
+          <command id="49474" code="W49474" name="command.dvd"/>
+          <command id="49685" code="W49685" name="command.IM_File_Status"/>
+          <command id="50456" code="W50456" name="command.ffwd"/>
+          <command id="50609" code="W50609" name="command.blue"/>
+          <command id="50624" code="W50624" name="command.sfwd"/>
+          <command id="52173" code="W52173" name="command.hdcp_on"/>
+          <command id="52290" code="W52290" name="command.command"/>
+          <command id="52379" code="W52379" name="command.repeat"/>
+          <command id="53148" code="W53148" name="command.pscan"/>
+          <command id="53308" code="W53308" name="command.green"/>
+          <command id="55939" code="W55939" name="command.2"/>
+          <command id="56318" code="W56318" name="command.angle"/>
+          <command id="56661" code="W56661" name="command.8"/>
+          <command id="56668" code="W56668" name="command.fastForward"/>
+          <command id="56699" code="W56699" name="command.syncLeft"/>
+          <command id="57072" code="W57072" name="command.select"/>
+          <command id="57790" code="W57790" name="command.display"/>
+          <command id="58259" code="W58259" name="command.next"/>
+          <command id="58286" code="W58286" name="command.delete"/>
+          <command id="59877" code="W59877" name="command.IM_MSG_TXT"/>
+          <command id="59961" code="W59961" name="command.return"/>
+          <command id="55393" code="W55393" name="curltest"/>
+          <command id="57208" code="W57208" name="Formular"/>
+        </commands>
+      </device>
+      <device id="ITDimmer" data="com" gateway="IP-Symcon" type="IPS" address="46033" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Steckdosen.Stehlampe.Stehlampe" gatewaytype="ips">
+        <states id="States">
+          <state id="10484" name="Hexcode"/>
+          <state id="24890" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="29030" code="W29030" name="Status.Push_Status"/>
+          <command id="42833" code="W42833" name="toogle"/>
+          <command id="49661" code="W49661" name="Stehlampe an"/>
+          <command id="58174" code="W58174" name="Stehlampe aus"/>
+        </commands>
+      </device>
+      <device id="Zone2" data="state" gateway="IP-Symcon" type="IPS" address="13955" sensor="off" isBranch="false" showName="DENON.Zone 2">
+        <states id="States">
+          <state id="23336" name="Zone2InputSource"/>
+          <state id="43234" name="Zone2Power"/>
+          <state id="50421" name="Zone2Mute"/>
+          <state id="54885" name="Zone2Volume"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Zone3" data="state" gateway="IP-Symcon" type="IPS" address="52061" sensor="off" isBranch="false" showName="DENON.Zone 3">
+        <states id="States">
+          <state id="27066" name="Zone3Mute"/>
+          <state id="56395" name="Zone3Power"/>
+          <state id="56884" name="Zone3Volume"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="DreamboxIPS" data="com" gateway="IP-Symcon" type="IPS" address="26758" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Dreambox 8000" gatewaytype="ips">
+        <states id="States">
+          <state id="12887" name="Mediola Web"/>
+          <state id="13327" name="E2 Image Version"/>
+          <state id="16988" name="Dauer"/>
+          <state id="17059" name="E2 Webif Version"/>
+          <state id="18898" name="EPG Now"/>
+          <state id="19233" name="Timer aktiv"/>
+          <state id="19948" name="Picture Reference"/>
+          <state id="19962" name="Aktuelle Programminformationen"/>
+          <state id="20384" name="Sendungsfortschritt"/>
+          <state id="22679" name="Aktueller Sender"/>
+          <state id="23655" name="Standby status"/>
+          <state id="24168" name="aktuelle Servicereferenz"/>
+          <state id="24681" name="Ende"/>
+          <state id="26663" name="Verbleiben"/>
+          <state id="26828" name="Vergangen"/>
+          <state id="29169" name="Start"/>
+          <state id="31373" name="SNR"/>
+          <state id="32211" name="rss-Feed TV-Movie"/>
+          <state id="33062" name="dreambox Webcontrol"/>
+          <state id="36367" name="Festplattenkapazität"/>
+          <state id="39028" name="Livestream"/>
+          <state id="39363" name="E2 Modell"/>
+          <state id="41729" name="E2 Enigma Version"/>
+          <state id="42651" name="Port"/>
+          <state id="43413" name="Empfangspegel (AGC)"/>
+          <state id="43864" name="Beschreibung"/>
+          <state id="44386" name="snrdb"/>
+          <state id="45216" name="Festplattenplatz"/>
+          <state id="49137" name="HTML EPG Ausgabe"/>
+          <state id="50348" name="command"/>
+          <state id="50887" name="BER"/>
+          <state id="53181" name="Status"/>
+          <state id="57638" name="HDD Model"/>
+          <state id="57911" name="Sendungstitel"/>
+          <state id="58413" name="IP"/>
+          <state id="59613" name="Aktueller Sender Stream"/>
+        </states>
+        <commands id="Commands">
+          <command id="30501" code="W30501" name="Dauer.Push_EPG_dauer"/>
+          <command id="21272" code="W21272" name="Picture Reference.Push_Picref"/>
+          <command id="10676" code="W10676" name="Aktueller Sender.reference"/>
+          <command id="13984" code="W13984" name="Aktueller Sender.WDR_HD_Koeln"/>
+          <command id="14019" code="W14019" name="Aktueller Sender.Pro7"/>
+          <command id="15972" code="W15972" name="Aktueller Sender.auswahl"/>
+          <command id="16763" code="W16763" name="Aktueller Sender.hr-fernsehen"/>
+          <command id="18895" code="W18895" name="Aktueller Sender.ZDF_neo_HD"/>
+          <command id="19611" code="W19611" name="Aktueller Sender.sat1"/>
+          <command id="20308" code="W20308" name="Aktueller Sender.SWR_BW_HD"/>
+          <command id="24149" code="W24149" name="Aktueller Sender.BR_Nord_HD"/>
+          <command id="24962" code="W24962" name="Aktueller Sender.tagesschau24"/>
+          <command id="26769" code="W26769" name="Aktueller Sender.vox"/>
+          <command id="33712" code="W33712" name="Aktueller Sender.ZDF HD"/>
+          <command id="33953" code="W33953" name="Aktueller Sender.Kabel1"/>
+          <command id="34779" code="W34779" name="Aktueller Sender.ARD HD"/>
+          <command id="39554" code="W39554" name="Aktueller Sender.superrtl"/>
+          <command id="41204" code="W41204" name="Aktueller Sender.NDR_FS_NDS_HD"/>
+          <command id="42534" code="W42534" name="Aktueller Sender.13th_street"/>
+          <command id="44781" code="W44781" name="Aktueller Sender.tele5"/>
+          <command id="46528" code="W46528" name="Aktueller Sender.Push_EPG_name"/>
+          <command id="48874" code="W48874" name="Aktueller Sender.3sat_HD"/>
+          <command id="52372" code="W52372" name="Aktueller Sender.DisneyChannel"/>
+          <command id="53039" code="W53039" name="Aktueller Sender.sixx"/>
+          <command id="56493" code="W56493" name="Aktueller Sender.rtl2"/>
+          <command id="57492" code="W57492" name="Aktueller Sender.RTL"/>
+          <command id="58129" code="W58129" name="Aktueller Sender.KiKA HD"/>
+          <command id="52221" code="W52221" name="Standby status.Push_Status"/>
+          <command id="54656" code="W54656" name="aktuelle Servicereferenz.Push_Ref"/>
+          <command id="49416" code="W49416" name="Ende.Push_EPG_ende"/>
+          <command id="59175" code="W59175" name="Verbleiben.Push_EPG_verbleiben"/>
+          <command id="42328" code="W42328" name="Vergangen.Push_EPG_vergangen"/>
+          <command id="44099" code="W44099" name="Start.Push_EPG_start"/>
+          <command id="42862" code="W42862" name="Beschreibung.Push_EPG_description"/>
+          <command id="11329" code="W11329" name="command.2"/>
+          <command id="11473" code="W11473" name="command.1"/>
+          <command id="12644" code="W12644" name="command.blue"/>
+          <command id="12792" code="W12792" name="command.power"/>
+          <command id="13723" code="W13723" name="command.exit"/>
+          <command id="14407" code="W14407" name="command.bouquetDown"/>
+          <command id="15431" code="W15431" name="command.pause"/>
+          <command id="15445" code="W15445" name="command.right"/>
+          <command id="17529" code="W17529" name="command.9"/>
+          <command id="18875" code="W18875" name="command.text"/>
+          <command id="19110" code="W19110" name="command.3"/>
+          <command id="19149" code="W19149" name="command.0"/>
+          <command id="19162" code="W19162" name="command.info"/>
+          <command id="21399" code="W21399" name="command.red"/>
+          <command id="22230" code="W22230" name="command.volumeUp"/>
+          <command id="22314" code="W22314" name="command.help"/>
+          <command id="22464" code="W22464" name="command.left"/>
+          <command id="24447" code="W24447" name="command.8"/>
+          <command id="26093" code="W26093" name="command.4"/>
+          <command id="26184" code="W26184" name="command.enter"/>
+          <command id="28474" code="W28474" name="command.7"/>
+          <command id="29682" code="W29682" name="command.down"/>
+          <command id="31703" code="W31703" name="command.green"/>
+          <command id="31731" code="W31731" name="command.6"/>
+          <command id="31974" code="W31974" name="command.up"/>
+          <command id="32218" code="W32218" name="command.stop"/>
+          <command id="32452" code="W32452" name="command.yellow"/>
+          <command id="34022" code="W34022" name="command.bouquetUp"/>
+          <command id="35784" code="W35784" name="command.play"/>
+          <command id="41389" code="W41389" name="command.5"/>
+          <command id="41877" code="W41877" name="command.next"/>
+          <command id="42614" code="W42614" name="command.volumeDown"/>
+          <command id="44315" code="W44315" name="command.pvr"/>
+          <command id="44464" code="W44464" name="command.tv"/>
+          <command id="46467" code="W46467" name="command.record"/>
+          <command id="49436" code="W49436" name="command.forward"/>
+          <command id="50878" code="W50878" name="command.previous"/>
+          <command id="51697" code="W51697" name="command.menu"/>
+          <command id="53538" code="W53538" name="command.mute"/>
+          <command id="55544" code="W55544" name="command.radio"/>
+          <command id="56475" code="W56475" name="command.rewind"/>
+          <command id="25065" code="W25065" name="Status.Toogle Standby"/>
+          <command id="25907" code="W25907" name="Status.EPG holen einschalten"/>
+          <command id="30476" code="W30476" name="Status.Restart Enigma2"/>
+          <command id="44490" code="W44490" name="Status.Wakeup form Standby"/>
+          <command id="47117" code="W47117" name="Status.toggle"/>
+          <command id="47634" code="W47634" name="Status.Deepstandby"/>
+          <command id="48973" code="W48973" name="Status.Standby"/>
+          <command id="52271" code="W52271" name="Status.EPG holen abschalten"/>
+          <command id="53282" code="W53282" name="Status.power"/>
+          <command id="57528" code="W57528" name="Status.Reboot"/>
+          <command id="58364" code="W58364" name="Status.Push_Status"/>
+          <command id="30651" code="W30651" name="Sendungstitel.Push_EPG_title"/>
+        </commands>
+      </device>
+      <device id="LE40C750IPS" data="com" gateway="IP-Symcon" type="IPS" address="45489" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.LE40C750" gatewaytype="ips">
+        <states id="States">
+          <state id="32110" name="IP"/>
+          <state id="37311" name="Status"/>
+          <state id="57455" name="Fernbedienung Samsung"/>
+        </states>
+        <commands id="Commands">
+          <command id="10135" code="W10135" name="Status.LE40C750 Off"/>
+          <command id="17201" code="W17201" name="Status.Push_Status"/>
+          <command id="19172" code="W19172" name="Status.f_samsung"/>
+          <command id="27166" code="W27166" name="Status.LE40C750 On"/>
+          <command id="49377" code="W49377" name="Status.toggle"/>
+          <command id="52865" code="W52865" name="Status.LE40C750LAN Off"/>
+          <command id="58759" code="W58759" name="Status.togglewif"/>
+          <command id="11771" code="W11771" name="Fernbedienung Samsung.html aufruf"/>
+          <command id="17589" code="W17589" name="Fernbedienung Samsung.mediolacodes"/>
+          <command id="18959" code="W18959" name="Fernbedienung Samsung.LE40C750 toggle"/>
+          <command id="25474" code="W25474" name="Fernbedienung Samsung.test"/>
+          <command id="34668" code="W34668" name="Fernbedienung Samsung.befehle"/>
+          <command id="37929" code="W37929" name="Fernbedienung Samsung.codes perl"/>
+          <command id="40501" code="W40501" name="Fernbedienung Samsung.VergleichCodes"/>
+        </commands>
+      </device>
+      <device id="DenonSlider" data="com" gateway="IP-Symcon" type="IPS" address="49555" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Denon AVR4311">
+        <states id="States">
+          <state id="10579" name="SliderVol60"/>
+          <state id="13603" name="InputSource"/>
+          <state id="17470" name="Line5"/>
+          <state id="18810" name="Power"/>
+          <state id="20544" name="MainMute"/>
+          <state id="22680" name="SliderVol20"/>
+          <state id="32423" name="Line7"/>
+          <state id="32901" name="Line4"/>
+          <state id="37435" name="SurroundMode"/>
+          <state id="38798" name="Line2"/>
+          <state id="38807" name="SliderVol80"/>
+          <state id="38906" name="SliderVol50"/>
+          <state id="45565" name="Line1"/>
+          <state id="50167" name="Line8"/>
+          <state id="50243" name="SliderVol70"/>
+          <state id="50384" name="SliderVol30"/>
+          <state id="50855" name="Line6"/>
+          <state id="55483" name="Slidervol"/>
+          <state id="55619" name="Line3"/>
+          <state id="56828" name="SliderVol40"/>
+          <state id="59080" name="SliderVol10"/>
+          <state id="59187" name="DolbyVolume"/>
+        </states>
+        <commands id="Commands">
+          <command id="14392" code="W14392" name="Socket Ein"/>
+          <command id="17265" code="W17265" name="Befehle"/>
+          <command id="27626" code="W27626" name="Power"/>
+          <command id="47252" code="W47252" name="Socket Aus"/>
+          <command id="57893" code="W57893" name="Slidervol.Slidervol"/>
+          <command id="57099" code="W57099" name="DolbyVolume.PushDolbyVolume"/>
+        </commands>
+      </device>
+      <device id="Storm_Oben" data="" gateway="Philips_Hue" type="HUE" address="3" sensor="off" isBranch="false" gatewaytype="hue"/>
+      <device id="Storm_Unten" data="" gateway="Philips_Hue" type="HUE" address="2" sensor="off" isBranch="false" gatewaytype="hue"/>
+      <device id="DualmaskIPS" data="com" gateway="IP-Symcon" type="IPS" address="13554" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Dualmask">
+        <states id="States">
+          <state id="43629" name="Format"/>
+          <state id="54697" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="14968" code="W14968" name="Format.Format 2"/>
+          <command id="16268" code="W16268" name="Format.Push_Status"/>
+          <command id="16697" code="W16697" name="Format.Format 4"/>
+          <command id="25494" code="W25494" name="Format.Format 5"/>
+          <command id="28068" code="W28068" name="Format.Format 7"/>
+          <command id="30910" code="W30910" name="Format.Format 8"/>
+          <command id="33837" code="W33837" name="Format.Format 1"/>
+          <command id="38517" code="W38517" name="Format.Format 3"/>
+          <command id="52414" code="W52414" name="Format.Format 6"/>
+          <command id="56987" code="W56987" name="Format.Format 10"/>
+          <command id="59650" code="W59650" name="Format.Format 9"/>
+          <command id="15836" code="W15836" name="Status.Dualmask toggle"/>
+          <command id="16539" code="W16539" name="Status.Dualmask togglewif"/>
+          <command id="23786" code="W23786" name="Status.Dualmask on"/>
+          <command id="29252" code="W29252" name="Status.Push_Status"/>
+          <command id="51129" code="W51129" name="Status.Dualmask off"/>
+        </commands>
+      </device>
+      <device id="EH-TW3600IPS" data="com" gateway="IP-Symcon" type="IPS" address="21755" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Epson EH-TW3600">
+        <states id="States">
+          <state id="24390" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="11780" code="W11780" name="Status.Epson EH-TW3600 toggle"/>
+          <command id="38938" code="W38938" name="Status.Push_Status"/>
+          <command id="52396" code="W52396" name="Status.Epson EH-TW3600 togglewif"/>
+          <command id="54657" code="W54657" name="Status.Epson EH-TW3600 off"/>
+          <command id="56164" code="W56164" name="Status.Epson EH-TW3600 on"/>
+        </commands>
+      </device>
+      <device id="Jalousien" data="blind" gateway="Homematic" type="HM" address="JEQ0105382:1" sensor="off" isBranch="false"/>
+      <device id="ApfelbaumEin" data="state" gateway="IP-Symcon" type="IPS" address="10187" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Taster OLED.Apfelbaum Beleuchtung ein">
+        <states id="States">
+          <state id="17294" name="INSTALL_TEST"/>
+          <state id="24133" name="PRESS_SHORT"/>
+          <state id="35974" name="PRESS_LONG"/>
+          <state id="38096" name="PRESS_LONG_RELEASE"/>
+          <state id="53769" name="PRESS_CONT"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="ApfelbaumAus" data="state" gateway="IP-Symcon" type="IPS" address="50400" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Taster OLED.Apfelbaum Beleuchtung aus">
+        <states id="States">
+          <state id="16099" name="PRESS_SHORT"/>
+          <state id="32678" name="PRESS_LONG"/>
+          <state id="35529" name="INSTALL_TEST"/>
+          <state id="41093" name="PRESS_CONT"/>
+          <state id="45134" name="PRESS_LONG_RELEASE"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="ProdigyUPnP" data="" gateway="" type="generic_upnp" address="192.168.55.42:" sensor="off" isBranch="false" ip="192.168.55.42" port="" udn="uuid:032e4f83-fa1c-7615-c16a-db1aef5f27d6"/>
+      <device id="RasplexNav" data="" gateway="" type="PleXMBCnavigation" address="192.168.55.10:32400" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="RasplexPlay" data="" gateway="" type="plexplayback" address="192.168.55.10:32400" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="RasplexApp" data="" gateway="" type="plexapplication" address="192.168.55.10:32400" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="PlexELRO" data="switch" gateway="Gateway_V4" type="ELRO" address="550550" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+      <device id="RasPlex" data="com" gateway="IP-Symcon" type="IPS" address="31789" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.RasPlex">
+        <states id="States">
+          <state id="11582" name="Hexcode"/>
+          <state id="30641" name="Status"/>
+          <state id="59714" name="IP"/>
+        </states>
+        <commands id="Commands">
+          <command id="10852" code="W10852" name="Status.togglewif"/>
+          <command id="18956" code="W18956" name="Status.RasberryPI On"/>
+          <command id="37819" code="W37819" name="Status.f_rasberry"/>
+          <command id="39508" code="W39508" name="Status.toggle"/>
+          <command id="44089" code="W44089" name="Status.RasberryPI Off"/>
+          <command id="44261" code="W44261" name="Status.Push_Status"/>
+        </commands>
+      </device>
+      <device id="PleXMBCNav" data="" gateway="" type="PleXMBCnavigation" address="192.168.55.10:32400" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="PleXMBCPlay" data="" gateway="" type="PlexXMBCplayback" address="192.168.55.10:32400" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="PleXMBCApp" data="" gateway="" type="PleXMBCapplication" address="192.168.55.10:32400" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Tuerkontakt" data="contact" gateway="Homematic" type="HM" address="KEQ0041456:1" sensor="off" isBranch="false"/>
+      <device id="Vaete_oben" data="" gateway="Philips_Hue" type="HUE" address="5" sensor="off" isBranch="false" gatewaytype="hue"/>
+      <device id="Vaete_unten" data="" gateway="Philips_Hue" type="HUE" address="6" sensor="off" isBranch="false" gatewaytype="hue"/>
+      <device id="Hue_Leinwand" data="" gateway="Philips_Hue" type="HUE" address="7" sensor="off" isBranch="false" gatewaytype="hue"/>
+      <device id="Dimmer" data="flswitch" gateway="Homematic" type="HM" address="IEQ0092035:1" sensor="off" isBranch="false" gatewaytype="hmgateway"/>
+      <device id="UPnPFireTV" data="" gateway="" type="generic_upnp" address="192.168.55.60:" sensor="off" isBranch="false" ip="192.168.55.60" port="" udn="uuid:efc16d2a-9f4a-4e0a-8cb7-6e5f78f069d4"/>
+      <device id="AmazonFireTV" data="AmazonFireTV" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="AppleTV" data="AppleTV" gateway="Harmony" type="CODE" address="23391513" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="H_Dream8000" data="DreamMultimedia-" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="H_EpsonProjektor" data="Epson-Projektor" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="H_DenonAVR4311" data="Denon-AV-Empfnge" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="H_SamsungTV" data="Samsung-Fernsehe" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="H_DualmaskScreen" data="Exclusiv-HomeDua" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="Dekolicht" data="com" gateway="IP-Symcon" type="IPS" address="22229" sensor="off" isBranch="false" showName="Erdgeschoss.Wohnzimmer.Deckolicht">
+        <states id="States">
+          <state id="10379" name="INHIBIT"/>
+          <state id="11818" name="StatusString"/>
+          <state id="13861" name="LEVEL"/>
+          <state id="32490" name="WORKING"/>
+          <state id="33638" name="DIRECTION"/>
+          <state id="36285" name="ERROR_REDUCED"/>
+          <state id="43636" name="Status"/>
+          <state id="52078" name="ERROR_OVERHEAT"/>
+          <state id="53801" name="ERROR_OVERLOAD"/>
+        </states>
+        <commands id="Commands">
+          <command id="40746" code="W40746" name="LEVEL.Push_Level"/>
+          <command id="25147" code="W25147" name="toogle"/>
+          <command id="38435" code="W38435" name="Licht an"/>
+          <command id="45450" code="W45450" name="Licht aus"/>
+        </commands>
+      </device>
+      <device id="Denon_AVR4311" data="" gateway="" type="Denon4311_telnet" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Main" data="" gateway="" type="Denon-MAIN" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-VolCH" data="" gateway="" type="Denon-VolCH" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Surround" data="" gateway="" type="Denon-SURROUND" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Source" data="" gateway="" type="Denon-SOURCE" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Tuner" data="" gateway="" type="Denon-TUNER" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Zone2" data="" gateway="" type="Denon-Zone2" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Zone3" data="" gateway="" type="Denon-Zone3" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Net" data="" gateway="" type="Denon-NET" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-Para" data="" gateway="" type="Denon-Para" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+      <device id="Denon-HDMI" data="" gateway="" type="Denon-HDMI" address="192.168.55.14:23" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+    </location>
+    <location id="Flur">
+      <device id="Kammerlicht" data="blswitch" gateway="Homematic" type="HM" address="JEQ0034083:1" sensor="off"/>
+      <device id="Haustuerkontakt" data="contact" gateway="Homematic" type="HM" address="LEQ0919298:1" sensor="off" isBranch="false"/>
+      <device id="Haustuer" data="keymatic" gateway="Homematic" type="HM" address="JEQ0730810:1" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Eventtrigger">
+      <device id="ITtrigger" data="switch" gateway="Gateway_V3" type="IT" address="2.0" sensor="off" gatewaytype="aiogateway"/>
+    </location>
+    <location id="Strommesser">
+      <device id="Waschmaschine" data="0" gateway="Gateway_V3" type="EM" address="05" sensor="on" showname="Strommesser.Waschmaschine" gatewaytype="aiogateway"/>
+      <device id="Trockner" data="0" gateway="Gateway_V3" type="EM" address="07" sensor="off" showname="Strommesser.Trockner" gatewaytype="aiogateway"/>
+    </location>
+    <location id="Evelyn">
+      <device id="Temp_Soll" data="heater" gateway="Homematic" type="HM" address="JEQ0022018:2" sensor="off"/>
+      <device id="Feuchtigkeit" data="humidity" gateway="Homematic" type="HM" address="JEQ0022018:1" sensor="off"/>
+      <device id="Temp" data="temperature" gateway="Homematic" type="HM" address="JEQ0022018:1" sensor="off"/>
+      <device id="Thermostat" data="state" gateway="IP-Symcon" type="IPS" address="15045" sensor="off" isBranch="false" showName="Dachgeschoss.Evelyn.Wandthermostat">
+        <states id="States">
+          <state id="11245" name="ADJUSTING_COMMAND"/>
+          <state id="11662" name="SETPOINT"/>
+          <state id="32889" name="ADJUSTING_DATA"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Heizung" data="state" gateway="IP-Symcon" type="IPS" address="16832" sensor="off" isBranch="false" showName="Dachgeschoss.Evelyn.Heizung Evelyn">
+        <states id="States">
+          <state id="17713" name="Fehler"/>
+          <state id="50899" name="Ventilstellung"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Klima" data="state" gateway="IP-Symcon" type="IPS" address="27928" sensor="off" isBranch="false" showName="Dachgeschoss.Evelyn.Raumklima">
+        <states id="States">
+          <state id="44054" name="Feuchtigkeit"/>
+          <state id="59009" name="Temperatur"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+    </location>
+    <location id="Lelya">
+      <device id="Temp" data="temperature" gateway="Homematic" type="HM" address="JEQ0044200:1" sensor="off"/>
+      <device id="Feuchtigkeit" data="humidity" gateway="Homematic" type="HM" address="JEQ0044200:1" sensor="off"/>
+      <device id="Temp_Soll" data="heater" gateway="Homematic" type="HM" address="JEQ0044200:2" sensor="off"/>
+      <device id="HueSchalter1" data="control" gateway="Homematic" type="HM" address="LEQ0808587:1" sensor="off" isBranch="false"/>
+      <device id="HueSchalter2" data="control" gateway="Homematic" type="HM" address="LEQ0808587:2" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Arbeitszimmer">
+      <device id="Lichtschalter" data="blswitch" gateway="Homematic" type="HM" address="JEQ0095851:1" sensor="off" isBranch="false"/>
+      <device id="Feuchte" data="humidity" gateway="Homematic" type="HM" address="LEQ0001724:1" sensor="off" isBranch="false"/>
+      <device id="Temp" data="actual_temperature" gateway="Homematic" type="HM" address="LEQ0001724:2" sensor="off" isBranch="false"/>
+      <device id="HeizungIPS" data="com" gateway="IP-Symcon" type="IPS" address="40941" sensor="off" isBranch="false" showName="Dachgeschoss.Arbeitszimmer.Heizung Arbeitszimmer :4">
+        <states id="States">
+          <state id="16323" name="PARTY_STOP_TIME"/>
+          <state id="19291" name="PARTY_STOP_YEAR"/>
+          <state id="23218" name="CONTROL_MODE"/>
+          <state id="23464" name="BATTERY_STATE"/>
+          <state id="27000" name="BOOST_STATE"/>
+          <state id="29085" name="PARTY_START_DAY"/>
+          <state id="30338" name="VALVE_STATE"/>
+          <state id="31822" name="SET_TEMPERATURE"/>
+          <state id="36773" name="FAULT_REPORTING"/>
+          <state id="38773" name="PARTY_START_TIME"/>
+          <state id="38920" name="PARTY_TEMPERATURE"/>
+          <state id="43876" name="PARTY_STOP_DAY"/>
+          <state id="48502" name="PARTY_START_MONTH"/>
+          <state id="49306" name="ACTUAL_TEMPERATURE"/>
+          <state id="55408" name="PARTY_START_YEAR"/>
+          <state id="59856" name="PARTY_STOP_MONTH"/>
+        </states>
+        <commands id="Commands">
+          <command id="46976" code="W46976" name="SET_TEMPERATURE.Set Temp"/>
+        </commands>
+      </device>
+      <device id="TempHeizungIPS" data="state" gateway="IP-Symcon" type="IPS" address="32802" sensor="off" isBranch="false" showName="Dachgeschoss.Arbeitszimmer.Temp Arbeitszimmer :1">
+        <states id="States">
+          <state id="20584" name="HUMIDITY"/>
+          <state id="41710" name="TEMPERATURE"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="HZ_Buero_Auto" data="prog" gateway="Homematic" type="HM" address="10564" sensor="off" isBranch="false" gatewaytype="hmgateway"/>
+      <device id="HZ_Buero_Manu" data="prog" gateway="Homematic" type="HM" address="10575" sensor="off" isBranch="false" gatewaytype="hmgateway"/>
+      <device id="Heizungsregler" data="heater2" gateway="Homematic" type="HM" address="LEQ0851585:4" sensor="off" isBranch="false"/>
+      <device id="HZBAutoStatus" data="blvar" gateway="Homematic" type="HM" address="10698" sensor="off" isBranch="false"/>
+      <device id="HZBManuStatus" data="blvar" gateway="Homematic" type="HM" address="10699" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Kinderzimmer">
+      <device id="Klima" data="state" gateway="IP-Symcon" type="IPS" address="18371" sensor="off" isBranch="false" showName="Mittelgeschoss.Kinderzimmer.Raumklima">
+        <states id="States">
+          <state id="32182" name="Temperatur"/>
+          <state id="35360" name="Feuchtigkeit"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Thermostat" data="com" gateway="IP-Symcon" type="IPS" address="19553" sensor="off" isBranch="false" showName="Mittelgeschoss.Kinderzimmer.Wandthermostat">
+        <states id="States">
+          <state id="36536" name="ADJUSTING_DATA"/>
+          <state id="54156" name="ADJUSTING_COMMAND"/>
+          <state id="58793" name="SETPOINT"/>
+        </states>
+        <commands id="Commands">
+          <command id="36963" code="W36963" name="ADJUSTING_DATA.push"/>
+          <command id="41245" code="W41245" name="ADJUSTING_DATA.off"/>
+          <command id="51761" code="W51761" name="ADJUSTING_DATA.up"/>
+          <command id="54484" code="W54484" name="ADJUSTING_DATA.down"/>
+        </commands>
+      </device>
+      <device id="Heizung" data="state" gateway="IP-Symcon" type="IPS" address="27962" sensor="off" isBranch="false" showName="Mittelgeschoss.Kinderzimmer.Heizung Lelya">
+        <states id="States">
+          <state id="10161" name="Ventilstellung"/>
+          <state id="37965" name="Fehler"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Hue" data="" gateway="Philips_Hue" type="HUE" address="1" sensor="off" isBranch="false" gatewaytype="hue"/>
+    </location>
+    <location id="Homematic">
+      <device id="Baddekolicht" data="state" gateway="IP-Symcon" type="IPS" address="28338" sensor="off" isBranch="false" showName="HM Statusmeldungen.Bad Dekolicht">
+        <states id="States">
+          <state id="12486" name="RSSI_PEER"/>
+          <state id="13106" name="CONFIG_PENDING"/>
+          <state id="17379" name="STICKY_UNREACH"/>
+          <state id="38434" name="RSSI_DEVICE"/>
+          <state id="45918" name="UNREACH"/>
+          <state id="53263" name="LOWBAT"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Abstellkammer" data="state" gateway="IP-Symcon" type="IPS" address="19398" sensor="off" isBranch="false" showName="HM Statusmeldungen.Flur Abstellkammer">
+        <states id="States">
+          <state id="18096" name="DUTYCYCLE"/>
+          <state id="24347" name="RSSI_DEVICE"/>
+          <state id="30386" name="CONFIG_PENDING"/>
+          <state id="33583" name="LOWBAT"/>
+          <state id="40222" name="STICKY_UNREACH"/>
+          <state id="48366" name="UNREACH"/>
+          <state id="50880" name="RSSI_PEER"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="OC3" data="state" gateway="IP-Symcon" type="IPS" address="20475" sensor="off" isBranch="false" showName="HM Statusmeldungen.Wetter OC3">
+        <states id="States">
+          <state id="14858" name="CONFIG_PENDING"/>
+          <state id="28139" name="RSSI_PEER"/>
+          <state id="28882" name="UNREACH"/>
+          <state id="41223" name="LOWBAT"/>
+          <state id="53770" name="RSSI_DEVICE"/>
+          <state id="59220" name="STICKY_UNREACH"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="TempEvelyn" data="state" gateway="IP-Symcon" type="IPS" address="20567" sensor="off" isBranch="false" showName="HM Statusmeldungen.Temp Evelyn">
+        <states id="States">
+          <state id="17502" name="LOWBAT"/>
+          <state id="26388" name="RSSI_PEER"/>
+          <state id="29524" name="RSSI_DEVICE"/>
+          <state id="45704" name="UNREACH"/>
+          <state id="49487" name="STICKY_UNREACH"/>
+          <state id="55431" name="CONFIG_PENDING"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="TempLelya" data="state" gateway="IP-Symcon" type="IPS" address="53431" sensor="off" isBranch="false" showName="HM Statusmeldungen.Temp Lelya">
+        <states id="States">
+          <state id="33458" name="STICKY_UNREACH"/>
+          <state id="37104" name="LOWBAT"/>
+          <state id="43201" name="UNREACH"/>
+          <state id="50276" name="RSSI_DEVICE"/>
+          <state id="55798" name="RSSI_PEER"/>
+          <state id="56534" name="CONFIG_PENDING"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Dimmer" data="state" gateway="IP-Symcon" type="IPS" address="38016" sensor="off" isBranch="false" showName="HM Statusmeldungen.Wohnzimmer Dimmer">
+        <states id="States">
+          <state id="29276" name="UNREACH"/>
+          <state id="36605" name="DUTYCYCLE"/>
+          <state id="43639" name="STICKY_UNREACH"/>
+          <state id="44829" name="CONFIG_PENDING"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="HZEvelyn" data="state" gateway="IP-Symcon" type="IPS" address="25842" sensor="off" isBranch="false" showName="HM Statusmeldungen.Heizung Evelyn">
+        <states id="States">
+          <state id="35506" name="RSSI_PEER"/>
+          <state id="38532" name="LOWBAT"/>
+          <state id="41426" name="STICKY_UNREACH"/>
+          <state id="43242" name="CONFIG_PENDING"/>
+          <state id="46251" name="UNREACH"/>
+          <state id="57662" name="RSSI_DEVICE"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="HZLelya" data="state" gateway="IP-Symcon" type="IPS" address="33005" sensor="off" isBranch="false" showName="HM Statusmeldungen.Heizung Lelya">
+        <states id="States">
+          <state id="10902" name="RSSI_PEER"/>
+          <state id="15154" name="CONFIG_PENDING"/>
+          <state id="20510" name="RSSI_DEVICE"/>
+          <state id="20701" name="STICKY_UNREACH"/>
+          <state id="47619" name="LOWBAT"/>
+          <state id="59969" name="UNREACH"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Wandschrank" data="state" gateway="IP-Symcon" type="IPS" address="18472" sensor="off" isBranch="false" showName="HM Statusmeldungen.Wandschrank">
+        <states id="States">
+          <state id="13191" name="RSSI_DEVICE"/>
+          <state id="15600" name="STICKY_UNREACH"/>
+          <state id="21476" name="DUTYCYCLE"/>
+          <state id="26774" name="CONFIG_PENDING"/>
+          <state id="39756" name="LOWBAT"/>
+          <state id="42086" name="RSSI_PEER"/>
+          <state id="44063" name="UNREACH"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Systemvariablen" data="com" gateway="IP-Symcon" type="IPS" address="17075" sensor="off" isBranch="false" showName="Homematic.HomeMatic Systemvariablen">
+        <states id="States">
+          <state id="11174" name="Leinwand Format"/>
+          <state id="12360" name="HZ_Buero Manu"/>
+          <state id="12508" name="Apfelbaum Licht"/>
+          <state id="12786" name="Flurkammer"/>
+          <state id="13227" name="Tageslicht"/>
+          <state id="13357" name="Baddekolicht"/>
+          <state id="13902" name="Dämmerungszeiten"/>
+          <state id="15518" name="Deckenfluter_EG"/>
+          <state id="16746" name="Jalousie EG"/>
+          <state id="18348" name="Regen heute"/>
+          <state id="20906" name="Dekoleiter Wohnzimmer"/>
+          <state id="23159" name="Sonos Wohnzimmer"/>
+          <state id="26855" name="Mediola Bool Test"/>
+          <state id="28250" name="Datum"/>
+          <state id="28745" name="HZ_Buero Auto"/>
+          <state id="29957" name="Hobbyraum LED Stripe"/>
+          <state id="30482" name="Brunnenpumpe"/>
+          <state id="31555" name="Terassenlicht"/>
+          <state id="33537" name="Brunnenlicht"/>
+          <state id="33790" name="FS20 schalten"/>
+          <state id="34150" name="Regen gestern"/>
+          <state id="34625" name="Sonos Bad"/>
+          <state id="35458" name="Außenbeleuchtung vorne"/>
+          <state id="39179" name="Flurlicht Keller"/>
+          <state id="45048" name="HZ_Bad Auto"/>
+          <state id="45123" name="Uhrzeit"/>
+          <state id="45590" name="Sonos Küche"/>
+          <state id="48324" name="Haustür offen"/>
+          <state id="49702" name="Wandschrank"/>
+          <state id="50023" name="HZ_Bad Manu"/>
+          <state id="51241" name="Lelya Hue"/>
+          <state id="52369" name="Putzfrau Anwesenheit"/>
+          <state id="54947" name="Hue Wohnzimmer"/>
+          <state id="55028" name="Mediola String Test"/>
+          <state id="55329" name="Alarmzone 1"/>
+          <state id="55636" name="Anwesenheit"/>
+          <state id="57032" name="IPS Script"/>
+          <state id="57653" name="Schlafzimmer Hue"/>
+          <state id="58137" name="Tür Schießzustand"/>
+          <state id="59085" name="Dämmerung"/>
+        </states>
+        <commands id="Commands">
+          <command id="23223" code="W23223" name="Haustür offen.Push_Status"/>
+          <command id="45054" code="W45054" name="Haustür offen.pushzutest"/>
+          <command id="55940" code="W55940" name="Haustür offen.pushauftest"/>
+        </commands>
+      </device>
+      <device id="TrocknerCount" data="state" gateway="IP-Symcon" type="IPS" address="46032" sensor="off" isBranch="false" showName="Homematic.HomeMatic Trockner">
+        <states id="States">
+          <state id="46956" name="ENERGY_COUNTER_TOTAL"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="WaschmCount" data="state" gateway="IP-Symcon" type="IPS" address="53809" sensor="off" isBranch="false" showName="Homematic.HomeMatic Waschmaschine">
+        <states id="States">
+          <state id="46430" name="ENERGY_COUNTER_TOTAL"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Sunset_Time" data="var" gateway="Homematic" type="HM" address="1859" sensor="off" isBranch="false"/>
+      <device id="HMApfelbaumlicht" data="blvar" gateway="Homematic" type="HM" address="5607" sensor="off" isBranch="false"/>
+      <device id="HMBrunnenlicht" data="blvar" gateway="Homematic" type="HM" address="5648" sensor="off" isBranch="false"/>
+      <device id="Brunnenpumpe" data="blvar" gateway="Homematic" type="HM" address="5647" sensor="off" isBranch="false"/>
+      <device id="Datum" data="var" gateway="Homematic" type="HM" address="11896" sensor="off" isBranch="false"/>
+      <device id="Uhrzeit" data="var" gateway="Homematic" type="HM" address="11925" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Keller">
+      <device id="Yamaha" data="AVYamahaRedeye" gateway="Redeye" type="CODE" address="" sensor="off" isBranch="false" gatewaytype="redeye"/>
+      <device id="DeckenLED_Redeye" data="DeckenLED_Redeye" gateway="Redeye" type="CODE" address="" sensor="off" isBranch="false" gatewaytype="redeye" user="" pwd=""/>
+      <device id="Treppenlicht" data="blswitch" gateway="Homematic" type="HM" address="JEQ0096526:1" sensor="off" isBranch="false"/>
+      <device id="Helligkeit" data="brightness" gateway="Homematic" type="HM" address="JEQ0266733:1" sensor="off" isBranch="false"/>
+      <device id="BewegungWK" data="motion" gateway="Homematic" type="HM" address="JEQ0266733:1" sensor="off" isBranch="false"/>
+      <device id="BewegungTreppe" data="motion" gateway="Homematic" type="HM" address="JEQ0265371:1" sensor="off" isBranch="false"/>
+      <device id="TreppeHelligkeit" data="brightness" gateway="Homematic" type="HM" address="JEQ0265371:1" sensor="off" isBranch="false"/>
+      <device id="Waschkellerlicht" data="blswitch" gateway="Homematic" type="HM" address="JEQ0095820:1" sensor="off" isBranch="false"/>
+      <device id="DeckenLED" data="com" gateway="IP-Symcon" type="IPS" address="19204" sensor="off" isBranch="false" showName="Keller.Hobbyraum.Decke LED">
+        <states id="States">
+          <state id="34606" name="Helligkeit"/>
+          <state id="44564" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="14584" code="W14584" name="Status.on"/>
+          <command id="27572" code="W27572" name="Status.off"/>
+        </commands>
+      </device>
+      <device id="LEDStripe" data="com" gateway="IP-Symcon" type="IPS" address="20875" sensor="off" isBranch="false" showName="Keller.Hobbyraum.LED Deckenleiste">
+        <states id="States">
+          <state id="36630" name="Helligkeit"/>
+          <state id="46952" name="Farbe"/>
+          <state id="49363" name="Adresse LED Controller Keller"/>
+          <state id="56521" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="25794" code="W25794" name="Helligkeit.up"/>
+          <command id="26500" code="W26500" name="Helligkeit.down"/>
+          <command id="28983" code="W28983" name="Helligkeit.Push_Status"/>
+          <command id="12842" code="W12842" name="Farbe.fade7"/>
+          <command id="14170" code="W14170" name="Farbe.orange"/>
+          <command id="26284" code="W26284" name="Farbe.red"/>
+          <command id="31333" code="W31333" name="Farbe.white"/>
+          <command id="35354" code="W35354" name="Farbe.jump3"/>
+          <command id="39932" code="W39932" name="Farbe.play_pause"/>
+          <command id="40170" code="W40170" name="Farbe.auto"/>
+          <command id="40997" code="W40997" name="Farbe.jump7"/>
+          <command id="41246" code="W41246" name="Farbe.fade3"/>
+          <command id="42597" code="W42597" name="Farbe.yellow"/>
+          <command id="43368" code="W43368" name="Farbe.flash"/>
+          <command id="44402" code="W44402" name="Farbe.cyan"/>
+          <command id="50307" code="W50307" name="Farbe.blue"/>
+          <command id="51132" code="W51132" name="Farbe.speedDown"/>
+          <command id="52420" code="W52420" name="Farbe.Push_Status"/>
+          <command id="53681" code="W53681" name="Farbe.purple"/>
+          <command id="54154" code="W54154" name="Farbe.green"/>
+          <command id="54372" code="W54372" name="Farbe.speedUp"/>
+          <command id="18465" code="W18465" name="Status.togglewif"/>
+          <command id="24220" code="W24220" name="Status.off"/>
+          <command id="26646" code="W26646" name="Status.on"/>
+          <command id="35979" code="W35979" name="Status.Push_Status"/>
+          <command id="42657" code="W42657" name="Status.toggle"/>
+        </commands>
+      </device>
+      <device id="SteckdoseLED" data="com" gateway="IP-Symcon" type="IPS" address="36855" sensor="off" isBranch="false" showName="Keller.Hobbyraum.Steckdose LED Deckenleiste">
+        <states id="States">
+          <state id="18207" name="Hexcode"/>
+          <state id="43126" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="13180" code="W13180" name="Status.toggle"/>
+          <command id="38172" code="W38172" name="Status.Push_Status"/>
+          <command id="49897" code="W49897" name="Status.togglewif"/>
+          <command id="50112" code="W50112" name="Status.Strom aus"/>
+          <command id="54564" code="W54564" name="Status.Strom an"/>
+        </commands>
+      </device>
+      <device id="Trockner" data="blswitch" gateway="Homematic" type="HM" address="LEQ0574021:1" sensor="off" isBranch="false"/>
+      <device id="Waschmaschine" data="blswitch" gateway="Homematic" type="HM" address="LEQ0573826:1" sensor="off" isBranch="false"/>
+      <device id="Hobbyraum_Temp" data="temperature" gateway="Homematic" type="HM" address="LEQ0399052:1" sensor="off" isBranch="false"/>
+      <device id="Hobbyraum_Feucht" data="humidity" gateway="Homematic" type="HM" address="LEQ0399052:1" sensor="off" isBranch="false"/>
+      <device id="WaermekesselTemp" data="temperature" gateway="Homematic" type="HM" address="LEQ0810627:1" sensor="off" isBranch="false"/>
+      <device id="Waermekessel" data="blswitch" gateway="Homematic" type="HM" address="LEQ0537383:1" sensor="off" isBranch="false"/>
+      <device id="Waermekessel_aus" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:25" sensor="off" isBranch="false"/>
+      <device id="Waermekessel_an" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:26" sensor="off" isBranch="false"/>
+      <device id="LEDCREATOR" data="switch" gateway="Gateway_V4" type="LEDS" address="ABC" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+      <device id="LEDIIController" data="" gateway="Gateway_V4" type="L2" address="123456" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+      <device id="Neu" data="" gateway="" type="" address="" sensor="off" isBranch="false"/>
+    </location>
+    <location id="IPS">
+      <device id="Variablen" data="com" gateway="IP-Symcon" type="IPS" address="-1" sensor="off" isBranch="false" showName="***">
+        <states id="States">
+          <state id="10130" name="Webtext"/>
+          <state id="11287" name="IP_AIO_Gateway"/>
+          <state id="11734" name="FS20_50"/>
+          <state id="12036" name="SunriseEnd"/>
+          <state id="12312" name="SunriseLimits"/>
+          <state id="12483" name="CivilEnd"/>
+          <state id="13365" name="NauticBegin"/>
+          <state id="17147" name="FS20_aus"/>
+          <state id="18395" name="FS20_43"/>
+          <state id="18427" name="FS20_20"/>
+          <state id="18653" name="CivilDisplay"/>
+          <state id="19612" name="FS20_60"/>
+          <state id="22886" name="FS20_ein"/>
+          <state id="24953" name="Action"/>
+          <state id="25029" name="SunriseDisplay"/>
+          <state id="26829" name="HTML"/>
+          <state id="27093" name="FS20_sendstring"/>
+          <state id="28373" name="FS20_30"/>
+          <state id="28888" name="Hexcode"/>
+          <state id="29275" name="FS20_75"/>
+          <state id="29803" name="AstronomicBeginLimited"/>
+          <state id="29916" name="FS20_last"/>
+          <state id="30007" name="IT_sendstring"/>
+          <state id="30822" name="NauticDisplay"/>
+          <state id="32711" name="NauticEndLimited"/>
+          <state id="33433" name="FS20_90"/>
+          <state id="33888" name="IT_ein"/>
+          <state id="34288" name="EPG"/>
+          <state id="34648" name="FS20_92"/>
+          <state id="35026" name="FS20_25"/>
+          <state id="35240" name="AstronomicBegin"/>
+          <state id="36064" name="SunriseEndLimited"/>
+          <state id="36695" name="SunriseBegin"/>
+          <state id="37770" name="IR_sendstring1"/>
+          <state id="37849" name="FS20_10"/>
+          <state id="38245" name="CivilBeginLimited"/>
+          <state id="38650" name="IR_sendstring2"/>
+          <state id="39290" name="Status"/>
+          <state id="41049" name="NauticLimits"/>
+          <state id="41448" name="Module"/>
+          <state id="42190" name="Status Button Test"/>
+          <state id="43090" name="Dreambox"/>
+          <state id="43455" name="FS20_62"/>
+          <state id="43491" name="IT_aus"/>
+          <state id="45478" name="CivilLimits"/>
+          <state id="48726" name="FS20_06"/>
+          <state id="49610" name="AstronomicLimits"/>
+          <state id="49672" name="AstronomicEndLimited"/>
+          <state id="49773" name="Info"/>
+          <state id="50536" name="FS20_70"/>
+          <state id="51951" name="NauticEnd"/>
+          <state id="52056" name="FS20_80"/>
+          <state id="53616" name="NauticBeginLimited"/>
+          <state id="53887" name="Display"/>
+          <state id="56178" name="FS20_40"/>
+          <state id="56289" name="AstronomicDisplay"/>
+          <state id="56493" name="SunriseBeginLimited"/>
+          <state id="56733" name="CivilBegin"/>
+          <state id="58442" name="AstronomicEnd"/>
+          <state id="58911" name="CivilEndLimited"/>
+        </states>
+        <commands id="Commands">
+          <command id="10340" code="W10340" name="IPSComponentDimmer_EIB"/>
+          <command id="10554" code="W10554" name="IPS_GetModuleList"/>
+          <command id="11345" code="W11345" name="IPSMessageHandler"/>
+          <command id="11687" code="W11687" name="IPSComponentSwitch_LCN"/>
+          <command id="11956" code="W11956" name="IPSModuleSwitch"/>
+          <command id="12400" code="W12400" name="IPSComponentSwitch_1WireD2408"/>
+          <command id="12608" code="W12608" name="IPSMessageHandler_Configuration"/>
+          <command id="12709" code="W12709" name="IPSComponentShutter_LCN"/>
+          <command id="15323" code="W15323" name="IPSModuleSensor_Entertainment"/>
+          <command id="15917" code="W15917" name="IPSComponentShutter"/>
+          <command id="16169" code="W16169" name="IPSComponentDimmer_Dummy"/>
+          <command id="16275" code="W16275" name="IPSLogger_ChangeSettings"/>
+          <command id="16717" code="W16717" name="Geocache"/>
+          <command id="16976" code="W16976" name="IPSModuleManagerGUI"/>
+          <command id="17299" code="W17299" name="IPSModuleSensor_NetPlayer"/>
+          <command id="17695" code="W17695" name="IPSComponentPlayer_Squeezebox"/>
+          <command id="17919" code="W17919" name="IPSTwilight"/>
+          <command id="18400" code="W18400" name="Licht aus"/>
+          <command id="18564" code="W18564" name="AIO Remote"/>
+          <command id="19168" code="W19168" name="IPSComponentShutter_EIB"/>
+          <command id="19885" code="W19885" name="IPSTwilight_Configuration"/>
+          <command id="21202" code="W21202" name="IPSModuleManager.ini"/>
+          <command id="21775" code="W21775" name="IPSModuleAVControl_Entertainment"/>
+          <command id="21807" code="W21807" name="IPSModulePlayer_NetPlayer"/>
+          <command id="21832" code="W21832" name="IPSModuleShutter_IPSShadowing"/>
+          <command id="22267" code="W22267" name="IPSComponentSwitch"/>
+          <command id="22550" code="W22550" name="test3"/>
+          <command id="22710" code="W22710" name="IPSComponentCam_Instar"/>
+          <command id="22747" code="W22747" name="IPSComponentShutter_Enocean"/>
+          <command id="23138" code="W23138" name="IPSComponentSwitch_ZW"/>
+          <command id="23146" code="W23146" name="IPSLogger"/>
+          <command id="23303" code="W23303" name="IPSModuleManagerGUI_Constants"/>
+          <command id="25221" code="W25221" name="IPSComponentSwitch_EIB"/>
+          <command id="25341" code="W25341" name="Baseloader"/>
+          <command id="25723" code="W25723" name="IPSComponentSwitch_1WireD2413"/>
+          <command id="26110" code="W26110" name="DENON.Functions"/>
+          <command id="26466" code="W26466" name="IPSModuleManagerGUI_Utils"/>
+          <command id="27047" code="W27047" name="IPSMessageHandler.ini"/>
+          <command id="27218" code="W27218" name="IPSLogger.ini"/>
+          <command id="27220" code="W27220" name="IPSModuleSensor"/>
+          <command id="27326" code="W27326" name="DENON.VariablenManager"/>
+          <command id="27477" code="W27477" name="IPSComponentAVControl_AudioMax"/>
+          <command id="27967" code="W27967" name="IPSModule"/>
+          <command id="28992" code="W28992" name="DENON.ActionScript"/>
+          <command id="29103" code="W29103" name="IPSComponentSensor"/>
+          <command id="29529" code="W29529" name="IPSComponentCam_Edimax"/>
+          <command id="29634" code="W29634" name="IPSLogger_Output"/>
+          <command id="30056" code="W30056" name="IPSComponent.ini"/>
+          <command id="30375" code="W30375" name="IPSComponentAVControl"/>
+          <command id="30405" code="W30405" name="IPSModuleShutter"/>
+          <command id="30820" code="W30820" name="IPSModuleManagerGUI.ini"/>
+          <command id="31782" code="W31782" name="IPSComponentSwitch_Dummy"/>
+          <command id="31917" code="W31917" name="IPSComponentPlayer"/>
+          <command id="32022" code="W32022" name="ProwlPHP"/>
+          <command id="32111" code="W32111" name="IPSComponentSensor_Button"/>
+          <command id="32380" code="W32380" name="IPSMessageHandler_Custom"/>
+          <command id="32501" code="W32501" name="Push_AIORemote"/>
+          <command id="32567" code="W32567" name="IPSComponentPlayer_Mediaplayer"/>
+          <command id="32702" code="W32702" name="IPSModuleDimmer"/>
+          <command id="33480" code="W33480" name="IPSMessageHandler_Event"/>
+          <command id="34044" code="W34044" name="IPSModulePlayer"/>
+          <command id="34315" code="W34315" name="IPSTwilight.ini"/>
+          <command id="34619" code="W34619" name="IPSComponentCam_Axis"/>
+          <command id="35216" code="W35216" name="denoninstall"/>
+          <command id="35350" code="W35350" name="IPSComponentSensor_IRTrans"/>
+          <command id="35918" code="W35918" name="IPSModuleSensor_IRTrans"/>
+          <command id="37105" code="W37105" name="Remote keyboard Server"/>
+          <command id="37226" code="W37226" name="IPSComponentCam_Abus"/>
+          <command id="37552" code="W37552" name="IPSComponentCam_Planet"/>
+          <command id="38529" code="W38529" name="IPSComponentRGB_IPS868"/>
+          <command id="38543" code="W38543" name="DENON.ProfileCleaner"/>
+          <command id="38856" code="W38856" name="IPSLogger_PhpErrorHandler"/>
+          <command id="39089" code="W39089" name="IPSComponentCam_Mobotix"/>
+          <command id="40482" code="W40482" name="IPSLogger_ClearHtmlOut"/>
+          <command id="40933" code="W40933" name="IPSLogger_SendMail"/>
+          <command id="41500" code="W41500" name="IPSModuleRGB"/>
+          <command id="42117" code="W42117" name="IPSLogger_IDs"/>
+          <command id="43168" code="W43168" name="IPSComponentDimmer"/>
+          <command id="43198" code="W43198" name="IPSComponentSwitch_ModBus"/>
+          <command id="43269" code="W43269" name="IPSComponentSwitch_Homematic"/>
+          <command id="43722" code="W43722" name="IPSLogger_PurgeLogFiles"/>
+          <command id="45779" code="W45779" name="IPSComponentRGB"/>
+          <command id="46067" code="W46067" name="IPSComponentPlayer_Sonos"/>
+          <command id="46241" code="W46241" name="Webeingabe"/>
+          <command id="47301" code="W47301" name="IPSComponentShutter_IPSShutterControl"/>
+          <command id="47814" code="W47814" name="IPSComponentRGB_Dummy"/>
+          <command id="48268" code="W48268" name="IPSComponentShutter_FS20"/>
+          <command id="48551" code="W48551" name="IPSComponentCam_DLink"/>
+          <command id="48713" code="W48713" name="IPSModuleAVControl"/>
+          <command id="48904" code="W48904" name="IPSComponentCam_Vivotek"/>
+          <command id="49230" code="W49230" name="IPSComponentCam"/>
+          <command id="50812" code="W50812" name="IPSComponentShutter_MoellerEaton"/>
+          <command id="51065" code="W51065" name="IPSModuleSensor_IPSShadowing"/>
+          <command id="51394" code="W51394" name="IPSModuleSensor_IPSLight"/>
+          <command id="51683" code="W51683" name="IPSComponentSwitch_EatonMoeller"/>
+          <command id="52331" code="W52331" name="Licht an"/>
+          <command id="52921" code="W52921" name="IPSModuleManagerGUI_SearchUpdates"/>
+          <command id="53274" code="W53274" name="IPSComponentShutter_Dummy"/>
+          <command id="53633" code="W53633" name="IPSComponent"/>
+          <command id="54051" code="W54051" name="IPSTwilight_Custom"/>
+          <command id="54551" code="W54551" name="IPSComponentCam_Allnet"/>
+          <command id="54840" code="W54840" name="IPSComponentShutter_Homematic"/>
+          <command id="55529" code="W55529" name="IPSComponentSwitch_FS20"/>
+          <command id="55716" code="W55716" name="IPSLogger_Constants"/>
+          <command id="56683" code="W56683" name="IPSComponentDimmer_Homematic"/>
+          <command id="57532" code="W57532" name="IPSLogger_ClearSingleOut"/>
+          <command id="57951" code="W57951" name="IPSMessageHandler_IREvent"/>
+          <command id="58101" code="W58101" name="IPSComponentShutter_1Wire"/>
+          <command id="58197" code="W58197" name="FS20 Umrechnen"/>
+          <command id="58680" code="W58680" name="IPSLogger_Configuration"/>
+          <command id="59144" code="W59144" name="IPSModuleSwitch_IPSLight"/>
+          <command id="59998" code="W59998" name="DENON.DisplayRefresh"/>
+        </commands>
+      </device>
+      <device id="Pushtest" data="com" gateway="IP-Symcon" type="IPS" address="28657" sensor="off" isBranch="false" showName="Mediola.Push.Mediola Push">
+        <states id="States">
+          <state id="32607" name="Status"/>
+        </states>
+        <commands id="Commands">
+          <command id="24474" code="W24474" name="NEO Pushtest Büro"/>
+          <command id="32501" code="W32501" name="Push_AIORemote"/>
+          <command id="51783" code="W51783" name="Status.Push_Status"/>
+        </commands>
+      </device>
+      <device id="DatumZeit" data="com" gateway="IP-Symcon" type="IPS" address="36053" sensor="off" isBranch="false" showName="Datum &amp; Uhrzeit.Datum und Zeit">
+        <states id="States">
+          <state id="10888" name="DateShort"/>
+          <state id="23400" name="DateLong"/>
+          <state id="43220" name="Time"/>
+        </states>
+        <commands id="Commands">
+          <command id="31628" code="W31628" name="DateTime"/>
+        </commands>
+      </device>
+      <device id="Testdevice" data="com" gateway="IP-Symcon" type="IPS" address="35610" sensor="off" isBranch="false" showName="Mediola.Testdevice.MediolaTest">
+        <states id="States">
+          <state id="14903" name="Temperatur"/>
+          <state id="22705" name="Status"/>
+          <state id="32529" name="Volume"/>
+          <state id="41618" name="String"/>
+        </states>
+        <commands id="Commands">
+          <command id="11938" code="W11938" name="Temperatur.onTo60"/>
+          <command id="13904" code="W13904" name="Temperatur.push"/>
+          <command id="19532" code="W19532" name="Temperatur.onTo20"/>
+          <command id="20789" code="W20789" name="Temperatur.onTo70"/>
+          <command id="26146" code="W26146" name="Temperatur.onTo100"/>
+          <command id="27890" code="W27890" name="Temperatur.onTo40"/>
+          <command id="28022" code="W28022" name="Temperatur.onTo50"/>
+          <command id="28087" code="W28087" name="Temperatur.onTo90"/>
+          <command id="35393" code="W35393" name="Temperatur.up"/>
+          <command id="44556" code="W44556" name="Temperatur.onTo80"/>
+          <command id="46054" code="W46054" name="Temperatur.onTo10"/>
+          <command id="50485" code="W50485" name="Temperatur.down"/>
+          <command id="51581" code="W51581" name="Temperatur.onTo30"/>
+          <command id="56304" code="W56304" name="Temperatur.off"/>
+          <command id="22104" code="W22104" name="Status.on"/>
+          <command id="37611" code="W37611" name="Status.toggle"/>
+          <command id="54061" code="W54061" name="Status.off"/>
+          <command id="58726" code="W58726" name="Status.push"/>
+          <command id="11860" code="W11860" name="Volume.onTo30"/>
+          <command id="12068" code="W12068" name="Volume.onTo10"/>
+          <command id="19161" code="W19161" name="Volume.onTo40"/>
+          <command id="19335" code="W19335" name="Volume.onTo50"/>
+          <command id="24829" code="W24829" name="Volume.up"/>
+          <command id="33490" code="W33490" name="Volume.push"/>
+          <command id="34154" code="W34154" name="Volume.onTo20"/>
+          <command id="35570" code="W35570" name="Volume.off"/>
+          <command id="49050" code="W49050" name="Volume.onTo70"/>
+          <command id="50210" code="W50210" name="Volume.onTo60"/>
+          <command id="55021" code="W55021" name="Volume.down"/>
+          <command id="55350" code="W55350" name="Volume.onTo90"/>
+          <command id="56677" code="W56677" name="Volume.onTo80"/>
+          <command id="59770" code="W59770" name="Volume.onTo100"/>
+          <command id="33316" code="W33316" name="String.clear"/>
+          <command id="33788" code="W33788" name="String.setToMediola"/>
+          <command id="36332" code="W36332" name="String.push"/>
+        </commands>
+      </device>
+    </location>
+    <location id="Eventghost">
+      <device id="Eventghost" data="" gateway="" type="EventGhost" address="192.168.55.101:8088" sensor="off" isBranch="false" gatewaytype="null" user="" pwd=""/>
+    </location>
+    <location id="Sicherheit">
+      <device id="Anwesenheit" data="com" gateway="IP-Symcon" type="IPS" address="37837" sensor="off" isBranch="false" showName="Anwesend.Anwesenheit">
+        <states id="States">
+          <state id="13322" name="Anwesend"/>
+          <state id="15157" name="Anwesend Lelya"/>
+          <state id="22199" name="Putzfrau"/>
+          <state id="30527" name="GeofencyTest Anwesend"/>
+          <state id="50632" name="Anwesend Evelyn"/>
+          <state id="57908" name="Anwesend Hatto"/>
+        </states>
+        <commands id="Commands">
+          <command id="40715" code="W40715" name="Putzfrau.abwesend"/>
+          <command id="41653" code="W41653" name="Putzfrau.anwesend"/>
+          <command id="20074" code="W20074" name="GeofencyTest Anwesend.abwesend"/>
+          <command id="54900" code="W54900" name="GeofencyTest Anwesend.anwesend"/>
+          <command id="40804" code="W40804" name="GefencyInfo Backup Konfig"/>
+          <command id="10562" code="W10562" name="Anwesend Hatto.anwesend"/>
+          <command id="24921" code="W24921" name="Anwesend Hatto.abwesend"/>
+        </commands>
+      </device>
+    </location>
+    <location id="Remote">
+      <device id="BlueID1" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:1" sensor="off" isBranch="false"/>
+      <device id="BlueID2" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:2" sensor="off" isBranch="false"/>
+      <device id="BlueID3" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:3" sensor="off" isBranch="false"/>
+      <device id="BlueID4" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:4" sensor="off" isBranch="false"/>
+      <device id="BlueID5" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:5" sensor="off" isBranch="false"/>
+      <device id="BlueID6" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:6" sensor="off" isBranch="false"/>
+      <device id="BlueID7" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:7" sensor="off" isBranch="false"/>
+      <device id="BlueID8" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:8" sensor="off" isBranch="false"/>
+      <device id="TuerAufPutzfrau" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:9" sensor="off" isBranch="false"/>
+      <device id="TuerVerrPutzfrau" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:10" sensor="off" isBranch="false"/>
+      <device id="TuerEntrPutzfrau" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:11" sensor="off" isBranch="false"/>
+      <device id="TuerAufHatto" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:12" sensor="off" isBranch="false"/>
+      <device id="TuerVerrHatto" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:13" sensor="off" isBranch="false"/>
+      <device id="TuerEntrHatto" data="control" gateway="Homematic" type="HM" address="BidCoS-RF:14" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Meldungen">
+      <device id="Pushover" data="com" gateway="IP-Symcon" type="IPS" address="18552" sensor="off" isBranch="false" showName="Mediola.Pushover.Pushover">
+        <states id="States">
+          <state id="28574" name="UserKey"/>
+          <state id="35965" name="API_Token_IPS"/>
+        </states>
+        <commands id="Commands">
+          <command id="11736" code="W11736" name="Pushover"/>
+          <command id="25575" code="W25575" name="test"/>
+          <command id="39343" code="W39343" name="Putzfrau anwesend"/>
+          <command id="56905" code="W56905" name="Putzfrau abwesend"/>
+        </commands>
+      </device>
+    </location>
+    <location id="Sonos">
+      <device id="Badezimmer" data="state" gateway="IP-Symcon" type="IPS" address="42689" sensor="off" isBranch="false" showName="Program.IPSLibrary.data.modules.IPSSonos.Bad">
+        <states id="States">
+          <state id="13374" name="TITLE"/>
+          <state id="14943" name="POSITIONP"/>
+          <state id="16347" name="VOLUME"/>
+          <state id="26096" name="SHUFFLE"/>
+          <state id="26590" name="REPEAT"/>
+          <state id="28884" name="DURATION"/>
+          <state id="30318" name="IPADDR"/>
+          <state id="30396" name="TRANSPORT"/>
+          <state id="33305" name="MUTE"/>
+          <state id="33384" name="ALBUM"/>
+          <state id="35427" name="PLAYLIST"/>
+          <state id="35614" name="RADIOSTATION"/>
+          <state id="43946" name="COVERURI"/>
+          <state id="46785" name="POSITION"/>
+          <state id="46868" name="ALBUMARTIST"/>
+          <state id="47482" name="ARTIST"/>
+          <state id="48684" name="REMOTE"/>
+          <state id="53497" name="PLAYERDETAILS"/>
+          <state id="55061" name="ROOMPOWER"/>
+          <state id="56997" name="RINCON"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Sonosserver" data="state" gateway="IP-Symcon" type="IPS" address="38604" sensor="off" isBranch="false" showName="Program.IPSLibrary.data.modules.IPSSonos.IPSSonos_Server">
+        <states id="States">
+          <state id="10945" name="IPADDR"/>
+          <state id="17829" name="SERVERDETAILS"/>
+          <state id="21988" name="ROOM_COUNT"/>
+          <state id="23903" name="QUERY"/>
+          <state id="31810" name="QUERYTIME"/>
+          <state id="40655" name="ROOM_IDS"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Kueche" data="state" gateway="IP-Symcon" type="IPS" address="29347" sensor="off" isBranch="false" showName="Program.IPSLibrary.data.modules.IPSSonos.Küche" gatewaytype="ips">
+        <states id="States">
+          <state id="12447" name="ALBUMARTIST"/>
+          <state id="15483" name="REPEAT"/>
+          <state id="18975" name="ROOMPOWER"/>
+          <state id="24005" name="PLAYERDETAILS"/>
+          <state id="24514" name="ARTIST"/>
+          <state id="25353" name="SHUFFLE"/>
+          <state id="26057" name="ALBUM"/>
+          <state id="27412" name="TRANSPORT"/>
+          <state id="27836" name="PLAYLIST"/>
+          <state id="29341" name="TITLE"/>
+          <state id="32841" name="DURATION"/>
+          <state id="33602" name="POSITIONP"/>
+          <state id="38985" name="IPADDR"/>
+          <state id="39237" name="RINCON"/>
+          <state id="40924" name="COVERURI"/>
+          <state id="49950" name="POSITION"/>
+          <state id="49968" name="RADIOSTATION"/>
+          <state id="51079" name="VOLUME"/>
+          <state id="57402" name="MUTE"/>
+          <state id="59795" name="REMOTE"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Schlafzimmer" data="state" gateway="IP-Symcon" type="IPS" address="47431" sensor="off" isBranch="false" showName="Program.IPSLibrary.data.modules.IPSSonos.Schlafzimmer" gatewaytype="ips">
+        <states id="States">
+          <state id="11419" name="DURATION"/>
+          <state id="13214" name="PLAYERDETAILS"/>
+          <state id="15756" name="RADIOSTATION"/>
+          <state id="16113" name="IPADDR"/>
+          <state id="18502" name="SHUFFLE"/>
+          <state id="19818" name="REPEAT"/>
+          <state id="20442" name="RINCON"/>
+          <state id="23916" name="MUTE"/>
+          <state id="29571" name="REMOTE"/>
+          <state id="31319" name="ALBUMARTIST"/>
+          <state id="31350" name="ARTIST"/>
+          <state id="39909" name="POSITION"/>
+          <state id="41248" name="VOLUME"/>
+          <state id="46016" name="ALBUM"/>
+          <state id="49258" name="TITLE"/>
+          <state id="49476" name="PLAYLIST"/>
+          <state id="49621" name="POSITIONP"/>
+          <state id="54402" name="ROOMPOWER"/>
+          <state id="54856" name="TRANSPORT"/>
+          <state id="58356" name="COVERURI"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Wohnzimmer" data="state" gateway="IP-Symcon" type="IPS" address="24517" sensor="off" isBranch="false" showName="Program.IPSLibrary.data.modules.IPSSonos.Wohnzimmer" gatewaytype="ips">
+        <states id="States">
+          <state id="14546" name="TRANSPORT"/>
+          <state id="16075" name="PLAYERDETAILS"/>
+          <state id="19571" name="POSITION"/>
+          <state id="20513" name="ROOMPOWER"/>
+          <state id="24282" name="PLAYLIST"/>
+          <state id="25609" name="POSITIONP"/>
+          <state id="28617" name="COVERURI"/>
+          <state id="29895" name="MUTE"/>
+          <state id="34023" name="VOLUME"/>
+          <state id="38392" name="TITLE"/>
+          <state id="38868" name="REPEAT"/>
+          <state id="41505" name="ARTIST"/>
+          <state id="46975" name="RADIOSTATION"/>
+          <state id="50503" name="IPADDR"/>
+          <state id="52035" name="RINCON"/>
+          <state id="53753" name="SHUFFLE"/>
+          <state id="54107" name="ALBUM"/>
+          <state id="55528" name="DURATION"/>
+          <state id="57656" name="ALBUMARTIST"/>
+          <state id="58866" name="REMOTE"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Bad_Command" data="com" gateway="IP-Symcon" type="IPS" address="31434" sensor="off" isBranch="false" showName="Sonos.Bad">
+        <states id="States">
+          <state id="35561" name="Bad"/>
+        </states>
+        <commands id="Commands">
+          <command id="10704" code="W10704" name="Bad.Radio abspielen"/>
+          <command id="10808" code="W10808" name="Bad.mute ein"/>
+          <command id="15320" code="W15320" name="Bad.stop"/>
+          <command id="15718" code="W15718" name="Bad.toggle shuffle"/>
+          <command id="17880" code="W17880" name="Bad.pause"/>
+          <command id="20125" code="W20125" name="Bad.repeat ein"/>
+          <command id="23141" code="W23141" name="Bad.Vol -5"/>
+          <command id="23309" code="W23309" name="Bad.previous"/>
+          <command id="23872" code="W23872" name="Bad.Ausgabe von Tönen"/>
+          <command id="28075" code="W28075" name="Bad.Raum einschalten"/>
+          <command id="28791" code="W28791" name="Bad.toggle power"/>
+          <command id="34481" code="W34481" name="Bad.toggle mute"/>
+          <command id="39950" code="W39950" name="Bad.XMasBell"/>
+          <command id="40184" code="W40184" name="Bad.shuffle ein"/>
+          <command id="42387" code="W42387" name="Bad.Christkindgloeckchen"/>
+          <command id="43856" code="W43856" name="Bad.shuffle aus"/>
+          <command id="44342" code="W44342" name="Bad.play"/>
+          <command id="46399" code="W46399" name="Bad.toggle repeat"/>
+          <command id="47886" code="W47886" name="Bad.komplexe Nachricht"/>
+          <command id="49577" code="W49577" name="Bad.Wecken Playlist"/>
+          <command id="50528" code="W50528" name="Bad.Raum ausschalten"/>
+          <command id="53212" code="W53212" name="Bad.next"/>
+          <command id="53626" code="W53626" name="Bad.Vol +5"/>
+          <command id="54898" code="W54898" name="Bad.mute aus"/>
+          <command id="56993" code="W56993" name="Bad.einfache Nachricht im Bad"/>
+          <command id="57346" code="W57346" name="Bad.repeat aus"/>
+        </commands>
+      </device>
+      <device id="H_BadSonosPLAY3" data="SkipForward" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="H_SonosWohn" data="WohnzimmerSonosC" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="Schlaf_Command" data="state" gateway="IP-Symcon" type="IPS" address="30738" sensor="off" isBranch="false" showName="Sonos.Schlafzimmer">
+        <states id="States">
+          <state id="55848" name="Schlafzimmer"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Wohn_Command" data="com" gateway="IP-Symcon" type="IPS" address="50314" sensor="off" isBranch="false" showName="Sonos.Wohnzimmer">
+        <states id="States">
+          <state id="55165" name="Wohnzimmer"/>
+        </states>
+        <commands id="Commands">
+          <command id="18225" code="W18225" name="Wohnzimmer.sonos_toggle"/>
+          <command id="47688" code="W47688" name="Wohnzimmer.XMasBell"/>
+          <command id="47920" code="W47920" name="Wohnzimmer.Nachricht"/>
+          <command id="49143" code="W49143" name="Wohnzimmer.sonos_togglewif"/>
+          <command id="51204" code="W51204" name="Wohnzimmer.beendet_Sonos"/>
+          <command id="59632" code="W59632" name="Wohnzimmer.start_sonos"/>
+        </commands>
+      </device>
+      <device id="Kueche_Command" data="com" gateway="IP-Symcon" type="IPS" address="42616" sensor="off" isBranch="false" showName="Sonos.Küche">
+        <states id="States">
+          <state id="57450" name="Küche"/>
+        </states>
+        <commands id="Commands">
+          <command id="13333" code="W13333" name="Küche.Wecken Playlist"/>
+          <command id="13580" code="W13580" name="Küche.Nachricht komplex"/>
+          <command id="38952" code="W38952" name="Küche.Nachricht einfach"/>
+        </commands>
+      </device>
+      <device id="H_Kueche_PLAY5" data="KcheSonosPLAY5" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="H_Schlafzimmer" data="SchlafzimmerSono" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="SonosUPNPBad" data="Sonos" gateway="" type="sonos" address="192.168.55.35:0" sensor="off" isBranch="false" ip="192.168.55.35" port="" udn="uuid:RINCON_000E587718D801400" gatewaytype="null" user="" pwd=""/>
+      <device id="UPNPWohnzimmer" data="" gateway="" type="sonos" address="192.168.55.34:" sensor="off" isBranch="false" ip="192.168.55.34" port="" udn="uuid:RINCON_000E58A6522601400"/>
+    </location>
+    <location id="Mediola">
+      <device id="Booltest" data="blvar" gateway="Homematic" type="HM" address="8723" sensor="off" isBranch="false"/>
+      <device id="Stringtest" data="var" gateway="Homematic" type="HM" address="8724" sensor="off" isBranch="false"/>
+      <device id="Stringschreiben" data="prog" gateway="Homematic" type="HM" address="8725" sensor="off" isBranch="false"/>
+      <device id="Stringneu" data="prog" gateway="Homematic" type="HM" address="8734" sensor="off" isBranch="false"/>
+      <device id="Neu" data="" gateway="" type="" address="" sensor="off" isBranch="false"/>
+    </location>
+    <location id="HarmonyHubAction">
+      <device id="Fernsehen" data="" gateway="Harmony" type="ACTIVITY" address="11697506" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="AppleTVsehen" data="" gateway="Harmony" type="ACTIVITY" address="11697760" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="FilmScreenFTV" data="" gateway="Harmony" type="ACTIVITY" address="11746407" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="FilmFireTV" data="" gateway="Harmony" type="ACTIVITY" address="11697675" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="SonosKueche" data="" gateway="Harmony" type="ACTIVITY" address="11738612" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="SonosWZ" data="" gateway="Harmony" type="ACTIVITY" address="11738662" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="TVScreen" data="" gateway="Harmony" type="ACTIVITY" address="11768391" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="PowerOff" data="" gateway="Harmony" type="ACTIVITY" address="-1" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="FilmScreen" data="" gateway="Harmony" type="ACTIVITY" address="12491850" sensor="off" isBranch="false" gatewaytype="harmony"/>
+      <device id="FilmRasplex" data="" gateway="Harmony" type="ACTIVITY" address="12491805" sensor="off" isBranch="false" gatewaytype="harmony"/>
+    </location>
+    <location id="Harmony">
+      <device id="FireTVIPS" data="com" gateway="IP-Symcon" type="IPS" address="39394" sensor="off" isBranch="false" showName="Harmony.FireTV">
+        <states id="States">
+          <state id="28601" name="FireTV"/>
+        </states>
+        <commands id="Commands">
+          <command id="12807" code="W12807" name="FireTV.ok"/>
+          <command id="16517" code="W16517" name="FireTV.menu"/>
+          <command id="18028" code="W18028" name="FireTV.up"/>
+          <command id="21039" code="W21039" name="FireTV.right"/>
+          <command id="25263" code="W25263" name="FireTV.home"/>
+          <command id="33778" code="W33778" name="FireTV.stop"/>
+          <command id="33787" code="W33787" name="FireTV.pause"/>
+          <command id="36255" code="W36255" name="FireTV.play"/>
+          <command id="51367" code="W51367" name="FireTV.left"/>
+          <command id="55605" code="W55605" name="FireTV.back"/>
+          <command id="57154" code="W57154" name="FireTV.down"/>
+        </commands>
+      </device>
+      <device id="AppleTV" data="com" gateway="IP-Symcon" type="IPS" address="48349" sensor="off" isBranch="false" showName="Harmony.AppleTV">
+        <states id="States">
+          <state id="44357" name="AppleTV"/>
+        </states>
+        <commands id="Commands">
+          <command id="20887" code="W20887" name="AppleTV.down"/>
+          <command id="23449" code="W23449" name="AppleTV.back"/>
+          <command id="24431" code="W24431" name="AppleTV.right"/>
+          <command id="46578" code="W46578" name="AppleTV.select"/>
+          <command id="48095" code="W48095" name="AppleTV.left"/>
+          <command id="55835" code="W55835" name="AppleTV.up"/>
+        </commands>
+      </device>
+      <device id="Flirc-MediaPlaye" data="Flirc-MediaPlaye" gateway="Harmony" type="CODE" address="" sensor="off" isBranch="false"/>
+      <device id="currentAcivity" data="com" gateway="IP-Symcon" type="IPS" address="21737" sensor="off" isBranch="false" showName="Harmony.Laufende Harmony Aktivität">
+        <states id="States">
+          <state id="18877" name="Laufende Aktivität"/>
+        </states>
+        <commands id="Commands">
+          <command id="11114" code="W11114" name="Laufende Aktivität.Aktivität aktualisieren"/>
+        </commands>
+      </device>
+    </location>
+    <location id="CCU2">
+      <device id="IPSSysvarsPush" data="prog" gateway="Homematic" type="HM" address="7447" sensor="off" isBranch="false"/>
+    </location>
+    <location id="Hue">
+      <device id="Leinwand" data="com" gateway="IP-Symcon" type="IPS" address="28118" sensor="off" isBranch="false" showName="Hue.Lampen.Leinwand">
+        <states id="States">
+          <state id="15887" name="Sättigung"/>
+          <state id="30909" name="ID"/>
+          <state id="31378" name="Hue"/>
+          <state id="35820" name="X"/>
+          <state id="37010" name="Helligkeit"/>
+          <state id="40988" name="ModelID"/>
+          <state id="43949" name="Farbe"/>
+          <state id="55255" name="Y"/>
+          <state id="56750" name="Status"/>
+          <state id="58375" name="Temperatur"/>
+        </states>
+        <commands id="Commands">
+          <command id="14222" code="W14222" name="Status.toogle"/>
+          <command id="42396" code="W42396" name="Status.HUE7off"/>
+          <command id="51823" code="W51823" name="Status.HUE7on"/>
+        </commands>
+      </device>
+      <device id="Storm_oben" data="com" gateway="IP-Symcon" type="IPS" address="35533" sensor="off" isBranch="false" showName="Hue.Lampen.Storm_oben">
+        <states id="States">
+          <state id="11454" name="ModelID"/>
+          <state id="16185" name="Temperatur"/>
+          <state id="17674" name="Hue"/>
+          <state id="20014" name="Farbe"/>
+          <state id="25495" name="Helligkeit"/>
+          <state id="25928" name="X"/>
+          <state id="29119" name="Y"/>
+          <state id="42958" name="ID"/>
+          <state id="48451" name="Status"/>
+          <state id="54890" name="Sättigung"/>
+        </states>
+        <commands id="Commands">
+          <command id="15549" code="W15549" name="Status.HUE3off"/>
+          <command id="22042" code="W22042" name="Status.HUE2und3off"/>
+          <command id="33861" code="W33861" name="Status.HUE3on"/>
+          <command id="34523" code="W34523" name="Status.toogle"/>
+          <command id="43111" code="W43111" name="Status.query"/>
+          <command id="55633" code="W55633" name="Status.HUE2und3on"/>
+        </commands>
+      </device>
+      <device id="Storm_unten" data="com" gateway="IP-Symcon" type="IPS" address="50705" sensor="off" isBranch="false" showName="Hue.Lampen.Storm_unten">
+        <states id="States">
+          <state id="11814" name="Hue"/>
+          <state id="12414" name="Sättigung"/>
+          <state id="25281" name="Status"/>
+          <state id="25894" name="ModelID"/>
+          <state id="25942" name="Helligkeit"/>
+          <state id="30409" name="Farbe"/>
+          <state id="30427" name="Y"/>
+          <state id="36750" name="ID"/>
+          <state id="39215" name="X"/>
+          <state id="58445" name="Temperatur"/>
+        </states>
+        <commands id="Commands">
+          <command id="31103" code="W31103" name="Status.HUE2off"/>
+          <command id="36955" code="W36955" name="Status.toogle"/>
+          <command id="42498" code="W42498" name="Status.HUE2on"/>
+        </commands>
+      </device>
+      <device id="Tischlampe" data="com" gateway="IP-Symcon" type="IPS" address="16430" sensor="off" isBranch="false" showName="Hue.Lampen.Tischlampe">
+        <states id="States">
+          <state id="14080" name="Y"/>
+          <state id="21835" name="ID"/>
+          <state id="27377" name="Sättigung"/>
+          <state id="29131" name="Farbe"/>
+          <state id="34020" name="Status"/>
+          <state id="44618" name="Helligkeit"/>
+          <state id="45525" name="Temperatur"/>
+          <state id="53197" name="Hue"/>
+          <state id="59255" name="X"/>
+          <state id="59590" name="ModelID"/>
+        </states>
+        <commands id="Commands">
+          <command id="20445" code="W20445" name="Status.toogle"/>
+          <command id="31662" code="W31662" name="Status.HUE4off"/>
+          <command id="46752" code="W46752" name="Status.HUE4on"/>
+        </commands>
+      </device>
+      <device id="Vaete_oben" data="com" gateway="IP-Symcon" type="IPS" address="59424" sensor="off" isBranch="false" showName="Hue.Lampen.Vaete_oben">
+        <states id="States">
+          <state id="14419" name="Farbe"/>
+          <state id="24714" name="ModelID"/>
+          <state id="24892" name="Sättigung"/>
+          <state id="41233" name="ID"/>
+          <state id="41785" name="Y"/>
+          <state id="42230" name="Helligkeit"/>
+          <state id="42409" name="X"/>
+          <state id="47947" name="Status"/>
+          <state id="49382" name="Hue"/>
+          <state id="51811" name="Temperatur"/>
+        </states>
+        <commands id="Commands">
+          <command id="20762" code="W20762" name="Status.HUE5off"/>
+          <command id="58888" code="W58888" name="Status.HUE5on"/>
+          <command id="59668" code="W59668" name="Status.toogle"/>
+        </commands>
+      </device>
+      <device id="Vaete_unten" data="com" gateway="IP-Symcon" type="IPS" address="54463" sensor="off" isBranch="false" showName="Hue.Lampen.Vaete_unten">
+        <states id="States">
+          <state id="10687" name="X"/>
+          <state id="16980" name="Hue"/>
+          <state id="20958" name="ID"/>
+          <state id="20986" name="Farbe"/>
+          <state id="23450" name="Helligkeit"/>
+          <state id="24170" name="Y"/>
+          <state id="28348" name="Status"/>
+          <state id="38598" name="ModelID"/>
+          <state id="40493" name="Temperatur"/>
+          <state id="47599" name="Sättigung"/>
+        </states>
+        <commands id="Commands">
+          <command id="22519" code="W22519" name="Status.toogle"/>
+          <command id="27336" code="W27336" name="Status.HUE6off"/>
+          <command id="41314" code="W41314" name="Status.HUE6on"/>
+        </commands>
+      </device>
+      <device id="Kinder_Decke" data="com" gateway="IP-Symcon" type="IPS" address="23436" sensor="off" isBranch="false" showName="Hue.Lampen.Lelya" gatewaytype="ips">
+        <states id="States">
+          <state id="12669" name="Y"/>
+          <state id="15234" name="Hue"/>
+          <state id="15778" name="Status"/>
+          <state id="26235" name="X"/>
+          <state id="30053" name="ModelID"/>
+          <state id="30947" name="ID"/>
+          <state id="32697" name="Sättigung"/>
+          <state id="40499" name="Farbe"/>
+          <state id="44876" name="Temperatur"/>
+          <state id="45010" name="Helligkeit"/>
+        </states>
+        <commands id="Commands">
+          <command id="21887" code="W21887" name="Status.HUE1off"/>
+          <command id="22952" code="W22952" name="Status.toogle"/>
+          <command id="33562" code="W33562" name="Status.SetAlert"/>
+          <command id="44087" code="W44087" name="Status.query"/>
+          <command id="51615" code="W51615" name="Status.SetState"/>
+          <command id="58205" code="W58205" name="Status.HUE1on"/>
+        </commands>
+      </device>
+    </location>
+    <location id="HueGruppe">
+      <device id="Leinwand" data="state" gateway="IP-Symcon" type="IPS" address="32981" sensor="off" isBranch="false" showName="Hue.Lampengruppen.Leinwand">
+        <states id="States">
+          <state id="10279" name="Temperatur"/>
+          <state id="10564" name="Modus"/>
+          <state id="10771" name="Status"/>
+          <state id="10814" name="Helligkeit"/>
+          <state id="16275" name="Effekt"/>
+          <state id="24635" name="ID"/>
+          <state id="28080" name="Y"/>
+          <state id="34091" name="Lights"/>
+          <state id="37212" name="Hue"/>
+          <state id="43688" name="Farbe"/>
+          <state id="45847" name="X"/>
+          <state id="48847" name="Sättigung"/>
+          <state id="54616" name="Übergangszeit"/>
+        </states>
+        <commands id="Commands"/>
+      </device>
+      <device id="Wohn" data="com" gateway="IP-Symcon" type="IPS" address="31179" sensor="off" isBranch="false" showName="Hue.Lampengruppen.Wohnzimmer">
+        <states id="States">
+          <state id="11134" name="Modus"/>
+          <state id="22802" name="Farbe"/>
+          <state id="26760" name="Lights"/>
+          <state id="31511" name="Helligkeit"/>
+          <state id="36898" name="Effekt"/>
+          <state id="37505" name="ID"/>
+          <state id="37868" name="Y"/>
+          <state id="39555" name="X"/>
+          <state id="40642" name="Temperatur"/>
+          <state id="48045" name="Hue"/>
+          <state id="49579" name="Übergangszeit"/>
+          <state id="52165" name="Status"/>
+          <state id="55572" name="Sättigung"/>
+        </states>
+        <commands id="Commands">
+          <command id="20610" code="W20610" name="Status.off"/>
+          <command id="36978" code="W36978" name="Status.on"/>
+          <command id="48412" code="W48412" name="Status.toogle"/>
+        </commands>
+      </device>
+      <device id="Schlafz" data="com" gateway="IP-Symcon" type="IPS" address="17318" sensor="off" isBranch="false" showName="Hue.Lampengruppen.Schlafzimmer">
+        <states id="States">
+          <state id="16766" name="Lights"/>
+          <state id="26177" name="Farbe"/>
+          <state id="27706" name="X"/>
+          <state id="32624" name="Hue"/>
+          <state id="33013" name="Übergangszeit"/>
+          <state id="33211" name="ID"/>
+          <state id="35385" name="Modus"/>
+          <state id="35776" name="Helligkeit"/>
+          <state id="37344" name="Status"/>
+          <state id="39113" name="Effekt"/>
+          <state id="40264" name="Sättigung"/>
+          <state id="41580" name="Temperatur"/>
+          <state id="47957" name="Y"/>
+        </states>
+        <commands id="Commands">
+          <command id="22463" code="W22463" name="Status.toogle"/>
+          <command id="31889" code="W31889" name="Status.on"/>
+          <command id="54642" code="W54642" name="Status.off"/>
+        </commands>
+      </device>
+      <device id="HueAlle" data="com" gateway="IP-Symcon" type="IPS" address="41400" sensor="off" isBranch="false" showName="Hue.Lampengruppen.Alle Hue Lampen">
+        <states id="States">
+          <state id="56168" name="Status"/>
+          <state id="56781" name="ID"/>
+        </states>
+        <commands id="Commands">
+          <command id="32832" code="W32832" name="Status.Hue Alles aus"/>
+        </commands>
+      </device>
+    </location>
+    <location id="Belueftung">
+      <device id="Aussen" data="com" gateway="IP-Symcon" type="IPS" address="29460" sensor="off" isBranch="false" showName="Lüftung.Außenluft">
+        <states id="States">
+          <state id="30542" name="Dampfdruck"/>
+          <state id="32790" name="Absolute Feuchte"/>
+          <state id="33483" name="Taupunkt"/>
+          <state id="48964" name="Sättigungsdampfdruck"/>
+        </states>
+        <commands id="Commands">
+          <command id="33371" code="W33371" name="Werte Berechnung"/>
+        </commands>
+      </device>
+      <device id="BadBelueftung" data="com" gateway="IP-Symcon" type="IPS" address="15211" sensor="off" isBranch="false" showName="Lüftung.Bad">
+        <states id="States">
+          <state id="18289" name="Lüften"/>
+          <state id="29148" name="Absolute Feuchte"/>
+          <state id="37454" name="Dampfdruck"/>
+          <state id="41529" name="Taupunkt"/>
+          <state id="48897" name="Sättigungsdampfdruck"/>
+        </states>
+        <commands id="Commands">
+          <command id="17133" code="W17133" name="Werte Berechnung"/>
+          <command id="37431" code="W37431" name="Lüften"/>
+        </commands>
+      </device>
+      <device id="EvelynBelueftung" data="com" gateway="IP-Symcon" type="IPS" address="28774" sensor="off" isBranch="false" showName="Lüftung.Evelyn">
+        <states id="States">
+          <state id="20030" name="Dampfdruck"/>
+          <state id="20338" name="Sättigungsdampfdruck"/>
+          <state id="32724" name="Lüften"/>
+          <state id="44204" name="Absolute Feuchte"/>
+          <state id="45192" name="Taupunkt"/>
+        </states>
+        <commands id="Commands">
+          <command id="45856" code="W45856" name="Werte berechnen"/>
+          <command id="56466" code="W56466" name="Lüften"/>
+        </commands>
+      </device>
+      <device id="HobbyrBelueftung" data="com" gateway="IP-Symcon" type="IPS" address="22483" sensor="off" isBranch="false" showName="Lüftung.Hobbyraum">
+        <states id="States">
+          <state id="12605" name="Lüften"/>
+          <state id="21198" name="Dampfdruck"/>
+          <state id="32890" name="Absolute Feuchte"/>
+          <state id="39526" name="Taupunkt"/>
+          <state id="51924" name="Sättigungsdampfdruck"/>
+        </states>
+        <commands id="Commands">
+          <command id="41494" code="W41494" name="Werte Berechnung"/>
+          <command id="56865" code="W56865" name="Lüften"/>
+        </commands>
+      </device>
+    </location>
+    <location id="HueSzenen">
+      <device id="Doesen" data="com" gateway="IP-Symcon" type="IPS" address="23793" sensor="off" isBranch="false" showName="Hue.Szenen.Dösen">
+        <states id="States">
+          <state id="33722" name="Lights"/>
+          <state id="42045" name="Aktiv"/>
+          <state id="42150" name="Name"/>
+        </states>
+        <commands id="Commands">
+          <command id="52162" code="W52162" name="Dösen Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="Entspannen" data="com" gateway="IP-Symcon" type="IPS" address="12440" sensor="off" isBranch="false" showName="Hue.Szenen.Entspannen">
+        <states id="States">
+          <state id="25949" name="Name"/>
+          <state id="26391" name="Lights"/>
+          <state id="33204" name="Aktiv"/>
+        </states>
+        <commands id="Commands">
+          <command id="57166" code="W57166" name="Entspannen Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="Sonnenuntergang" data="com" gateway="IP-Symcon" type="IPS" address="34871" sensor="off" isBranch="false" showName="Hue.Szenen.Sonnenuntergang">
+        <states id="States">
+          <state id="17385" name="Lights"/>
+          <state id="45316" name="Aktiv"/>
+          <state id="52083" name="Name"/>
+        </states>
+        <commands id="Commands">
+          <command id="22191" code="W22191" name="Sonnenuntergang  Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="Film" data="com" gateway="IP-Symcon" type="IPS" address="15285" sensor="off" isBranch="false" showName="Hue.Szenen.Film">
+        <states id="States">
+          <state id="16252" name="Name"/>
+          <state id="33152" name="Lights"/>
+          <state id="44013" name="Aktiv"/>
+        </states>
+        <commands id="Commands">
+          <command id="28463" code="W28463" name="Film Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="DeepSeaWZ" data="com" gateway="IP-Symcon" type="IPS" address="49389" sensor="off" isBranch="false" showName="Hue.Szenen.DeepSea Wohnzimmer" gatewaytype="ips">
+        <states id="States">
+          <state id="30370" name="Lights"/>
+          <state id="30873" name="Aktiv"/>
+          <state id="37697" name="Name"/>
+        </states>
+        <commands id="Commands">
+          <command id="35734" code="W35734" name="DeepSea Wohnzimmer Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="Lesen" data="com" gateway="IP-Symcon" type="IPS" address="28985" sensor="off" isBranch="false" showName="Hue.Szenen.Lesen">
+        <states id="States">
+          <state id="11391" name="Aktiv"/>
+          <state id="14585" name="Name"/>
+          <state id="15607" name="Lights"/>
+        </states>
+        <commands id="Commands">
+          <command id="27686" code="W27686" name="Lesen Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="RelaxWZ" data="com" gateway="IP-Symcon" type="IPS" address="22866" sensor="off" isBranch="false" showName="Hue.Szenen.RelaxWZ">
+        <states id="States">
+          <state id="27977" name="Aktiv"/>
+          <state id="45662" name="Name"/>
+          <state id="59691" name="Lights"/>
+        </states>
+        <commands id="Commands">
+          <command id="55987" code="W55987" name="RelaxWZ Szene aktivieren"/>
+        </commands>
+      </device>
+      <device id="RelaxSZ" data="com" gateway="IP-Symcon" type="IPS" address="32971" sensor="off" isBranch="false" showName="Hue.Szenen.RelaxSZ">
+        <states id="States">
+          <state id="35093" name="Aktiv"/>
+          <state id="43056" name="Lights"/>
+          <state id="45474" name="Name"/>
+        </states>
+        <commands id="Commands">
+          <command id="24164" code="W24164" name="RelaxSZ Szene aktivieren"/>
+        </commands>
+      </device>
+    </location>
+  </locations>
+  <gateways>
+    <gateway id="mControl" type="mcontrol" ip="192.168.55.10" port="8088" user="" pwd=""/>
+    <gateway id="Homematic" type="hmgateway" ip="192.168.55.48" port="2001" user="" pwd=""/>
+    <gateway id="Gateway_V3" type="aiogateway" ip="192.168.55.121" port="80" user="" pwd="" swv="0.0.0" mac="40-66-7A-00-0B-6C" hwv="F3" sid="50F2B911BE91761A" kid="FFFFFFFF">
+      <sensors>
+        <sonsor id="181A3C" name="IEQ0092035" type="HM"/>
+      </sensors>
+      <trigers>
+        <list/>
+      </trigers>
+      <actions>
+        <list/>
+      </actions>
+    </gateway>
+    <gateway id="IP-Symcon" type="ips" ip="192.168.55.10" port="82" user="" pwd="" scripts="\\HOMESERVER\IP-Symcon\scripts"/>
+    <gateway id="Philips_Hue" type="hue" ip="192.168.55.65" port="80" user="" pwd="" udn="uuid:2f402f80-da50-11e1-9b23-0017880ad30f"/>
+    <gateway id="Redeye" type="redeye" ip="192.168.55.61" port="82" user="" pwd=""/>
+    <gateway id="Gateway_V4" type="aiogateway" ip="192.168.55.58" port="80" user="" pwd="" mac="40-66-7A-00-0D-5E" hwv="F3" swv="3.3.7" sid="AD833A46BEE015C6" kid="FFFFFFFF">
+      <trigers>
+        <list>
+          <ircode id="1" active="true" name="SubwooferPowerOn" code="1908280000030022040847041f0089007c00890188008918aa00010201020102010202010201020102010102010202010101020102010102020203" source="file"/>
+          <ircode id="2" active="true" name="SubwooferPowerOff" code="190828000003002204084904200089007c00890188008918a900010201020102010202010201020102010202010202010101010102010102020203" source="file"/>
+          <ircode id="3" active="true" name="Beamer Strom an" code="1908280000030022040849041f0089007c00890188008918a900010201020102010202010201020102010202010101010101010102020202020203" source="file"/>
+          <ircode id="4" active="true" name="Beamer Strom aus" code="1908280000030022040849041f0089007c00890188008918aa00010201020102010202010201020102010101020101010101020201020202020203" source="file"/>
+          <event id="5" active="true" type="ELRO" code="5505501" source="file">
+            <clear>
+              <group id="" name=""/>
+              <sensor id="" name=""/>
+              <action id="" name=""/>
+            </clear>
+          </event>
+        </list>
+      </trigers>
+      <tasks>
+        <list>
+          <group id="1" name="Harmony_Event1" active="true" source="file">
+            <trigers>
+              <idlist>
+                <triger id="1"/>
+              </idlist>
+            </trigers>
+            <actions>
+              <idlist>
+                <action id="1"/>
+              </idlist>
+            </actions>
+          </group>
+          <group id="2" name="Harmony_Event2" active="true" source="file">
+            <trigers>
+              <idlist>
+                <triger id="2"/>
+              </idlist>
+            </trigers>
+            <actions>
+              <idlist>
+                <action id="2"/>
+              </idlist>
+            </actions>
+          </group>
+          <group id="3" name="Harmony_Event3" active="true" source="file">
+            <trigers>
+              <idlist>
+                <triger id="3"/>
+              </idlist>
+            </trigers>
+            <actions>
+              <idlist>
+                <action id="3"/>
+              </idlist>
+            </actions>
+          </group>
+          <group id="4" name="Harmony_Event4" active="true" source="file">
+            <trigers>
+              <idlist>
+                <triger id="4"/>
+              </idlist>
+            </trigers>
+            <actions>
+              <idlist>
+                <action id="4"/>
+              </idlist>
+            </actions>
+          </group>
+          <group id="5" name="Harmony_Event5" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+          <group id="6" name="Harmony_Event6" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+          <group id="7" name="Harmony_Event7" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+          <group id="8" name="Harmony_Event8" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+          <group id="9" name="Harmony_Event9" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+          <group id="10" name="Harmony_Event10" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+          <group id="11" name="LelyaHue1" active="false" source="file">
+            <trigers>
+              <idlist/>
+            </trigers>
+            <actions>
+              <idlist/>
+            </actions>
+          </group>
+        </list>
+      </tasks>
+      <actions>
+        <list>
+          <action_device id="1" active="true" type="IT" code="00E" ir="00" rf="00" source="file">
+            <clear>
+              <group id="Steckdosen" name="Steckdosen"/>
+              <device id="Subwoofer" name="Subwoofer"/>
+              <action id="on" name="on"/>
+            </clear>
+          </action_device>
+          <action_device id="2" active="true" type="IT" code="006" ir="00" rf="00" source="file">
+            <clear>
+              <group id="Steckdosen" name="Steckdosen"/>
+              <device id="Subwoofer" name="Subwoofer"/>
+              <action id="off" name="off"/>
+            </clear>
+          </action_device>
+          <action_device id="3" active="false" type="IT" code="02E" ir="00" rf="00" source="file">
+            <clear>
+              <group id="Steckdosen" name="Steckdosen"/>
+              <device id="Beamer" name="Beamer"/>
+              <action id="on" name="on"/>
+            </clear>
+          </action_device>
+          <action_device id="4" active="false" type="IT" code="026" ir="00" rf="00" source="file">
+            <clear>
+              <group id="Steckdosen" name="Steckdosen"/>
+              <device id="Beamer" name="Beamer"/>
+              <action id="off" name="off"/>
+            </clear>
+          </action_device>
+        </list>
+      </actions>
+    </gateway>
+    <gateway id="Harmony" type="harmony" ip="192.168.55.68" port="5222" user="hatto.zechel@web.de" pwd="Guckiputz!975" token="kt91SHsqX9PpVgFu/J3VRlDrcxbkse82gquw9MTNpXnbWtb1M/+OmMRhTDE8hlmx"/>
+  </gateways>
+  <cams>
+    <cam id="ZechelCam" ip="192.168.55.118" port="80" type="tfcam" version="XS100" user="admin" pwd="Geck0!975" selectedtype="tfcam" selectedversion="XS100"/>
+  </cams>
+  
+</devices>

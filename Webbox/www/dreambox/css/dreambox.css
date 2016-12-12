@@ -1,0 +1,144 @@
+@charset "utf-8";
+body {
+    margin: 0px;
+    color: #151515;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    background-color: transparent;
+}
+#wrapper {
+    background-color: #FFFFFF;
+    width: 100%;
+    min-width: 740px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+table {
+}
+
+figcaption {
+	font-weight: 400;
+	font-size: 10px;
+	font-style: normal;
+	text-align: center;
+}
+footer {
+    clear: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2%;
+    background-color: #43A6CB;
+    color: #FFFFFF;
+}
+figure {
+	padding-left: 0px;
+	position: relative;
+}
+.centered {
+	margin-left: auto;
+    margin-right: auto;
+}
+.picon figure {
+
+}
+
+.floatleft {
+	margin-right: 10px;
+    float: left;
+}
+
+.floatright {
+	margin-left: 10px;
+    float: right;
+}
+.picon figcaption {
+	text-align: center;
+	color: #60460C;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+
+}
+
+article, aside, figure, footer, header, nav {
+    display: block;
+}
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+a:link {
+    color: #FF6600;
+}
+a:visited {
+    color: #FF944C;
+}
+a:hover, a:active, a:focus {
+    color: #7F3300;
+    text-decoration: underline;
+}
+h1, h2 {
+    color: #3399CC;
+    font-style: normal;
+    font-weight: 600;
+    font-family: source-sans-pro;
+}
+h1 {
+    font-size: 72px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+figure img {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	background-color: #807576;
+	-webkit-box-shadow: 3px 3px 15px #181817;
+	box-shadow: 3px 3px 15px #181817;
+	top: 0px;
+}
+.row_1 {
+	background-color: #9AC4DC;
+	border-radius: 20px;
+	margin-bottom: 5px;
+	position: relative;
+	width: 100%;
+}
+.titel {
+	font-family: source-sans-pro;
+	font-style: normal;
+	font-weight: 600;
+	font-size: medium;
+	color: #F3EBDA;
+	text-shadow: 1px 1px #393939;
+}
+
+.row_0 {
+	border-radius: 20px;
+	background-color: #50AFBF;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	position: relative;
+	width: 100%;
+}
+
+
+.description {
+}
+.descriptionext {
+}
+.picon {
+	width: 105px;
+}
+.textright {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+
+
+}
+.left {
+	position: relative;
+	width: 121px;
+}

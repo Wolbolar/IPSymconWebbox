@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<devices listversion="1.2">
+	<locations>
+		 <location id="Wohnzimmer">
+			<device id="AVR4311" type="CODE" data="AVR_4311" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+			<device id="Dreambox" type="CODE" data="Dreambox_8000" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+			<device id="LED_Remote" data="switch" gateway="Gateway_V4" type="LEDS" address="FDC" sensor="off" gatewaytype="aiogateway"/>
+			<device id="LEDCREATOR" data="switch" gateway="Gateway_V4" type="LEDS" address="ABC" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+			<device id="LEDIIController" data="" gateway="Gateway_V4" type="L2" address="123456" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+		</location>
+ 		<location id="Room1">
+			<device id="IRDevice1" type="CODE" data="Device_IR_1" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+			<device id="IRDevice2" type="CODE" data="Device_IR_2" address="IR:01" gateway="Gateway_V4" gatewaytype="aiogateway"/>
+			<device id="LED_Remote" data="switch" gateway="Gateway_V4" type="LEDS" address="ABC" sensor="off" gatewaytype="aiogateway"/>
+			<device id="LEDIIController" data="" gateway="Gateway_V4" type="L2" address="123456" sensor="off" isBranch="false" gatewaytype="aiogateway"/>
+		</location>
+		<location id="Room2">
+			<device id="FS20Device" data="switch" gateway="Gateway_V4" type="FS20" address="B4.4E.02" gatewaytype="aiogateway"/>
+			<device id="ITDevice" data="switch" gateway="Gateway_V4" type="IT" address="1.0" gatewaytype="aiogateway"/>
+		</location>
+	</locations>
+	<gateways>
+    <gateway id="mControl" type="mcontrol" ip="192.168.55.10" port="8088" user="" pwd=""/>
+    <gateway id="Homematic" type="hmgateway" ip="192.168.55.48" port="2001" user="" pwd=""/>
+    <gateway id="Gateway_V3" type="aiogateway" ip="192.168.55.121" port="80" user="" pwd="" swv="0.0.0" mac="40-66-7A-00-0B-6C" hwv="F3" sid="50F2B911BE91761A" kid="FFFFFFFF">
+      <sensors>
+        <sonsor id="181A3C" name="IEQ0092035" type="HM"/>
+      </sensors>
+      <trigers>
+        <list/>
+      </trigers>
+      <actions>
+        <list/>
+      </actions>
+    </gateway>
+    <gateway id="IP-Symcon" type="ips" ip="192.168.55.10" port="82" user="" pwd="" scripts="\\HOMESERVER\IP-Symcon\scripts"/>
+    <gateway id="Philips_Hue" type="hue" ip="192.168.55.65" port="80" user="" pwd="" udn="uuid:2f402f80-da50-11e1-9b23-0017880ad30f"/>
+    <gateway id="Redeye" type="redeye" ip="192.168.55.61" port="82" user="" pwd=""/>
+    <gateway id="Harmony" type="harmony" ip="192.168.55.68" port="5222" user="hatto.zechel@web.de" pwd="Guckiputz!975" token="kt91SHsqX9PpVgFu/J3VRlDrcxbkse82gquw9MTNpXnbWtb1M/+OmMRhTDE8hlmx"/>
+  </gateways>
+	<cams>
+		<cam id="ZechelCam" ip="192.168.55.118" port="80" type="tfcam" version="XS100" user="admin" pwd="Geck0!975" selectedtype="tfcam" selectedversion="XS100"/>
+	</cams>	
+</devices>

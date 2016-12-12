@@ -1,0 +1,224 @@
+/* EXAMPLE 1 Highlight Color Changes */
+#example1 .ui-slider-bg{
+    -webkit-transition:background-color 0.2s;
+    transition: background-color 0.2s;
+}
+/* EXAMPLE 2 Informative Background*/
+.sliderBackColor{
+    height: 100%;
+    width: 33.33%;    
+    float: left;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    font-weight: normal;
+    text-shadow: 0px 1px 2px #333;
+}
+.red { background-color: #FF3D3D;}
+.green { background-color: #B2B812;}
+.orange { background-color: #FF952B;}
+
+.ui-slider-track > div.sliderBackColor:first-child{
+    border-top-left-radius: 0.3125em;
+    border-bottom-left-radius: 0.3125em;
+}
+.ui-slider-track > div.sliderBackColor:last-of-type{
+    border-top-right-radius: 0.3125em;
+    border-bottom-right-radius: 0.3125em;   
+}
+/* EXAMPLE 2a Tick Marks*/
+.sliderTickmarks{
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    height: 100%;
+    width: 25%;    
+    float: left;
+    border-right: 1px solid #888;
+}
+.sliderTickmarks span{
+    position: relative;
+    left: 100%;
+    top: 125%;
+    margin-left: -10px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.ui-slider-track > div.sliderTickmarks:first-child{
+    border-right: 0;
+    width: 0;
+}
+.ui-slider-track > div.sliderTickmarks:first-child span{
+    margin-left: -5px;
+}
+.ui-slider-track > div.sliderTickmarks:last-of-type{
+     border-right: 0;
+}
+
+/* EXAMPLE 3 Handle Glow Color*/
+#example3 .ui-slider .ui-btn{
+    -webkit-transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+}
+.glowBlue .ui-slider .ui-btn:focus {
+    box-shadow: 0 0 12px #127A97;
+}
+.glowYellow .ui-slider .ui-btn:focus {
+    box-shadow: 0 0 12px #F9BA15;
+}
+.glowRed .ui-slider .ui-btn:focus {
+    box-shadow: 0 0 12px #BF0C43;
+}
+.glowGreen .ui-slider .ui-btn:focus {
+    box-shadow: 0 0 12px #8EAC00;
+}
+/* EXAMPLE 4 Value on Handle*/
+.full-width-slider input {
+    display: none;
+}
+.full-width-slider .ui-slider-track {
+	margin-left: 15px;
+}
+/* EXAMPLE 5 Multi Flip Switch */
+#example5 .ui-slider-handle{
+    -webkit-transition:left 0.1s;
+    transition: left 0.1s;
+    width: 60px;
+    margin-left: -30px;
+}
+.switch5BackColor{
+    height: 100%;
+    width: 20%;    
+    float: left;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    font-weight: normal;
+    text-shadow: 0px 1px 2px #333;
+}
+.ui-slider-track > div.switch5BackColor:first-child{
+    border-top-left-radius: 0.3125em;
+    border-bottom-left-radius: 0.3125em;
+}
+.ui-slider-track > div.switch5BackColor:last-of-type{
+    border-top-right-radius: 0.3125em;
+    border-bottom-right-radius: 0.3125em;   
+}
+.pos1 { background-color: #BD2A33;}
+.pos2 { background-color: #D6AA26;}
+.pos3 { background-color: #93A31C;}
+.pos4 { background-color: #408156;}
+.pos5 { background-color: #30374F;}
+.pos1glow .ui-slider .ui-btn:focus{ box-shadow: 0 0 12px #BD2A33;}
+.pos2glow .ui-slider .ui-btn:focus{ box-shadow: 0 0 12px #D6AA26;}
+.pos3glow .ui-slider .ui-btn:focus{ box-shadow: 0 0 12px #93A31C;}
+.pos4glow .ui-slider .ui-btn:focus{ box-shadow: 0 0 12px #408156;}
+.pos5glow .ui-slider .ui-btn:focus{ box-shadow: 0 0 12px #30374F;}
+/* EXAMPLE 6 No Handle */
+#example6 .ui-slider-handle{
+    display:none;
+}
+/* EXAMPLE 7 Tooltip */
+#example7 .ui-slider-handle{
+
+}
+/* EXAMPLE 8 */
+#example8 .ui-slider .ui-btn{
+	-webkit-transition: box-shadow 0.25s;
+	transition: box-shadow 0.25s;
+	background-size: cover;
+}
+/* Popup modizifieren */
+#example8 .ui-slider-popup {
+	width: 40px;
+	height: 35px;
+	color: #3B240D;
+	background-color: #BFB5B5;
+	font-size: 23px;
+	-webkit-box-shadow: 1px 1px 3px #5B4F4F;
+	box-shadow: 1px 1px 3px #5B4F4F;
+	text-align: center;
+}
+
+/* Button modizifieren */
+#example8 .ui-slider-handle{
+	width: 100px;
+	height: 100px;
+	border-radius: 52px;
+	top: 0px;
+	background-image: url(../images/slider/big/Handle-100.png);
+	-webkit-box-shadow: 0px 0px;
+	box-shadow: 0px 0px;
+
+
+}
+#example8 .ui-slider-handle:focus {
+	-webkit-box-shadow: 0px 0px 23px #617FA3;
+	box-shadow: 0px 0px 23px #617FA3;
+}
+
+/* Hintergrundfarbe und Deckkraft ändern */
+#example8 .ui-slider-bg{
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+	height: 60px;
+	opacity: 0.5;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+/* Inputfeld ausblenden */
+#example8 .full-width-slider input {
+    display: none;
+}
+
+#example8 .full-width-slider .ui-slider-track {
+	margin-left: 15px;
+	border-radius: 0px;
+}
+/* Höhe und Abrundungen des Sliders */
+#example8 .ui-slider-track {
+	height: 60px;
+	border-radius: 30px;
+	background-image: url(../images/slider/big/slider_03.png);
+}
+#page1 .ui-content #example8 {
+	padding-top: 60px;
+}
+#currentvolume {
+	background-color: rgba(120,110,110,0.50);
+	width: 300px;
+	color: #E4EDD5;
+	border-radius: 21px;
+	text-align: center;
+	height: 60px;
+	padding-top: 0px;
+	padding-left: 0px;
+	text-shadow: 1px 1px 3px #1D1C1C;
+	-webkit-box-shadow: inset 2px 2px 10px #353232;
+	box-shadow: inset 2px 2px 10px #353232;
+	position: absolute;
+	font-size: xx-large;
+	vertical-align: middle;
+	display: table-cell;
+	top: 165px;
+	margin-left: 41%;
+}
+.slider {
+	min-height: 240px;
+	position: relative;
+}
+
+.ui-slider {
+}
+#example8.ui-slider-label {
+	background-color: #AC0EBB;
+}
+#example.ui-slider-input {
+	display : none;
+	width: 0;
+}
+// blendet Label aus
+.ui-mobile .ui-page .ui-slider-input,
+.ui-mobile .ui-dialog .ui-slider-input {
+    display : none;
+	width: 0;
+}

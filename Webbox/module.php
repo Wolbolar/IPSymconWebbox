@@ -14,18 +14,32 @@
 		public function ApplyChanges() {
 			//Never delete this line!
 			parent::ApplyChanges();
-			
 			$ipsversion = $this->GetIPSVersion();
 			if($ipsversion == 0 || $ipsversion == 1)
-			{
-				$sid = $this->RegisterScript("WebboxIPSInterface", "Webbox IPS Interface", $this->CreateWebHookScript(), 1);
-				IPS_SetHidden($sid, true);
-				$this->RegisterHookOLD("/hook/webbox", $sid);
-			}
+				{
+					//prüfen ob Script existent
+					$SkriptID = @IPS_GetObjectIDByIdent("WebboxIPSInterface", $this->InstanceID);
+					if ($SkriptID === false)
+						{
+							$ID = $this->RegisterScript("WebboxIPSInterface", "Webbox IPS Interface", $this->CreateWebHookScript(), 1);
+							IPS_SetHidden($ID, true);
+							$this->RegisterHookOLD('/hook/webbox', $ID);
+						}
+					else
+						{
+							//echo "Die Skript-ID lautet: ". $SkriptID;
+						}
+				}
 			else
-			{
-				$this->RegisterHook("/hook/webbox");
-			}
+				{
+					$SkriptID = @IPS_GetObjectIDByIdent("WebboxIPSInterface", $this->InstanceID);
+					if ($SkriptID > 0)
+					{
+						$this->UnregisterHook("/hook/webbox");
+						$this->UnregisterScript("WebboxIPSInterface");
+					}
+					$this->RegisterHook("/hook/webbox");
+				}
 		}
 		
 		private function RegisterHookOLD($Hook, $TargetID)
@@ -79,196 +93,167 @@
 				}
   		}
 		
-		
 		/**
-		* This function will be available automatically after the module is imported with the module control.
-		* Using the custom prefix this function will be callable from PHP and JSON-RPC through:
-		*
-		* Webbox_ProcessHookData($id);
-		*
-		*/
-		public function ProcessHookDataOLD()
+     * Löscht einen WebHook, wenn vorhanden.
+     *
+     * @access private
+     * @param string $WebHook URI des WebHook.
+     */
+    protected function UnregisterHook($WebHook)
+    {
+        $ids = IPS_GetInstanceListByModuleID("{015A6EB8-D6E5-4B93-B496-0D3F77AE9FE1}");
+        if (sizeof($ids) > 0)
+        {
+            $hooks = json_decode(IPS_GetProperty($ids[0], "Hooks"), true);
+            $found = false;
+            foreach ($hooks as $index => $hook)
+            {
+                if ($hook['Hook'] == $WebHook)
+                {
+                    $found = $index;
+                    break;
+                }
+            }
+            if ($found !== false)
+            {
+                array_splice($hooks, $index, 1);
+                IPS_SetProperty($ids[0], "Hooks", json_encode($hooks));
+                IPS_ApplyChanges($ids[0]);
+            }
+        }
+    }  
+	
+	/**
+     * Löscht eine Script, sofern vorhanden.
+     *
+     * @access private
+     * @param int $Ident Ident der Variable.
+     */
+    protected function UnregisterScript($Ident)
+    {
+        $sid = @IPS_GetObjectIDByIdent($Ident, $this->InstanceID);
+        if ($sid === false)
+            return;
+        if (!IPS_ScriptExists($sid))
+            return; //bail out
+        IPS_DeleteScript($sid, true);
+    } 
+		
+		
+		protected function GetRequestVarValue($varvalue)
 		{
-			if($_IPS['SENDER'] == "Execute") {
-				echo "This script cannot be used this way.";
-				return;
+			$varvaluetype = 3; // string
+			$numeric = is_numeric($varvalue);
+			$varvaluebool = strtolower($varvalue);// bolean
+			if($varvaluebool == "false")
+			{
+				$varvalue = false;
+				$varvaluetype = 0; // boolean
 			}
-			
-			if((IPS_GetProperty($this->InstanceID, "Username") != "") || (IPS_GetProperty($this->InstanceID, "Password") != "")) {
-				if(!isset($_SERVER['PHP_AUTH_USER']))
-					$_SERVER['PHP_AUTH_USER'] = "";
-				if(!isset($_SERVER['PHP_AUTH_PW']))
-					$_SERVER['PHP_AUTH_PW'] = "";
-					
-				if(($_SERVER['PHP_AUTH_USER'] != IPS_GetProperty($this->InstanceID, "Username")) || ($_SERVER['PHP_AUTH_PW'] != IPS_GetProperty($this->InstanceID, "Password"))) {
-					header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
-					header('HTTP/1.0 401 Unauthorized');
-					echo "Authorization required";
-					return;
+			if($varvaluebool == "true")
+			{
+				$varvalue = true;
+				$varvaluetype = 0; // boolean
+			}
+			if($numeric)
+			{
+				$varvaluefloat = $this->isfloat($varvalue);
+				if($varvaluefloat)
+				{
+					$varvalue = floatval($varvalue);// float
+					$varvaluetype = 2;
+				}
+				else
+				{
+					$varvalue = intval($varvalue);// int
+					$varvaluetype = 1;
 				}
 			}
-			
-			if(!isset($_POST['device']) || !isset($_POST['id']) || !isset($_POST['name'])) {
-				IPS_LogMessage("Webbox", "Malformed data: ".print_r($_POST, true));
-				return;
-			}
-			
-			$this->SendDebug("GeoFency", "Array POST: ".print_r($_POST, true), 0);
-			$deviceID = $this->CreateInstanceByIdent($this->InstanceID, $this->ReduceGUIDToIdent($_POST['device']), "Device");
-			SetValue($this->CreateVariableByIdent($deviceID, "Latitude", "Latitude", 2), $this->ParseFloat($_POST['latitude']));
-			SetValue($this->CreateVariableByIdent($deviceID, "Longitude", "Longitude", 2), $this->ParseFloat($_POST['longitude']));
-			SetValue($this->CreateVariableByIdent($deviceID, "Timestamp", "Timestamp", 1, "~UnixTimestamp"), intval(strtotime($_POST['date'])));
-			SetValue($this->CreateVariableByIdent($deviceID, $this->ReduceGUIDToIdent($_POST['id']), utf8_decode($_POST['name']), 0, "~Presence"), intval($_POST['entry']) > 0);
-			
+			$varvalue = array("VarType" => $varvaluetype, "Value" => $varvalue);
+			return $varvalue;
 		}
 		
-		/**
- 		* This function will be called by the hook control. Visibility should be protected!
-  		*/
-		
-		protected function ProcessHookData()
+		protected function isfloat($value)
 		{
-			if($_IPS['SENDER'] == "Execute") {
-				echo "This script cannot be used this way.";
-				return;
-			}
-			
-			if((IPS_GetProperty($this->InstanceID, "Username") != "") || (IPS_GetProperty($this->InstanceID, "Password") != "")) {
-				if(!isset($_SERVER['PHP_AUTH_USER']))
-					$_SERVER['PHP_AUTH_USER'] = "";
-				if(!isset($_SERVER['PHP_AUTH_PW']))
-					$_SERVER['PHP_AUTH_PW'] = "";
-					
-				if(($_SERVER['PHP_AUTH_USER'] != IPS_GetProperty($this->InstanceID, "Username")) || ($_SERVER['PHP_AUTH_PW'] != IPS_GetProperty($this->InstanceID, "Password"))) {
-					header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
-					header('HTTP/1.0 401 Unauthorized');
-					echo "Authorization required";
-					return;
-				}
-			}
-			/*
-			if(!isset($_POST['type']) || !isset($_POST['id']) )
+			// PHP automagically tries to coerce $value to a number
+			return is_float($value + 0);
+		}
+		
+		protected function CompareVartype($type, $objid)
+		{
+				$varinfo = (IPS_GetVariable($objid));
+				$vartype =  $varinfo["VariableType"];
+				if ($vartype == 0) //bool
 				{
-				$this->SendDebug("Webbox", "Malformed data: ".print_r($_POST, true), 0);
-				return;
+					$ipsvartype = "boolean";
 				}
-			*/
-			
-			//Prüft ob POST oder GET
-			
-			if (isset($_POST["type"]))
-			{
-				$type = $_POST['type'];
-				if($type == "HTMLBox")
+				elseif ($vartype == 1) //integer
 				{
-					$id = $_POST['id'];
-					$id = (int)$id;
-					$htmlbox = $this->HTMLBox($id);
-					echo $htmlbox;
+					$ipsvartype = "integer";
 				}
-				if($type == "MediaImage")
+				elseif ($vartype == 2) //float
 				{
-					$id = $_POST['id'];
-					$id = (int)$id;
-					$mediaimage = $this->MediaImage($id);
-					$headhtml = $mediaimage["headhtml"];
-					$imgdata = $mediaimage["imgdata"];
-					header($headhtml);
-					echo $imgdata;
-				}	
-			}
+					$ipsvartype = "double";
+				}
+				elseif ($vartype == 3) //string
+				{
+					$ipsvartype = "string";
+				}
 				
-			if (isset($_GET["type"]))
+				if ($type ===  $ipsvartype)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+		}
+		
+		protected function IPSResponse($response, $style)
+		{
+			$cssstyle = $this->GetCSSStyle($style);
+			$HTMLHead = '<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTMLBox</title>
+'.$this->WebboxCSSTransparent().'
+</head>
+<body marginheight="0" marginwidth="0">';
+		$HTMLButtom = '
+</body>
+</html>';
+			$HTMLPage = $HTMLHead;
+			$HTMLPage .= $response;
+			$HTMLPage .= $HTMLButtom;
+			return $HTMLPage;
+		}
+		
+		protected function GetCSSStyle($style)
+		{
+			if($style == "comic")
 			{
-				$type = $_GET['type'];
-				if($type == "HTMLBox")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$htmlbox = $this->HTMLBox($id);
-					echo $htmlbox;
-				}
-				if($type == "MediaImage")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$mediaimage = $this->MediaImage($id);
-					$headhtml = $mediaimage["headhtml"];
-					$imgdata = $mediaimage["imgdata"];
-					header($headhtml);
-					echo $imgdata;
-				}
-				if($type == "test")
-				{
-					echo "Webbox Webhook";
-				}
-				if($type == "Colorwheel")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					if(isset($_GET["size"]))
-						{
-						$size = $_GET["size"];
-						}
-					else
-						{
-						$size = 100;
-						}
-					$colorwheel = $this->Colorwheel($id, $size);
-					echo $colorwheel;
-				}
-				if($type == "Slider")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$slider = $this->Slider($id);
-					echo $slider;
-				}
-				if($type == "Toggle")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$toggle = $this->Toggle($id);
-					echo $toggle;
-				}
-				if($type == "Cover")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$detailid = $_GET['detailid'];
-					$detailid = (int)$detailid;
-					if(isset($_GET["size"]))
-						{
-						$size = $_GET["size"];
-						}
-					else
-						{
-						$size = 340;
-						}
-					$cover = $this->Cover($id, $size, $detailid);
-					echo $cover;
-				}
-				if($type == "Keypanel")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$keypanel = $this->Keypanel($id);
-					$headhtml = $keypanel["headhtml"];
-					$imgdata = $keypanel["imgdata"];
-					header($headhtml);
-					echo $keypanel;
-				}
-				if($type == "Navicursor")
-				{
-					$id = $_GET['id'];
-					$id = (int)$id;
-					$navicursor = $this->Navicursor($id);
-					$headhtml = $navicursor["headhtml"];
-					$imgdata = $navicursor["imgdata"];
-					header($headhtml);
-					echo $cover;
-				}
+				$CSS = '<style type="text/css" media="screen">
+			</style>';
 			}
+			else
+			{
+				$CSS = '<style type="text/css" media="screen">
+			</style>';
+			}
+			return $CSS;
+		}
+		
+		protected function WebboxCSSTransparent()
+		{
+			$CSS = '<style type="text/css" media="screen">
+			@charset "utf-8";
+			body {
+				background-color: transparent;
+			}
+			</style>'
+			return $CSS;
 		}
 		
 		protected function Keypanel()

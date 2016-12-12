@@ -1,0 +1,516 @@
+@charset "utf-8";
+body {
+	margin: 0px;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	background-color: transparent;
+}
+#ajaxformmobile {
+	background-image: url(../images/background/canvas/10.jpg);
+}
+#dreamboxstatus {
+	float: right;
+	display: inline;
+}
+#senderlogo {
+	display: inline;
+}
+#dreamboxcurrentinfo .row {
+	float: none;
+	display: inline;
+
+}
+#dreamboxcurrentinfo section #currentchannel {
+}
+#dreamboxcurrentinfo section #title {
+	margin-left: 10px;
+	position: relative;
+	left: 145px;
+}
+#dreamboxcurrentinfo section #start {
+}
+#dreamboxcurrentinfo section #ende {
+	left: 145px;
+	position: relative;
+	margin-left: 29px;
+}
+#dreamboxcurrentinfo section #dauer {
+}
+#dreamboxcurrentinfo section #vorbei {
+	margin-left: 10px;
+	left: 154px;
+	position: relative;
+	top: 0px;
+}
+#dreamboxcurrentinfo section #verbl {
+	margin-left: 10px;
+	position: relative;
+	left: 292px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#wrapper {
+    background-color: #FFFFFF;
+    width: 100%;
+    min-width: 740px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#kanalliste {
+	width: 100%;
+	min-width: 740px;
+	max-width: 1000px;
+}
+
+table {
+	width: 100%;
+}
+
+
+
+figcaption {
+	font-weight: 400;
+	font-size: 10px;
+	font-style: normal;
+	text-align: center;
+	text-shadow: 1px 1px;
+}
+footer {
+	clear: left;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 2%;
+	height: 185px;
+}
+figure {
+	padding-left: 0px;
+	position: relative;
+}
+.centered {
+	margin-left: auto;
+    margin-right: auto;
+}
+.picon figure {
+
+}
+
+.floatleft {
+	margin-right: 10px;
+	float: left;
+	width: 50%;
+	max-width: 50%;
+}
+
+.floatright {
+	margin-left: 10px;
+	float: right;
+	width: 50%;
+	max-width: 50%;
+}
+
+.picon figcaption {
+	text-align: center;
+	color: #60460C;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+
+}
+
+article, aside, figure, footer, header, nav {
+    display: block;
+}
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+a:link {
+    color: #FF6600;
+}
+a:visited {
+    color: #FF944C;
+}
+a:hover, a:active, a:focus {
+    color: #7F3300;
+    text-decoration: underline;
+}
+h1, h2 {
+    color: #3399CC;
+    font-style: normal;
+    font-weight: 600;
+    font-family: source-sans-pro;
+}
+h1 {
+    font-size: 72px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+figure img {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	background-color: rgba(128,117,118,0.50);
+	-webkit-box-shadow: 3px 3px 15px #181817;
+	box-shadow: 3px 3px 15px #181817;
+	top: 0px;
+}
+
+
+.row_1 {
+	background-color: #9AC4DC;
+	border-radius: 20px;
+	margin-bottom: 5px;
+	position: relative;
+	opacity: 1;
+}
+.titel {
+	font-family: source-sans-pro;
+	font-style: normal;
+	font-weight: 600;
+	font-size: medium;
+	color: #F3EBDA;
+	text-shadow: 1px 1px #393939;
+}
+
+.row_0 {
+	border-radius: 20px;
+	background-color: #50AFBF;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	position: relative;
+	width: 100%;
+	opacity: 1;
+	z-index: 5;
+}
+#Aufnahmetitel {
+	padding-top: 5px;
+}
+
+
+
+.description {
+	text-shadow: 0px 0 rgba(25,24,24,1.00);
+	color: rgba(103,100,100,1.00);
+}
+#Aufnahmedatum {
+	text-align: center;
+	max-height: 50px;
+}
+#Time {
+	text-align: center;
+	max-height: 50px;
+}
+#Lenght {
+	text-align: center;
+	vertical-align: bottom;
+}
+#Delete {
+	text-align: center;
+	padding-top: 5px;
+}
+#Play {
+	text-align: center;
+	max-height: 50px;
+}
+
+
+
+
+
+.descriptionext {
+}
+.picon {
+	width: 105px;
+}
+
+.textright {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+
+
+}
+.left {
+	width: 50%;
+	max-width: 50%;
+	float: left;
+}
+.piconbigtext {
+}
+.zapbutton {
+	/* [disabled]background-color: #0A0A0A; */
+	border-radius: 13px;
+	-webkit-box-shadow: 4px 4px 7px #272424;
+	box-shadow: 4px 4px 7px #272424;
+	text-align: center;
+	vertical-align: middle;
+	color: #D6D8CF;
+	font-family: acme;
+	font-style: normal;
+	font-weight: 400;
+	font-size: xx-large;
+	text-shadow: 2px 2px 4px #252323;
+	background-image: url(../images/buttons/Metall.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 80px;
+	height: 80px;
+}
+/* Hintergrund dreamboxzapbuttons für Zap Buttons */
+.dreamboxzapbuttons {
+	background-image: -webkit-linear-gradient(305deg,rgba(255,255,255,1.00) 0%,rgba(69,57,57,1.00) 100%);
+	background-image: -moz-linear-gradient(305deg,rgba(255,255,255,1.00) 0%,rgba(69,57,57,1.00) 100%);
+	background-image: -o-linear-gradient(305deg,rgba(255,255,255,1.00) 0%,rgba(69,57,57,1.00) 100%);
+	background-image: linear-gradient(145deg,rgba(255,255,255,1.00) 0%,rgba(69,57,57,1.00) 100%);
+	width: 100%;
+	border-radius: 30px;
+	display: block;
+	-webkit-box-shadow: 2px 2px 5px;
+	box-shadow: 2px 2px 5px;
+}
+
+
+
+.zapbuttontext {
+	color: #E8CA61;
+	font-family: bilbo;
+	font-style: normal;
+	font-weight: 400;
+	font-size: large;
+	text-shadow: 1px 1px 2px #000000;
+	letter-spacing: 1px;
+	display: table-cell;
+	vertical-align: middle;
+	background-color: #7E7373;
+	height: 100%;
+	width: 100%;
+	text-align: right;
+}
+#dreamboxextinfo {
+	background-color: #7F4041;
+	border-radius: 30px;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+#dreamboxcurrentinfo {
+	background-color: #8A5556;
+	border-radius: 30px;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	display: block;
+}
+
+
+.test {
+	
+}
+/* Legt Abstand zwischen den Zapbuttons fest*/
+.zapbuttonspace {
+	border-spacing: 40px 40px;
+
+
+
+}
+#page {
+	background-image: url(../images/background/canvas/10.jpg);
+	width: 2048px;
+	height: 1536px;
+
+}
+.dreamboxinfo {
+	color: #E1CFD0;
+	text-shadow: 2px 2px #454040;
+}
+.right {
+	width: 50%;
+	max-width: 50%;
+	top: 0px;
+	float: right;
+}
+.Navigation {
+	display: inline;
+}
+.dreamboxbiginfo {
+	display: inline-block;
+	position: absolute;
+	background-color: #3E3131;
+	width: 100%;
+	opacity: 1;
+	padding-left: 12px;
+	padding-top: 10px;
+	border-radius: 30px;
+	color: #DDC9CA;
+	text-shadow: 1px 1px 2px #262121;
+	max-height: 1100px;
+	overflow-y: scroll;
+}
+#dreamboxbiginfoback {
+	max-height: 1100px;
+	height: 1100px;
+	display: block;
+	overflow-y: scroll;
+}
+
+#dreamboxtecinfo {
+	font-size: xx-small;
+	color: #D1C1C1;
+	text-shadow: 1px 1px #252020;
+	background-color: #433939;
+	-webkit-box-shadow: 1px 1px 5px #191515;
+	box-shadow: 1px 1px 5px #191515;
+	opacity: 0.52;
+	border-radius: 19px;
+}
+#dreambox {
+}
+.iconshow {
+	font-size: x-large;
+	width: 25px;
+	height: 25px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	background-color: #834E4F;
+	color: #DBBABA;
+	text-align: center;
+}
+#tecinfohead {
+	width: 100%;
+	text-align: center;
+}
+.tecinfocell {
+	width: 21%;
+	display: inline-block;
+	margin-left: 21px;
+}
+.tecinforow {
+}
+#navdreambox {
+	position: relative;
+	width: 252px;
+	height: 252px;
+}
+#navdreamleft {
+	position: absolute;
+	top: 55px;
+	left: 4px;
+}
+#navdreamup {
+	position: absolute;
+	left: 55px;
+	top: 4px;
+}
+#navdreamright {
+	position: absolute;
+	top: 55px;
+	left: 178px;
+}
+#navdreamenter {
+	position: absolute;
+	top: 70px;
+	left: 70px;
+}
+#navdreamdown {
+	position: absolute;
+	top: 178px;
+	left: 55px;
+}
+#remotecolourdreambox {
+	position: relative;
+	width: 380px;
+}
+#volumetest {
+	background-color: rgba(155,46,211,1.00);
+	position: absolute;
+	left: 431px;
+}
+
+#dreamred {
+}
+#dreamyellow {
+}
+#dreamgreen {
+}
+#dreamblue {
+}
+.zapimage {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.zaptab {
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-bottom: 0px;
+}
+.dreamboxzapbuttons {
+	width: 440px;
+}
+#togglezap {
+	width: 500px;
+}
+.zaptabbottom {
+	height: 20px;
+}
+#pushedbutton {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	padding-bottom: 25px;
+	margin-left: 0px;
+	text-align: center;
+	width: 440px;
+}
+.channelbutton {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	border: none;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	font-style: normal;
+	font-size: 21px;
+	font-family: "Warnes", Helvetica, sans-serif;
+	color: rgba(255,255,255,1);
+	text-decoration: normal;
+	text-align: center;
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	white-space: pre;
+	text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ff00de , 0 0 70px #ff00de , 0 0 80px #ff00de , 0 0 100px #ff00de;
+	-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.channelbutton:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
+}

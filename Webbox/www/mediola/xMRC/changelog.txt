@@ -1,0 +1,109 @@
+-------------------------------------------------------------------------------------------
+Changelog
+-------------------------------------------------------------------------------------------
+
+v2.1.2
+- showing screenshots inline instead of just a file list (enabled by default)
+- now screenshots will only be taken when the camera button is pressed
+- fixed bmp2jpg permissions to 0755 if necessary
+
+v2.1.1
+- if a favorites entry is a file instead of a folder, it can now be started properly (e.g. .plsx radio stations)
+- added option to autorefresh live screenshot when using remote control buttons (only where it makes sense)
+- device id now calculated as md5 of model + hostname + useragent
+
+v2.0
+- SHOUTCast restored, api.shoutcast.com request are now sent through mavvy.net
+- device hostname is shown next to xtreamer logo, so you know which device you are controlling
+- added option to choose "all genres" or "primary genres" in shoutcast
+- added top500 radio stations in shoutcast
+- added option to display extended meta information for movies and tv shows (posters, ratings, genre, etc)
+- new icons for the main menu and other stuff
+- xMRC version info moved into the main settings.ini
+- screenshot and remote control adapted to work with Prodigy, maybe needs to be changed again when fw is final
+- some code cleanup ;)
+
+V1.4.4
+- changed favorites view to show radio playlists as audio files and made the playable, by emklap
+  You need to brows the folders on your USB (and probably internal disk)
+  and add the file locations as favorites
+
+V1.4.3
+- Changed function mountNetshares to mount nfs clients to be able to browse them, by emklap
+
+v1.4.2
+- added Sony-Ericsson Xperia X8 skin, by emklap
+
+v1.4.1
+- added Galaxy Tab skin
+- small bugfix in Desire skin
+
+v1.4.0
+- added option in settings to mount My_Shortcuts to Network Shares section (experimental)
+- error message when no favorites are set, better than php error
+
+v1.3.3
+- removed screenshot auto refresh in ipad skin after button press, reason: causes increasing delays in rc functionality
+- removed screenshot trigger after first remote control start, see reason above
+
+v1.3.2
+- added final Desire skin (fully supports landscape mode now)
+- live screenshot now only shows text info when a video is playing
+- remote control shows back button, if not called from start page
+- fixed some minor iPad skin issues, also code and wording
+
+v1.2.0
+- added final iPad skin
+- changing code / file / css structure to support both portrait and landscape mode in one skin (works with iPad skin already)
+- added Netbook skin (1024 x 600), which was also the base for the iPad landscape skin
+
+v1.1.0
+- added HTC Desire Dark skin as a custom skin example and other skin and css fine tunings
+- iPad skin now has live Xtreamer screenshot
+
+v1.0.1
+- fixed: shoutcast minimum bitrate setting now "greater than or equal" instead of only "greater than"
+- fixed: remote control search box wasn't transferred to Xtreamer onscreen keyboard
+
+v1.0
+- UI refresh, works better for various devices / screen resolutions now
+- new remote control layout, looks more like a rc now :)
+- skin support, in case it still doesn't look good on some devices, people can make their own skins / styles
+- in multi device environment, each device can be bound to its own skin using the skin binding feature
+- configuration can now be changed directly in xMRC
+- settings file changed from xml to ini, easier to edit manually
+- utf8 for exotic folders / files
+- buttons to play folders, only shown when there are media files in the folder
+- favorites browser, no option to add/delete yet, maybe later
+- added a bunch of media filetypes that i forgot before, the Xtreamer just plays too many formats :)
+- fixed: extensions are case insensitive now
+- fixed: added url encoding coz special characters in folders / files broke functionality
+- todo: playlist feature, need symlinks to support network files inside playlist
+- todo: make NET browsable too (shares with username/password)
+- todo: maybe make more skins for other devices, and skins for landscape mode
+- todo: maybe a chat (Xtreamer IRC) to chat with others while watching movies :)
+- todo: maybe add live screenshot in ipad skin's remote control
+
+v0.2
+- updated SHOUTcast to work with their API 2.0
+- SHOUTcast search
+- buttons redesign
+- bug: special characters in foldernames cause trouble O_o
+- todo: a lot :/
+
+v0.1
+- browse local/network storage for media files
+- directly playback of media files from browser (video, audio, photo)
+- browse & play SHOUTcast(TM) radio stations database
+- screenshot feature
+
+-------------------------------------------------------------------------------------------
+Notes
+-------------------------------------------------------------------------------------------
+
+Viewport dimensions (excl. height of xMRC header)
+
+This is the max dimensions for a remote.png to prevent horizontal / vertical scroll on device
+
+- HTC Desire: 320x478 (portrait mode, used in default skin), 533x265 (landscape mode)
+- Apple iPad: 768x893 (portrait mode, user in ipad skin), 1024x637 (landscape mode)

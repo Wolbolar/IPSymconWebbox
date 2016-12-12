@@ -1,0 +1,243 @@
+#rc_1 {
+	position: absolute;
+	top: 500px;
+	left: 12px;
+}
+
+#rc_2 {
+	position: absolute;
+	top: 500px;
+	left: 92px;
+}
+
+#rc_3 {
+	position: absolute;
+	top: 500px;
+	left: 172px;
+}
+
+#rc_4 {
+	position: absolute;
+	top: 580px;
+	left: 12px;
+}
+
+#rc_5 {
+	position: absolute;
+	top: 580px;
+	left: 92px;
+}
+
+#rc_6 {
+	position: absolute;
+	top: 580px;
+	left: 172px;
+}
+
+#rc_7 {
+	position: absolute;
+	top: 660px;
+	left: 12px;
+}
+
+#rc_8 {
+	position: absolute;
+	top: 660px;
+	left: 92px;
+}
+
+#rc_9 {
+	position: absolute;
+	top: 660px;
+	left: 172px;
+}
+
+#rc_0 {
+	position: absolute;
+	top: 740px;
+	left: 92px;
+}
+
+#rc_info {
+	position: absolute;
+	top: 500px;
+	left: 268px;
+}
+
+#rc_return {
+	position: absolute;
+	top: 500px;
+	left: 448px;
+}
+
+#rc_up {
+	position: absolute;
+	top: 544px;
+	left: 324px;
+}
+
+#rc_down {
+	position: absolute;
+	top: 699px;
+	left: 324px;
+}
+
+#rc_left {
+	position: absolute;
+	top: 585px;
+	left: 284px;
+}
+
+#rc_right {
+	position: absolute;
+	top: 585px;
+	left: 439px;
+}
+
+#rc_enter {
+	position: absolute;
+	top: 601px;
+	left: 340px;
+}
+
+#rc_stop {
+	position: absolute;
+	top: 740px;
+	left: 269px;
+}
+
+#rc_play {
+	position: absolute;
+	top: 740px;
+	left: 429px;
+}
+
+#rc_reboot {
+	position: absolute;
+	top: 512px;
+	left: 658px;
+}
+
+#rc_power {
+	position: absolute;
+	top: 500px;
+	left: 706px;
+}
+
+#rc_search input{
+	position: absolute;
+	width: 188px;
+	top: 565px;
+	left: 552px;
+	font-size: 12px;
+	color: #a0a0a0;
+	background-image: url(clear.png);
+	border: 0;
+}
+
+#rc_home {
+	position: absolute;
+	top: 603px;
+	left: 538px;
+}
+
+#rc_ab {
+	position: absolute;
+	top: 603px;
+	left: 658px;
+}
+
+#rc_mute {
+	position: absolute;
+	top: 603px;
+	left: 718px;
+}
+
+#rc_shuffle {
+	position: absolute;
+	top: 653px;
+	left: 538px;
+}
+
+#rc_repeat {
+	position: absolute;
+	top: 653px;
+	left: 598px;
+}
+
+#rc_subtitle {
+	position: absolute;
+	top: 653px;
+	left: 658px;
+}
+
+#rc_audio {
+	position: absolute;
+	top: 653px;
+	left: 718px;
+}
+
+#rc_pgup {
+	position: absolute;
+	top: 700px;
+	left: 525px;
+}
+
+#rc_pgdn {
+	position: absolute;
+	top: 700px;
+	left: 585px;
+}
+
+#rc_syncleft {
+	position: absolute;
+	top: 760px;
+	left: 645px;
+}
+
+#rc_volup {
+	position: absolute;
+	top: 700px;
+	left: 705px;
+}
+
+#rc_rew {
+	position: absolute;
+	top: 760px;
+	left: 525px;
+}
+
+#rc_ff {
+	position: absolute;
+	top: 760px;
+	left: 585px;
+}
+
+#rc_syncright {
+	position: absolute;
+	top: 700px;
+	left: 645px;
+}
+
+#rc_voldown {
+	position: absolute;
+	top: 760px;
+	left: 705px;
+}
+
+#livescreen {
+	position: absolute;
+	top: 59px;
+	left: 10px;
+}
+
+#remotecontrol {
+	height: 778px;
+	background: url(images/remote_portrait.png) no-repeat;
+    border-bottom: 1px solid #c8c8c8;
+	background-color: #ffffff;
+}
+
+#landscape {
+	display: none;
+} 

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Combobox</title>
+<link href="css/dreambox.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="js/jqueryscripts.js"></script>
+<!--<script type="text/javascript" src="js/dreambox.js"></script>-->
+<script type="text/javascript" src="js/dreamboxA.js"></script>
+<script type="text/javascript" src="js/jquery.ajaxformtestmodulneu.js"></script>
+<link href="css/jquerytest.css" rel="stylesheet" type="text/css">
+<!--<link href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="stylesheet" type="text/css">-->
+<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+<script>var __adobewebfontsappname__="dreamweaver"</script>
+<script src="http://use.edgefonts.net/source-sans-pro:n6:default;bilbo:n4:default;acme:n4:default.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div data-role="page" id="page">
+  <div data-role="content">
+  <section>
+  		<main id="dreamboxleft" class="left">
+       
+             <div><a href="#" id="dreamboxzap-einblenden"><img src="images/buttons/toggle_expand_small.png" width="9" height="9" alt=""/></a>
+         <a href="#" id="dreamboxzap-ausblenden"><img src="images/buttons/toggle_collapse_small.png" width="9" height="9" alt=""/></a></div>
+            <div id="togglezap">
+            <!--<div id="togglezap" data-role="collapsible" data-collapsed="false">-->
+                 <h3>Fernbedienung</h3>
+                 <section class="dreamboxzapbuttons">
+                 	<table class="zapbuttonspace" border="0">
+                      <!--<caption>
+                        Zap
+                      </caption> -->
+                      <tbody >
+                        <tr>
+                          <td class="zapbutton" id="ARDZap"><img src="images/buttons/Translucent & Metall/1_HD.png" id="ARDZapLogo" alt="ARDZapLogo"></td>
+                          <td class="zapbutton" id="ZDFZap"><img src="images/buttons/Translucent & Metall/ZDF_HD.png" id="ZDFZapLogo" alt="ZDFZapLogo"></td>
+                          <td class="zapbutton" id="RTLZap"><img src="images/buttons/Translucent & Metall/RTL.png" id="RTLZapLogo" alt="RTLZapLogo"></td>
+                          <td class="zapbutton" id="Pro7Zap"><img src="images/buttons/Translucent & Metall/Pro7.png" id="Pro7ZapLogo" alt="Pro7ZapLogo"></td>
+                        </tr>
+                        <tr class="testtr">
+                          <td class="zapbutton" id="Sat1Zap"><img src="images/buttons/Translucent & Metall/Sat1.png" id="Sat1ZapLogo" alt="Sat1ZapLogo"></td>
+                          <td class="zapbutton" id="VoxZap"><img src="images/buttons/Translucent & Metall/Vox.png" id="VoxZapLogo" alt="VoxZapLogo"></td>
+                          <td class="zapbutton" id="Kabel1Zap"><img src="images/buttons/Translucent & Metall/kabel1.png" id="Kabel1ZapLogo" alt="Kabel1ZapLogo"></td>
+                          <td class="zapbutton" id="RTL2Zap"><img src="images/buttons/Translucent & Metall/RTL2.png" id="RTL2ZapLogo" alt="RTL2ZapLogo"></td>
+                        </tr>
+                        <tr>
+                          <td class="zapbutton" id="HRZap"><img src="images/buttons/Translucent & Metall/HR.png" id="HRZapLogo" alt="HRZapLogo"></td>
+                          <td class="zapbutton" id="NDRZap"><img src="images/buttons/Translucent & Metall/NDR_HD.png" id="NDRZapLogo" alt="NDRZapLogo"></td>
+                          <td class="zapbutton" id="SWRZap"><img src="images/buttons/Translucent & Metall/SWR_HD.png" id="SWRZapLogo" alt="SWRZapLogo"></td>
+                          <td class="zapbutton" id="WDRZap"><img src="images/buttons/Translucent & Metall/WDR_HD.png" id="WDRZapLogo" alt="WDRZapLogo"></td>
+                        </tr>
+                        <tr>
+                          <td class="zapbutton" id="BRZap"><img src="images/buttons/Translucent & Metall/BR_HD.png" id="BRZapLogo" alt="BRZapLogo"></td>
+                          <td class="zapbutton" id="NeoHDZap"><img src="images/buttons/Translucent & Metall/neo_HD.png" id="NeoHDZapLogo" alt="NeoHDZapLogo"></td>
+                          <td class="zapbutton" id="SixxZap"><img src="images/buttons/Translucent & Metall/SIXX.png" id="SixxZapLogo" alt="SixxZapLogo"></td>
+                          <td class="zapbutton" id="Tageschau24Zap"><img src="images/buttons/Translucent & Metall/tagesschau24.png" id="Tageschau24ZapLogo" alt="Tageschau24ZapLogo"></td>
+                        </tr>
+                        <tr>
+                          <td class="zapbutton" id="KikaHDZap"><img src="images/buttons/Translucent & Metall/KiKA_HD.png" id="KikaHDZapLogo" alt="KikaHDZapLogo"></td>
+                          <td class="zapbutton" id="SuperRTLZap"><img src="images/buttons/Translucent & Metall/Super_RTL.png" id="SuperRTLZapLogo" alt="SuperRTLZapLogo"></td>
+                          <td class="zapbutton" id="DisneyChannelZap"><img src="images/buttons/Translucent & Metall/Disney-HD.png" id="DisneyChannelZapLogo" alt="DisneyChannelZapLogo"></td>
+                          <td class="zapbutton" id="Tele5Zap"><img src="images/buttons/Translucent & Metall/Tele5.png" id="Tele5ZapLogo" alt="Tele5ZapLogo"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                 </section>
+                 </div>		
+       
+       
+       </main>
+      
+       
+  </section>
+    
+       
+              
+                      
+            
+            
+  </div>
+</div>
+
+
+</body>
+</html>
