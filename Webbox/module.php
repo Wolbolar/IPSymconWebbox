@@ -252,7 +252,7 @@
 			body {
 				background-color: transparent;
 			}
-			</style>'
+			</style>';
 			return $CSS;
 		}
 		
