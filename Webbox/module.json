@@ -1,5 +1,7 @@
 {
 	"id": "{2669C5BE-13FD-4FE9-9862-CCC5458657CE}",
+	"title": "Webbox Instanz",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
 	"name": "Webbox",
 	"type": 0,
 	"vendor": "",
