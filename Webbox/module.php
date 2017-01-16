@@ -8,7 +8,7 @@
 			parent::Create();
 			
 			$this->RegisterPropertyString("webhookusername", "ipsymcon");
-			$this->RegisterPropertyString("webhookpassword", "user@h0me");	
+			$this->RegisterPropertyString("webhookpassword", "useripsh0me");	
 		}
 	
 		public function ApplyChanges() {
@@ -1419,7 +1419,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				echo "Authorization required";
 				return;
 			}
-			echo "Webhook Webbox IP-Symcon 4";
+			//echo "Webhook Webbox IP-Symcon 4";
 
 			//workaround for bug
 			if(!isset($_IPS))

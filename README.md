@@ -59,7 +59,7 @@ Die soeben erstellte Kerninstanz Webbox öffnen, hier einen Webhook Benutzername
 In NEO ein Webseitenelement auf die Remoteseite ziehen. Bei Webseite auf Zuweisen klicken. In dem Webseitendialog nun auf + klicken um eine neue Webseite anzulegen. Einen Namen für die Webseite vergeben.
 Als URL nun wie folgt eintragen:
 ```
-http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?objectid=<objectid>
+http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=htmlbox&objectid=<objectid>
 ```
 <webhook user>      Webhook Benutzername wie er in der I/O Instanz festgelegt wurde
 <webhook password>  Webhook Passwort wie es in der I/O Instanz festgelegt wurde
@@ -67,7 +67,7 @@ http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?objectid=<obj
 <objectid>          ObjektID der Variable in IP-Symcon mit Variablenprofil ~HTMLBox 
 
 Beispiel:
-http://max:musterpasswort@192.168.10.10:3777/hook/webbox?objectid=12345
+http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=htmlbox&objectid=12345
 
 
 ### Media Image aus IP-Symcon in NEO einbinden:	
@@ -75,7 +75,7 @@ http://max:musterpasswort@192.168.10.10:3777/hook/webbox?objectid=12345
 In NEO ein Webseitenelement auf die Remoteseite ziehen. Bei Webseite auf Zuweisen klicken. In dem Webseitendialog nun auf + klicken um eine neue Webseite anzulegen. Einen Namen für die Webseite vergeben.
 Als URL nun wie folgt eintragen:
 ```
-http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?objectid=<objectid>
+http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=mediaimage&objectid=<objectid>
 ```
 <webhook user>      Webhook Benutzername wie er in der I/O Instanz festgelegt wurde
 <webhook password>  Webhook Passwort wie es in der I/O Instanz festgelegt wurde
