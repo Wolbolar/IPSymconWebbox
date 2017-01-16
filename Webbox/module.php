@@ -1502,7 +1502,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
 						return $Cover;
 						*/
-						$root = realpath(__DIR__ . "/www/colorwheel");
+						$root = realpath(__DIR__ . "/www/Colorwheel");
 			
 						//append colorwheel.php
 						if(substr($_SERVER['REQUEST_URI'], -16) == "?type=colorwheel")
