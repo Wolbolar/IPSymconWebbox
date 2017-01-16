@@ -62,8 +62,11 @@ Als URL nun wie folgt eintragen:
 http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=htmlbox&objectid=<objectid>
 ```
 <webhook user>      Webhook Benutzername wie er in der I/O Instanz festgelegt wurde
+
 <webhook password>  Webhook Passwort wie es in der I/O Instanz festgelegt wurde
+
 <IP IPS>            IP Adresse des IP-Symcon Servers
+
 <objectid>          ObjektID der Variable in IP-Symcon mit Variablenprofil ~HTMLBox 
 
 Beispiel:
@@ -78,8 +81,11 @@ Als URL nun wie folgt eintragen:
 http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=mediaimage&objectid=<objectid>
 ```
 <webhook user>      Webhook Benutzername wie er in der I/O Instanz festgelegt wurde
+
 <webhook password>  Webhook Passwort wie es in der I/O Instanz festgelegt wurde
+
 <IP IPS>            IP Adresse des IP-Symcon Servers
+
 <objectid>          ObjektID des Medien Image in IP-Symcon 
 
 ## 5. Konfiguration:
