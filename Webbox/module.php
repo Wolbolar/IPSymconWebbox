@@ -1504,16 +1504,19 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						*/
 						$root = realpath(__DIR__ . "/www/colorwheel");
 			
-						//append image.php
-						if(substr($_SERVER['REQUEST_URI'], -1) == "/") {
-							$_SERVER['REQUEST_URI'] .= "colorwheel.php";
+						//append colorwheel.php
+						if(substr($_SERVER['REQUEST_URI'], -16) == "?type=colorwheel")
+						{
+							$uri = substr($_SERVER['REQUEST_URI'], 0, -(strlen("?type=colorwheel")));
+							$uri .= "/colorwheel.php";
 						}
 						
 						//reduce any relative paths. this also checks for file existance
-						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/webbox/")));
-						if($path === false) {
+						$path = realpath($root . "/" . substr($uri, 39));
+						if($path === false)
+						{
 							http_response_code(404);
-							die("File not found! Path: ".__DIR__);
+							die("File not found!");
 						}
 						
 						if(substr($path, 0, strlen($root)) != $root) {
