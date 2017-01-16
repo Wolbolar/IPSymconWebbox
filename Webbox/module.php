@@ -7,15 +7,15 @@
 			//Never delete this line!
 			parent::Create();
 			
-			$this->RegisterPropertyString("Username", "");
-			$this->RegisterPropertyString("Password", "");
+			$this->RegisterPropertyString("webhookusername", "ipsymcon");
+			$this->RegisterPropertyString("webhookpassword", "user@h0me");	
 		}
 	
 		public function ApplyChanges() {
 			//Never delete this line!
 			parent::ApplyChanges();
 			$ipsversion = $this->GetIPSVersion();
-			if($ipsversion == 0 || $ipsversion == 1)
+			if($ipsversion == 0)
 				{
 					//prüfen ob Script existent
 					$SkriptID = @IPS_GetObjectIDByIdent("WebboxIPSInterface", $this->InstanceID);
@@ -334,10 +334,10 @@
 			return $content;
 		}
 		
-		protected function HTMLBox($objektid)
+		protected function HTMLBox($objectid)
 		{
 		// HTMLBox ausgeben
-		$HTML = GetValue($objektid);
+		$HTML = GetValue($objectid);
 		if ( strpos($HTML, '</html>'))
 			{
 			//echo utf8_encode($HTML);
@@ -1340,26 +1340,7 @@ Raphael.colorwheel = function(target, color_wheel_size, no_segments){
         $Script = '<?
 //Do not delete or modify.
 Webbox_ProcessHookDataOLD('.$this->InstanceID.');		
-?>';
-        /*
-		var_dump($_GET);
-            $PlayerSelect = IPS_GetObjectIDByIdent("PlayerSelect",IPS_GetParent($_IPS["SELF"]));
-            $PlayerID = GetValueInteger($PlayerSelect);
-            if ($PlayerID == -1)
-            {
-            // Alle
-            }
-            elseif($PlayerID >= 0)
-            {
-                $Player = LMS_GetPlayerInfo(IPS_GetParent($_IPS["SELF"]),$PlayerID);
-                if ($Player["Instanceid"] > 0)
-                {
-                    LSQ_LoadPlaylistByPlaylistID($Player["Instanceid"],(integer)$_GET["Playlistid"]);
-                }
-            }
-            SetValueInteger($PlayerSelect,-2);
-		*/
-		
+?>';	
 		return $Script;
 		}
 		
@@ -1389,10 +1370,117 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			return $ipsversion;
 		}
 		
-		/*
-		Hook -> ProcessHookData
-		OAuth -> ProcessOAuthData
+		
+		
+		public function ProcessHookDataOLD()
+		{
+			$this->ProcessHookData();
+		}
+		
+		/**
+		* This function will be called by the hook control. Visibility should be protected!
 		*/
+			
+		protected function ProcessHookData()
+		{
+			/*
+			$root = realpath(__DIR__ . "/www");
+			
+			//append index.html
+			if(substr($_SERVER['REQUEST_URI'], -1) == "/") {
+				$_SERVER['REQUEST_URI'] .= "index.html";
+			}
+			
+			//reduce any relative paths. this also checks for file existance
+			$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/hookserve/")));
+			if($path === false) {
+				http_response_code(404);
+				die("File not found!");
+			}
+			
+			if(substr($path, 0, strlen($root)) != $root) {
+				http_response_code(403);
+				die("Security issue. Cannot leave root folder!");
+			}
+			header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+			readfile($path);
+			*/
+			
+			$webhookusername = $this->ReadPropertyString('webhookusername');
+			$webhookpassword = $this->ReadPropertyString('webhookpassword');
+			if(!isset($_SERVER['PHP_AUTH_USER']))
+			$_SERVER['PHP_AUTH_USER'] = "";
+			if(!isset($_SERVER['PHP_AUTH_PW']))
+				$_SERVER['PHP_AUTH_PW'] = "";
+			 
+			if(($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword)) {
+				header('WWW-Authenticate: Basic Realm="Doorbird WebHook"');
+				header('HTTP/1.0 401 Unauthorized');
+				echo "Authorization required";
+				return;
+			}
+			echo "Webhook Webbox IP-Symcon 4";
+
+			//workaround for bug
+			if(!isset($_IPS))
+				global $_IPS;
+			if($_IPS['SENDER'] == "Execute")
+				{
+				echo "This script cannot be used this way.";
+				return;
+				}
+			
+			// Webbox nutzt GET
+			if (isset($_GET["type"]))
+				{
+				$type = $_GET["type"];
+				if (isset($_GET["objectid"]))
+					{
+						$objectid = $_GET["objectid"];
+					}
+				if ($type == "htmlbox")
+					{
+						$HTMLPage = HTMLBox($objectid);
+						return $HTMLPage;
+					}
+				elseif ($type == "mediaimage")
+					{
+						$MediaImage = MediaImage($objectid);
+						return $MediaImage;
+					}
+				elseif ($type == "cover")
+					{
+						if (isset($_GET["size"]))
+						{
+							$objectid = $_GET["size"];
+						}
+						if (isset($_GET["detailobjectid"]))
+						{
+							$objectid = $_GET["detailobjectid"];
+						}
+						$Cover = Cover($imgobjectid, $size, $detailobjectid);
+						return $Cover;
+					}
+				}
+		}
+		
+				
+		private function GetMimeType($extension)
+		{
+			$lines = file(IPS_GetKernelDirEx()."mime.types");
+			foreach($lines as $line) {
+				$type = explode("\t", $line, 2);
+				if(sizeof($type) == 2) {
+					$types = explode(" ", trim($type[1]));
+					foreach($types as $ext) {
+						if($ext == $extension) {
+							return $type[0];
+						}
+					}
+				}
+			}
+			return "text/plain";
+		}
 		
 		private function CreateCategoryByIdent($id, $ident, $name) {
 			 $cid = @IPS_GetObjectIDByIdent($ident, $id);

@@ -15,337 +15,100 @@ Modul für IP-Symcon ab Version 4 stellt eine Schnittstelle zu IP-Symcon zur Ver
 
 ## 1. Funktionsumfang
 
-Mit dem Modul wird unter Kerninstanzen eine Instanz Webbox und ein Webhook /hook/webbox angelegt. Welche Werte angezeigt werden sollen lässt sich im Modul auswählen.
-Berechung der Werte erfolgt über Formeln aus _"Practical Astronomy with your Calculator or Spreadsheet"_ von Peter Duffet-Smith und Jonathan Zwart. 
+Mit dem Modul wird unter Kerninstanzen eine Instanz Webbox und ein Webhook /hook/webbox angelegt. Das Modul stellt eine Schnittstelle zu IP-Symcon zur Verfügung
+um damit in externen Webseiten oder Visualisierungstools wie Mediola NEO oder IPSStudio einfach Inhalt in einem Webseitenelement (NEO) bzw. Webview Element (IPSStudio) einzubinden.
 
-### Astronomische Werte:  
+### NEO Funktionen für Webseitenelement:  
 
-* Julianisches Datum
-* Mond Azimut
-* Mond Entfernung
-* Mond Höhe
-* Mond Positionswinkel der beleuchteten Fläche
-* Mond Himmelsrichtung 
-* Mond Richtung (Grad)
-* Mond Sichtbarkeit
-* Mond Aufgang
-* Mond Untergang
-* Mond Phase
-* Zeitpunkt Neumond
-* Zeitpunkt Erstes Viertel
-* Zeitpunkt Vollmond
-* Zeitpunkt Letztes Viertel
-* Sonne Azimut
-* Sonne Entfernung
-* Sonne Höhe
-* Sonne Richtung
-* Sonne Richtung (Grad)
-* Jahreszeit
-* Sonnenaufgang mit einstellbaren Offset
-* Sonnenuntergang mit einstellbaren Offset
+* HTMLBox aus IP-Symcon darstellen
+* Media Image aus IP-Symcon darstellen
+* Coveranzeige darstellen z.B. Sonos
+* Fernbedienungsremote
+* Slider
 
-### Astronomischer Timer: 
-Es können für ein Skript oder eine Variable ein Timer angelegt werden der sich nach einem Astronomischen Ereignis richtet.
-Dabei kann zwischen unterschiedlichen Astronomischen Ereignissen ausgewählt werden. Der Timer wird automatisch jeden Tag auf die passende Uhrzeit eingestellt.
-Dadaurch lassen sich z.B. Rollläden steuern oder Lampen die mit der Dämmerung geschaltet werden sollen. Es lässt sich eine Grenzzeit einstellen sowie der Offset zum Ereignis.
+### IPSStudio Funktionen für Webview Element: 
 
-* Sonnenaufgang
-* Sonnenuntergang
-* zivile Morgendämmerung
-* zivile Abenddämmerung
-* nautische Morgendämmerung
-* nautische Abenddämmerung
-* astronomische Morgendämmerung
-* astronomische Abenddämmerung
-* Mond Aufgang
-* Mond Untergang
-
-Es kann eine Auswahl der Wochentage vorgenommen werden so das der Timer nur an einem bestimmten Wochentag aktiv ist.
+* Slider
+* Fernbedienungsremote
 
 ## 2. Voraussetzungen
 
- - IPS 4.1
+ - IP-Symcon 4.0
 
 ## 3. Installation
 
 ### a. Laden des Moduls
 
-In IP-Symcon (Ver. 4.1) unter Kerninstanzen über _*Modules*_ -> Hinzufügen das Modul ergänzen mit der URL:
+In IP-Symcon (Ver. 4.0) unter Kerninstanzen über _*Modules*_ -> Hinzufügen das Modul ergänzen mit der URL:
 	
-    `https://github.com/Wolbolar/IPSymconAstronomy`  
-
-### b. Überprüfen von Location
-
-Zur Berechnung der Astronomischen Daten wird der Breitengrad und Längengrad benötigt. Dieser wird aus der Location Instanz unter Kerninstanzen entnommen.
-Daher ist zunächst zu prüfen ob in der Instanz Location unter Kerninstanzen ein Breiten und Längengrad hinterlegt wurde.
+    `https://github.com/Wolbolar/IPSymconWebbox`  
 	
-### c. Einrichtung in IPS
+### b. Einrichtung in IPS
 
-In IP-Symcon unter Kern Instanzen Instanz hinzufügen auswählen und Astronomie auswählen.
+In IP-Symcon unter Kern Instanzen Instanz hinzufügen auswählen und Webbox auswählen.
+
+### c. Überprüfen und Setzten des Webhook Benutzernamens und Passworts
+
+Die soeben erstellte Kerninstanz Webbox öffnen, hier einen Webhook Benutzernamen und Webhook Passwort wählen, eintragen und mit Übernehmen der Instanz zuweisen.
 
 
 ## 4. Funktionsreferenz
 
-### Astronomische Daten:
-* Julianisches Datum
-* Mond Azimut
-* Mond Entfernung
-* Mond Höhe
-* Mond Positionswinkel der beleuchteten Fläche
-* Mond Himmelsrichtung 
-* Mond Richtung (Grad)
-* Mond Sichtbarkeit
-* Mond Aufgang
-* Mond Untergang
-* Mond Phase
-* Zeitpunkt Neumond
-* Zeitpunkt Erstes Viertel
-* Zeitpunkt Vollmond
-* Zeitpunkt Letztes Viertel
-* Sonne Azimut
-* Sonne Entfernung
-* Sonne Höhe
-* Sonne Richtung
-* Sonne Richtung (Grad)
-* Jahreszeit
-	
+### HTMLBox aus IP-Symcon in NEO einbinden:
 
+In NEO ein Webseitenelement auf die Remoteseite ziehen. Bei Webseite auf Zuweisen klicken. In dem Webseitendialog nun auf + klicken um eine neue Webseite anzulegen. Einen Namen für die Webseite vergeben.
+Als URL nun wie folgt eintragen:
+```
+http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?objectid=<objectid>
+```
+<webhook user>      Webhook Benutzername wie er in der I/O Instanz festgelegt wurde
+<webhook password>  Webhook Passwort wie es in der I/O Instanz festgelegt wurde
+<IP IPS>            IP Adresse des IP-Symcon Servers
+<objectid>          ObjektID der Variable in IP-Symcon mit Variablenprofil ~HTMLBox 
+
+Beispiel:
+http://max:musterpasswort@192.168.10.10:3777/hook/webbox?objectid=12345
+
+
+### Media Image aus IP-Symcon in NEO einbinden:	
+
+In NEO ein Webseitenelement auf die Remoteseite ziehen. Bei Webseite auf Zuweisen klicken. In dem Webseitendialog nun auf + klicken um eine neue Webseite anzulegen. Einen Namen für die Webseite vergeben.
+Als URL nun wie folgt eintragen:
+```
+http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?objectid=<objectid>
+```
+<webhook user>      Webhook Benutzername wie er in der I/O Instanz festgelegt wurde
+<webhook password>  Webhook Passwort wie es in der I/O Instanz festgelegt wurde
+<IP IPS>            IP Adresse des IP-Symcon Servers
+<objectid>          ObjektID des Medien Image in IP-Symcon 
 
 ## 5. Konfiguration:
 
-### Astronomie:
+### Webbox:
 
 | Eigenschaft         | Typ     | Wert            | Beschreibung                                 |
 | :-----------------: | :-----: | :-------------: | :------------------------------------------: |
-| juliandate          | float   | JD              | Julianisches Datum                           |
-| moonazimut          | float   | Mond Azimut     | Mond Azimut                                  |
-| moondistance        | float   | Mond Entfernung | Entfernung des Monds zur Erde                |
-| moonaltitude        | float   | Mond Höhe       | Höhe des Monds in Grad                       |
-| moonbrightlimbangle | float   | Positionswinkel | Mond Positionswinkel der beleuchteten Fläche |
-| moondirection       | integer | Himmelsrichtung | Himmelsrichtung des Monds                    |
-| moonvisibility      | float   | Sichtbarkeit    | Sichtbarkeit des Monds                       |
-| moonrise            | integer | Mond Aufgang    | Zeitpunkt Mond Aufgang                       |
-| moonset             | integer | Mond Untergang  | Zeitpunkt Mond Untergang                     |
-| moonphase           | string  | Mond Phase      | Mond Phase                                   |
-| newmoon             | string  | Neumond         | Zeitpunkt Neumond                            |
-| firstquarter        | string  | Erstes Viertel  | Zeitpunkt Erstes Viertel                     |
-| fullmoon            | string  | Vollmond        | Zeitpunkt Vollmond                           |
-| lastquarter         | string  | letztes Viertel | Zeitpunkt Letztes Viertel                    |
-| sunazimut           | float   | Sonne Azimut    | Sonne Azimut                                 |
-| sundistance         | float   | Sonne Entfernung| Sonne Entfernung                             |
-| sunaltitude         | float   | Sonne Höhe      | Sonne Höhe                                   |
-| sundirection        | integer | Himmelsrichtung | Himmelsrichtung                              |
-| season              | integer | Jahreszeit      | Jahreszeit                                   |
-| picturemoon         | gif     | Bild Mond       | Bild der aktuellen Ansicht vom Mond          |
-| sunmoonview         | string  | Position        | Position Sonne und Mond                      |
-| sunset              | integer | Sonnenuntergang | Sonnen-, Monduntergang + entstellbarer Offset|
-| sunrise             | integer | Sonnenaufgang   | Sonnen-, Mondaufgang + entstellbarer Offset  |
+| webhookusername     | string  | Benutzername    | Webhook Benutzername                         |
+| webhookpassword     | string  | Passwort        | Webhook Passwort                             |
 
-### Astronomie Timer:
-
-| Eigenschaft         | Typ     | Wert            | Beschreibung                                 |
-| :-----------------: | :-----: | :-------------: | :------------------------------------------: |
-| timertype           | integer | Typ Timer       | Auswahl Timertyp                             |
-| offset              | integer | Offset          | Offset Wert in Minuten                       |
-| cutoffselect        | boolean | false/true      | Auswahl Cutofftime                           |
-| cutofftime          | string  | Cutofftime      | Cutofftime höhere Priorität als Timerzeit    |
-| varwebfrontselect   | boolean | false/true      | Zeigt Uhrzeit des Timers im Webfront         |
-| triggerscript       | integer | ObjektID Skript | ObjektID des zu triggernden Skripts          |
-| varselect           | boolean | false/true      | Auswahl Variable                             |
-| triggervariable     | integer | ObjektID Var    | ObjektID der zu triggernden Variable         |
-| varvalue            | string  | Variablenwert   | Angabe des Variablenwerts                    |
-| monday              | boolean | Wochentag       | Auswahl Wochentag                            |
-| tuesday             | boolean | Wochentag       | Auswahl Wochentag                            |
-| wednesday           | boolean | Wochentag       | Auswahl Wochentag                            |
-| thursday            | boolean | Wochentag       | Auswahl Wochentag                            |
-| friday              | boolean | Wochentag       | Auswahl Wochentag                            |
-| saturday            | boolean | Wochentag       | Auswahl Wochentag                            |
-| sunday              | boolean | Wochentag       | Auswahl Wochentag                            |
 
 ## 6. Anhang
 
 ###  a. Funktionen:
 
-#### Astronomie:
+#### Webbox:
 
 ```php
-Astronomy_SetAstronomyValues(int $InstanceID)
+Webbox_Blablub(int $InstanceID)
 ```
-Aktualisiert alle im Modul ausgewählten Werte
-
-```php
-Astronomy_MoonphasePercent(int $InstanceID)
-```
-Gibt den Fortschritt der Mondphase in % aus
-
-```php
-Astronomy_MoonphaseText(int $InstanceID)
-```
-Liefert die Mondphase als Ausgabe Text - % z.B. zunehmender Mond - 84%
-
-```php
-Astronomy_Moon_FirstQuarter(int $InstanceID)
-```
-Zeitpunkt Erstes Viertel
-
-```php
-Astronomy_Moon_Newmoon(int $InstanceID)
-```
-Zeitpunkt Neumond
-
-```php
-Astronomy_Moon_Fullmoon(int $InstanceID)
-```
-Zeitpunkt Vollmond
-
-#### Astronomie Timer:
-
-```php
-AstronomyTimer_Set(int $InstanceID)
-```
-Setzt den Astronomie Timer mit den in der Instanz eingestellten Werten
-
-__*Um mit Funktionen einen Astronomie Timer anlegen zu können muss mindestens ein Astronomie Timer zuvor in IP-Symconangelegt worden sein. Mit der Funktion wird dann auf diese eine Instanz verwiesen um weitere Timer anzulegen.*__
-
-```php
-AstronomyTimer_SetSunrise(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit Sonnenaufgang + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetSunset(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit Sonnenuntergang + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetCivilTwilightStart(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit ziviler Morgendämmerung + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetCivilTwilightEnd(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit ziviler Abenddämmerung + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetNauticTwilightStart(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit nautischer Morgendämmerung + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetNauticTwilightEnd(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit nautischer Abenddämmerung + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetAstronomicTwilightStart(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit astronomischer Morgendämmerung + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetAstronomicTwilightEnd(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit astronomischer Abenddämmerung + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetMoonrise(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit Mondaufgang + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
-
-```php
-AstronomyTimer_SetMoonset(int $InstanceID, int $offset, string $settype, int $objectid, string $varvalue)
-```
-Setzt einen Astronomie Timer mit Monduntergang + Offset
-
-_$offset_   Offsetwert in Minuten 
-
-_$settype_  Typ des Timers Skriptausführung durch Timer oder Variablenänderung durch Timer. _Mögliche Werte:_ __*Script*__ | __*Variable*__
-
-_$objectid_ ObjektID der Variable oder des Skripts für Timerausführung
-
-_$varvalue_ Wert den der Timer bei einer Variable einstellen soll wenn das Event stattfindet. Auf den passenen Wert zum Variablentyp achten. Wenn ein Skript ausgeführt werden soll ist der Wert hier __*NULL*__
+Blablub Funktion
 
 
 ###  b. GUIDs und Datenaustausch:
 
-#### Astronomy:
+#### Webbox:
 
-GUID: `{AE370BEA-2B51-4C64-A147-0CCE3494FE08}` 
+GUID: `{2669C5BE-13FD-4FE9-9862-CCC5458657CE}` 
 
-#### AstronomyTimer:
-
-GUID: `{5C02271C-D599-4C71-98D3-86C89F94EB96}` 
 
 
