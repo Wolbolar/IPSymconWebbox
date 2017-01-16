@@ -1445,7 +1445,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "mediaimage")
 					{
-						$MediaImage = $this->MediaImage($objectid);
+						$mediaimage = $this->MediaImage($objectid);
 						$headhtml = $mediaimage["headhtml"];
 						$imgdata = $mediaimage["imgdata"];
 						header($headhtml);
