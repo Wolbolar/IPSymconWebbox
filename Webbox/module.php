@@ -1513,7 +1513,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/webbox/")));
 						if($path === false) {
 							http_response_code(404);
-							die("File not found!");
+							die("File not found! Path: ".__DIR__);
 						}
 						
 						if(substr($path, 0, strlen($root)) != $root) {
