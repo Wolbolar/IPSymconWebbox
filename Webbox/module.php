@@ -1445,6 +1445,30 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "mediaimage")
 					{
+						/*
+						$root = realpath(__DIR__ . "/www/mediaimage");
+			
+						//append image.php
+						if(substr($_SERVER['REQUEST_URI'], -1) == "/") {
+							$_SERVER['REQUEST_URI'] .= "image.php?imageid=".$objectid;
+						}
+						
+						//reduce any relative paths. this also checks for file existance
+						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/hookserve/")));
+						if($path === false) {
+							http_response_code(404);
+							die("File not found!");
+						}
+						
+						if(substr($path, 0, strlen($root)) != $root) {
+							http_response_code(403);
+							die("Security issue. Cannot leave root folder!");
+						}
+						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+						readfile($path);
+						*/
+						
+						
 						$mediaimage = $this->MediaImage($objectid);
 						$headhtml = $mediaimage["headhtml"];
 						$imgdata = $mediaimage["imgdata"];
@@ -1464,6 +1488,41 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
 						return $Cover;
 					}
+				elseif ($type == "colorwheel")
+					{
+						/*
+						if (isset($_GET["size"]))
+						{
+							$objectid = $_GET["size"];
+						}
+						if (isset($_GET["detailobjectid"]))
+						{
+							$objectid = $_GET["detailobjectid"];
+						}
+						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
+						return $Cover;
+						*/
+						$root = realpath(__DIR__ . "/www/colorwheel");
+			
+						//append image.php
+						if(substr($_SERVER['REQUEST_URI'], -1) == "/") {
+							$_SERVER['REQUEST_URI'] .= "colorwheel.php";
+						}
+						
+						//reduce any relative paths. this also checks for file existance
+						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/webbox/")));
+						if($path === false) {
+							http_response_code(404);
+							die("File not found!");
+						}
+						
+						if(substr($path, 0, strlen($root)) != $root) {
+							http_response_code(403);
+							die("Security issue. Cannot leave root folder!");
+						}
+						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+						readfile($path);
+					}	
 				}
 		}
 		
