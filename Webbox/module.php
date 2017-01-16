@@ -1440,12 +1440,12 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				if ($type == "htmlbox")
 					{
-						$HTMLPage = HTMLBox($objectid);
+						$HTMLPage = $this->HTMLBox($objectid);
 						return $HTMLPage;
 					}
 				elseif ($type == "mediaimage")
 					{
-						$MediaImage = MediaImage($objectid);
+						$MediaImage = $this->MediaImage($objectid);
 						return $MediaImage;
 					}
 				elseif ($type == "cover")
@@ -1458,7 +1458,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						{
 							$objectid = $_GET["detailobjectid"];
 						}
-						$Cover = Cover($imgobjectid, $size, $detailobjectid);
+						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
 						return $Cover;
 					}
 				}
