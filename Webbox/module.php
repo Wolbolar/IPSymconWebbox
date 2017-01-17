@@ -1591,7 +1591,6 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			$floatString = str_replace(",", $LocaleInfo["decimal_point"], $floatString);
 			return floatval($floatString); 
 		}
-		
 	}
 
 ?>
