@@ -1473,7 +1473,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						$headhtml = $mediaimage["headhtml"];
 						$imgdata = $mediaimage["imgdata"];
 						header($headhtml);
-						return $imgdata;
+						echo $imgdata;
+						//return $imgdata;
 					}
 				elseif ($type == "cover")
 					{
