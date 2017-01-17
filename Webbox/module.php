@@ -1453,7 +1453,10 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				if ($type == "htmlbox")
 					{
-						$HTMLPage = $this->HTMLBox($objectid, $_SERVER['SCRIPT_URI']);
+						$host = $_SERVER['HTTP_HOST'];
+						$port = $_SERVER['REMOTE_PORT'];
+						$uri = $host.":".$port;
+						$HTMLPage = $this->HTMLBox($objectid, $uri);
 						return $HTMLPage;
 					}
 				elseif ($type == "mediaimage")
