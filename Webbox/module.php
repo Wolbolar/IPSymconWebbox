@@ -1513,17 +1513,19 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						
 						//reduce any relative paths. this also checks for file existance
 						$path = realpath($root . "/" . substr($uri, 39));
+						$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/Colorwheel/colorwheel.php";
 						IPS_LogMessage("Webbox", "Pfad : ".$path);
 						if($path === false)
 						{
 							http_response_code(404);
 							die("File not found!");
 						}
-						
+						/*
 						if(substr($path, 0, strlen($root)) != $root) {
 							http_response_code(403);
 							die("Security issue. Cannot leave root folder!");
 						}
+						*/
 						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
 						readfile($path);
 					}	
