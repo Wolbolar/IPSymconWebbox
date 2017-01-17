@@ -1536,16 +1536,21 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 		private function GetMimeType($extension)
 		{
 			$lines = file(IPS_GetKernelDirEx()."mime.types");
-			foreach($lines as $line) {
+			foreach($lines as $line)
+			{
 				$type = explode("\t", $line, 2);
-				if(sizeof($type) == 2) {
+				if(sizeof($type) == 2)
+				{
 					$types = explode(" ", trim($type[1]));
-					foreach($types as $ext) {
-						if($ext == $extension) {
+					foreach($types as $ext)
+					{
+						if($ext == $extension)
+						{
 							return $type[0];
 						}
 					}
 				}
+			}	
 			return "text/html";
 			//return "text/plain";
 		}
