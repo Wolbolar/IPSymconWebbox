@@ -1546,8 +1546,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						}
 					}
 				}
-			}
-			return "text/plain";
+			return "text/html";
+			//return "text/plain";
 		}
 		
 		private function CreateCategoryByIdent($id, $ident, $name) {
