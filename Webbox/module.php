@@ -1513,7 +1513,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						
 						//reduce any relative paths. this also checks for file existance
 						$path = realpath($root . "/" . substr($uri, 39));
-						$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/Colorwheel/colorwheel.php";
+						$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/Colorwheel/colorwheel.html";
 						IPS_LogMessage("Webbox", "Pfad : ".$path);
 						if($path === false)
 						{
