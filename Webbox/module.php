@@ -337,6 +337,7 @@
 		protected function HTMLBox($objectid, $uri)
 		{
 		$uriips =  substr($uri, 0, 26);
+		IPS_LogMessage("Webbox", "IPS IP : ".$uriips);
 		// HTMLBox ausgeben
 		$HTML = GetValue($objectid);
 		if ( strpos($HTML, '</iframe>'))
