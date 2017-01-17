@@ -1457,7 +1457,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						$host = $_SERVER['HTTP_HOST'];
 						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
-						return $HTMLPage;
+						echo $HTMLPage;
+						//return $HTMLPage;
 					}
 				elseif ($type == "mediaimage")
 					{
@@ -1479,7 +1480,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 							$objectid = $_GET["detailobjectid"];
 						}
 						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
-						return $Cover;
+						echo $Cover;
+						//return $Cover;
 					}
 				elseif ($type == "colorwheel")
 					{
