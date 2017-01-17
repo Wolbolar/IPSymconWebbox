@@ -1513,6 +1513,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						
 						//reduce any relative paths. this also checks for file existance
 						$path = realpath($root . "/" . substr($uri, 39));
+						IPS_LogMessage("Webbox", "Pfad : " $path);
 						if($path === false)
 						{
 							http_response_code(404);
