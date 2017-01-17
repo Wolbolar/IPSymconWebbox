@@ -1454,8 +1454,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				if ($type == "htmlbox")
 					{
 						$host = $_SERVER['HTTP_HOST'];
-						$port = $_SERVER['REMOTE_PORT'];
-						$uri = $host.":".$port;
+						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
 						return $HTMLPage;
 					}
