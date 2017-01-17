@@ -1,6 +1,6 @@
 <?
 
-	class Webbox extends IPSModule
+	class WebboxRemote extends IPSModule
 	{
 		
 		public function Create() {

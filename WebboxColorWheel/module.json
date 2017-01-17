@@ -1,0 +1,16 @@
+{
+	"id": "{218B0898-73D4-4B83-84D2-4721C902DE4A}",
+	"title": "Webbox Colorwheel",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxColorwheel",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Colorwheel"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxColorwheel"
+}

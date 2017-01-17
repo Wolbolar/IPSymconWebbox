@@ -1,0 +1,12 @@
+{
+	"translations": {
+		"de": { 
+			"Webbox for Sonos PHP Modul":"Webbox für Sonos PHP Modul",
+			"Select a Sonos instance:":"Eine Sonos Instanz auswählen:",
+			"Sonos instance":"Sonos Instanz",
+			"Position":"Position",
+			"Toggle scripts for NEO:":"Toggle Skripte für NEO anlegen",
+			"NEO toggle":"NEO toggle"
+		}
+	}
+}

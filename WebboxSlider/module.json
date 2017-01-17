@@ -1,0 +1,16 @@
+{
+	"id": "{920C06B4-232D-44EC-8D62-7D4262C56288}",
+	"title": "Webbox Slider",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxSlider",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Slider"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "Webbox"
+}

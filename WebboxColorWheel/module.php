@@ -1,6 +1,6 @@
 <?
 
-	class Webbox extends IPSModule
+	class WebboxColorwheel extends IPSModule
 	{
 		
 		public function Create() {

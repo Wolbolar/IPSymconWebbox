@@ -1,0 +1,16 @@
+{
+	"id": "{63EEFC73-A823-4E4C-8D68-3F6EF51637B4}",
+	"title": "Webbox Cursor",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxCursor",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Cursor"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxCursor"
+}

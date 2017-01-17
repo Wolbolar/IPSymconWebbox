@@ -1,0 +1,16 @@
+{
+	"id": "{8455C0C9-D3EA-4E7A-8FFF-CE36B8013E05}",
+	"title": "Webbox Remote",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxRemote",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Remote"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxRemote"
+}

@@ -1,45 +1,256 @@
 <?
 
-	class Webbox extends IPSModule
+	class WebboxSonos extends IPSModule
 	{
 		
 		public function Create() {
 			//Never delete this line!
 			parent::Create();
 			
-			$this->RegisterPropertyString("webhookusername", "ipsymcon");
-			$this->RegisterPropertyString("webhookpassword", "useripsh0me");	
+			$this->RegisterPropertyInteger("SonosID", 0);
+			$this->RegisterPropertyBoolean("Position", false);
+			$this->RegisterPropertyBoolean("NEOtoggle", false);	
 		}
 	
 		public function ApplyChanges() {
 			//Never delete this line!
 			parent::ApplyChanges();
-			$ipsversion = $this->GetIPSVersion();
-			if($ipsversion == 0)
+			$this->ValidateConfiguration();
+		}
+		
+		private function ValidateConfiguration()
+		{
+			$change = false;
+			
+			
+			$hostdoorbell = $this->ReadPropertyString('Host');
+			$hostips = $this->ReadPropertyString('IPSIP');
+			$doorbirduser = $this->ReadPropertyString('User');
+			$password = $this->ReadPropertyString('Password');
+			$portdoorbell = $this->ReadPropertyInteger('PortDoorbell');
+			$webhookusername = $this->ReadPropertyString('webhookusername');
+			$webhookpassword = $this->ReadPropertyString('webhookpassword');
+			
+			//IP Doorbell prüfen
+			if (!filter_var($hostdoorbell, FILTER_VALIDATE_IP) === false)
 				{
-					//prüfen ob Script existent
-					$SkriptID = @IPS_GetObjectIDByIdent("WebboxIPSInterface", $this->InstanceID);
-					if ($SkriptID === false)
+					//IP ok
+					$ipcheckdoorbird = true;
+				}
+			else
+				{
+					$ipcheckdoorbird = false;
+				}
+				
+			//IP IP-Symcon prüfen
+			if (!filter_var($hostips, FILTER_VALIDATE_IP) === false)
+				{
+					//IP ok
+					$ipcheckips = true;
+				}
+			else
+				{
+					$ipcheckips = false;
+				}	
+				
+			//Domain Doorbell prüfen
+			if(!$this->is_valid_domain($hostdoorbell) === false)
+			{
+				//Domain ok
+				$domaincheckdoorbell = true;
+			}
+			else
+			{
+				$domaincheckdoorbell = false;
+			}
+			
+			//Domain IP-Symcon prüfen
+			if(!$this->is_valid_domain($hostips) === false)
+			{
+				//Domain ok
+				$domaincheckips = true;
+			}
+			else
+			{
+				$domaincheckips = false;
+			}
+			
+			if (($domaincheckdoorbell === true || $ipcheckdoorbird = true) && ($domaincheckips = true || $ipcheckips === true))
+			{
+				$hostcheck = true;
+			}
+			else
+			{
+				$hostcheck = false;
+				$this->SetStatus(203); //IP Adresse oder Host ist ungültig
+			}		
+			$change = false;	
+			//User und Passwort prüfen
+			if ($doorbirduser == "" || $password == "" || $webhookusername == "" || $webhookpassword == "")
+				{
+					$this->SetStatus(205); //Felder dürfen nicht leer sein
+				}
+			elseif ($doorbirduser !== "" && $password !== "" && $hostcheck === true)
+				{
+					$selectionaltview = $this->ReadPropertyBoolean('altview');
+					$prefix = $this->GetURLPrefix($hostdoorbell);
+					if ($selectionaltview)
+					{
+						$DoorbirdVideoHTML = '<img src="'.$prefix.$hostdoorbell.':'.$portdoorbell.'/bha-api/video.cgi?http-user='.$doorbirduser.'&http-password='.$password.'" style="width: 960px; height:540px;" >';
+					}
+					else
+					{
+						$DoorbirdVideoHTML = '<iframe src="'.$prefix.$hostdoorbell.':'.$portdoorbell.'/bha-api/video.cgi?http-user='.$doorbirduser.'&http-password='.$password.'" border="0" frameborder="0" style= "width: 100%; height: 500px;"/></iframe>';
+					}
+					SetValueString($this->GetIDForIdent('DoorbirdVideo'), $DoorbirdVideoHTML);
+					
+					$ipsversion = $this->GetIPSVersion();
+					if($ipsversion == 0)
+					{
+						//prüfen ob Script existent
+						$SkriptID = @IPS_GetObjectIDByIdent("DoorbirdIPSInterface", $this->InstanceID);
+						if ($SkriptID === false)
+							{
+								$ID = $this->RegisterScript("DoorbirdIPSInterface", "Doorbird IPS Interface", $this->CreateWebHookScript(), 19);
+								IPS_SetHidden($ID, true);
+								$this->RegisterHookOLD('/hook/doorbird' . $this->InstanceID, $ID);
+							}
+						else
+							{
+								//echo "Die Skript-ID lautet: ". $SkriptID;
+							}
+					}
+					else
+					{
+						$SkriptID = @IPS_GetObjectIDByIdent("DoorbirdIPSInterface", $this->InstanceID);
+						if ($SkriptID > 0)
 						{
-							$ID = $this->RegisterScript("WebboxIPSInterface", "Webbox IPS Interface", $this->CreateWebHookScript(), 1);
-							IPS_SetHidden($ID, true);
-							$this->RegisterHookOLD('/hook/webbox', $ID);
+							$this->UnregisterHook("/hook/doorbird" . $this->InstanceID);
+							$this->UnregisterScript("DoorbirdIPSInterface");
+						}
+						$this->RegisterHook("/hook/doorbird" . $this->InstanceID);
+					}
+					
+					
+						
+					//Timer für Historie
+					// Ersetzt durch Event das Bilder bei Klingeln abholt
+					/*
+					$timerscript = "Doorbird_GetHistory($this->InstanceID)";
+					$timerid = @IPS_GetEventIDByName("Get Doorbird History", $this->InstanceID);
+					if ($timerid === false)
+					{
+						$timerid = $this->RegisterTimer('Get Doorbird History', 3600000, $timerscript);
+					}
+					else
+					{
+						//echo "Die Ereignis-ID lautet: ". $timerid;
+					}
+					*/
+					
+					//Skript bei Bewegung				
+					$IDSnapshot = @($this->GetIDForIdent('GetDoorbirdSnapshot'));
+					if ($IDSnapshot === false)
+						{
+							$IDSnapshot = $this->RegisterScript("GetDoorbirdSnapshot", "Get Doorbird Snapshot", $this->CreateSnapshotScript(), 17);
+							IPS_SetHidden($IDSnapshot, true);
+							$this->SetSnapshotEvent($IDSnapshot);
 						}
 					else
 						{
 							//echo "Die Skript-ID lautet: ". $SkriptID;
 						}
-				}
-			else
-				{
-					$SkriptID = @IPS_GetObjectIDByIdent("WebboxIPSInterface", $this->InstanceID);
-					if ($SkriptID > 0)
+					
+					//Skript beim Klingeln	
+					$IDRing = @($this->GetIDForIdent('GetDoorbirdRingPic'));
+					if ($IDRing === false)
+						{
+							$IDRing = $this->RegisterScript("GetDoorbirdRingPic", "Get Doorbird Ring Picture", $this->CreateRingPictureScript(), 18);
+							IPS_SetHidden($IDRing, true);
+							$this->SetRingEvent($IDRing);
+						}
+					else
+						{
+							//echo "Die Skript-ID lautet: ". $SkriptID;
+						}	
+						
+					//Kategorie anlegen
+					$objidhis = $this->GetIDForIdent('ObjIDHist');
+					$objidsnap = $this->GetIDForIdent('ObjIDSnap');
+					//$CatIDHistory = @($this->GetIDForIdent('DoorbirdKatHistory'));
+					$CatIDHistory = GetValue($objidhis);
+					
+					//if ($CatIDHistory === false)
+					if ($CatIDHistory === 0)	
 					{
-						$this->UnregisterHook("/hook/webbox");
-						$this->UnregisterScript("WebboxIPSInterface");
+						$CatIDHistory = IPS_CreateCategory();       // Kategorie anlegen
+						$ParentID = IPS_GetParent ($this->InstanceID);
+						IPS_SetName($CatIDHistory, "Doorbird Klingelhistorie"); // Kategorie benennen
+						IPS_SetParent($CatIDHistory, $ParentID); // Kategorie einsortieren
+						IPS_SetIdent ($CatIDHistory, "DoorbirdKatHistory");
+						SetValue($objidhis, $CatIDHistory);
 					}
-					$this->RegisterHook("/hook/webbox");
+							
+					//$CatIDSnapshot = @($this->GetIDForIdent('DoorbirdKatSnapshots'));
+					$CatIDSnapshot = GetValue($objidsnap);
+					//if ($CatIDSnapshot === false)
+					if ($CatIDSnapshot === 0)
+					{
+						$CatIDSnapshot = IPS_CreateCategory();       // Kategorie anlegen
+						$ParentID = IPS_GetParent ($this->InstanceID);
+						IPS_SetName($CatIDSnapshot, "Doorbird Besucherhistorie"); // Kategorie benennen
+						IPS_SetParent($CatIDSnapshot, $ParentID); // Kategorie einsortieren
+						IPS_SetIdent ($CatIDHistory, "DoorbirdKatSnapshots");
+						SetValue($objidsnap, $CatIDSnapshot);	
+					}			
+					
+					$change = true;
+					$this->SetupNotification();
+					$this->GetInfo();
+					
+					//Email
+					$emailalert = $this->ReadPropertyBoolean('activeemail');
+					if ($emailalert)
+					{
+						$email = $this->ReadPropertyString('email');
+						if ($email == "")
+						{
+							$this->SetStatus(205); //Felder dürfen nicht leer sein
+						}
+						if (filter_var($email, FILTER_VALIDATE_EMAIL))
+						{
+							//email valid
+							//Skript beim EmailAlert	
+							$IDEmail = @($this->GetIDForIdent('SendEmailAlert'));
+							if ($IDEmail === false)
+								{
+									$IDEmail = $this->RegisterScript("SendEmailAlert", "Email Alert", $this->CreateEmailAlertScript($email), 19);
+									IPS_SetHidden($IDEmail, true);
+								}
+							$this->SetEmailEvent($IDEmail, true);	
+						}
+						else
+						{
+							
+							$this->SetStatus(207); //email not vaild
+						}	
+						
+					}
+					else
+					{
+						$IDEmail = @($this->GetIDForIdent('SendEmailAlert'));
+						if ($IDEmail > 0)
+						{
+							$this->SetEmailEvent($IDEmail, false);
+						}
+						
+					}
+					
+					
+					// Status Aktiv
+					$this->SetStatus(102);	
 				}
+			
 		}
 		
 		private function RegisterHookOLD($Hook, $TargetID)

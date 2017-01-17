@@ -1,6 +1,6 @@
 <?
 
-	class Webbox extends IPSModule
+	class WebboxSlider extends IPSModule
 	{
 		
 		public function Create() {

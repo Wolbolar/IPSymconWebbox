@@ -1,0 +1,12 @@
+{
+	"elements":
+	[
+		{ "type": "Label", "label": "Webbox for Sonos PHP Modul" },
+		{ "type": "Label", "label": "https://github.com/tkugelberg/SymconSonos" },
+		{ "type": "Label", "label": "Select a Sonos instance:" },
+		{ "type": "SelectInstance", "name": "SonosID", "caption": "Sonos instance" },
+		{ "type": "CheckBox", "name": "Position", "caption": "Position" },
+		{ "type": "Label", "label": "Toggle scripts for NEO:" },
+		{ "type": "CheckBox", "name": "NEOtoggle", "caption": "NEO toggle" }
+	]
+}

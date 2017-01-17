@@ -1,0 +1,16 @@
+{
+	"id": "{86FB8568-47C6-4F9C-B4E0-FC78E74F320B}",
+	"title": "Webbox Sonos",
+	"description": "Erweiterung für Sonos PHP Modul zur Visualisierung des Covers als einzelens Element sowie einer Positionsanzeige um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxSonos",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Sonos"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxSonos"
+}

@@ -1,6 +1,6 @@
 <?
 
-	class Webbox extends IPSModule
+	class WebboxWunderground extends IPSModule
 	{
 		
 		public function Create() {

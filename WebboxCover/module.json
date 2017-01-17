@@ -1,0 +1,16 @@
+{
+	"id": "{BCB08BFF-CD5E-4C5E-978D-C08640FF7B26}",
+	"title": "Webbox Cover",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxCover",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Cover"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxCover"
+}

@@ -1,0 +1,16 @@
+{
+	"id": "{37602CA0-80F5-45A0-96CB-335FB8EE12E5}",
+	"title": "Webbox Wunderground",
+	"description": "Instanz um Daten aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxWunderground",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Wunderground"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxWunderground"
+}
