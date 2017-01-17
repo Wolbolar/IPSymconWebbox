@@ -334,10 +334,22 @@
 			return $content;
 		}
 		
-		protected function HTMLBox($objectid)
+		protected function HTMLBox($objectid, $uri)
 		{
+		$uriips =  substr($uri, 0, 26);
 		// HTMLBox ausgeben
 		$HTML = GetValue($objectid);
+		if ( strpos($HTML, '</iframe>'))
+			{
+			$start = strpos($HTML, '<iframe src="');
+			$htmlrest = substr($HTML, $start+13);
+			$end = strpos($htmlrest, '"');
+			$src = substr($HTML, $start+13, $end);
+			$posuser = strpos($src, 'user');
+			$absuri = $uriips."/".$src;
+			$HTML = file_get_contents($absuri);
+			return $HTML;
+			}
 		if ( strpos($HTML, '</html>'))
 			{
 			//echo utf8_encode($HTML);
@@ -1440,35 +1452,11 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				if ($type == "htmlbox")
 					{
-						$HTMLPage = $this->HTMLBox($objectid);
+						$HTMLPage = $this->HTMLBox($objectid, $_SERVER['REQUEST_URI']);
 						return $HTMLPage;
 					}
 				elseif ($type == "mediaimage")
 					{
-						/*
-						$root = realpath(__DIR__ . "/www/mediaimage");
-			
-						//append image.php
-						if(substr($_SERVER['REQUEST_URI'], -1) == "/") {
-							$_SERVER['REQUEST_URI'] .= "image.php?imageid=".$objectid;
-						}
-						
-						//reduce any relative paths. this also checks for file existance
-						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/hookserve/")));
-						if($path === false) {
-							http_response_code(404);
-							die("File not found!");
-						}
-						
-						if(substr($path, 0, strlen($root)) != $root) {
-							http_response_code(403);
-							die("Security issue. Cannot leave root folder!");
-						}
-						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
-						readfile($path);
-						*/
-						
-						
 						$mediaimage = $this->MediaImage($objectid);
 						$headhtml = $mediaimage["headhtml"];
 						$imgdata = $mediaimage["imgdata"];

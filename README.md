@@ -88,6 +88,9 @@ http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=mediaima
 
 <objectid>          ObjektID des Medien Image in IP-Symcon 
 
+Beispiel:
+http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=mediaimage&objectid=12345
+
 ## 5. Konfiguration:
 
 ### Webbox:
