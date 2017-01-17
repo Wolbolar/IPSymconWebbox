@@ -1508,7 +1508,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						if(substr($_SERVER['REQUEST_URI'], -16) == "?type=colorwheel")
 						{
 							$uri = substr($_SERVER['REQUEST_URI'], 0, -(strlen("?type=colorwheel")));
-							$uri .= "/colorwheel.php";
+							$uri .= "/colorwheel.html";
 						}
 						
 						//reduce any relative paths. this also checks for file existance
