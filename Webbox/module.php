@@ -336,8 +336,8 @@
 		
 		protected function HTMLBox($objectid, $uri)
 		{
-		$uriips =  substr($uri, 0, 26);
-		IPS_LogMessage("Webbox", "IPS IP : ".$uriips);
+		//$uriips =  substr($uri, 0, 26);
+		//IPS_LogMessage("Webbox", "IPS IP : ".$uriips);
 		// HTMLBox ausgeben
 		$HTML = GetValue($objectid);
 		if ( strpos($HTML, '</iframe>'))
@@ -347,14 +347,15 @@
 			$end = strpos($htmlrest, '"');
 			$src = substr($HTML, $start+13, $end);
 			$posuser = strpos($src, 'user');
-			$absuri = $uriips."/".$src;
+			$absuri = $uri."/".$src;
 			$HTML = file_get_contents($absuri);
+			IPS_LogMessage("Webbox", "Auslesen : ".$absuri);
 			return $HTML;
 			}
 		if ( strpos($HTML, '</html>'))
 			{
 			//echo utf8_encode($HTML);
-			echo $HTML;
+			return $HTML;
 			}
 		else
 			{
