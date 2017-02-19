@@ -1,0 +1,12 @@
+{
+	"id": "{D01CBEFE-DA0D-4D81-AC71-CFCA77673D4E}",
+	"description": "Webbox Modul",
+	"tags": "Webbox",
+	"req_ips_version": "4.0",
+	"author": "Fonzo",
+	"name": "Webbox",
+	"url": "",
+	"version": "0.1",
+	"build": 0,
+	"date": 0
+}

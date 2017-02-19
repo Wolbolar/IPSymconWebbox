@@ -1,0 +1,9 @@
+{
+	"elements":
+	[
+		{ "type": "Label", "label": "Connection to IP-Symcon" },
+		{ "type": "Label", "label": "authentication for Webbox webhook" },
+		{ "name": "webhookusername", "type": "ValidationTextBox", "caption": "webhook username" },
+		{ "type": "PasswordTextBox", "name": "webhookpassword", "caption": "webhook password" }
+	]
+}
