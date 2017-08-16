@@ -1545,18 +1545,14 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}	
 				elseif ($type == "cover")
 					{
-						$sonosid = $objectid;
                         $size = 170;
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
 						}
-						if (isset($_GET["sonosid"]))
-						{
-							$sonosid = $_GET["sonosid"];
-						}
-                        $this->SendDebug("Webbox", "Cover with Size ".$size." for Media Object (".$imgobjectid.")",0);
-						$Cover = $this->Cover($sonosid, $size);
+
+                        $this->SendDebug("Webbox", "Cover with Size ".$size." for Media Object (".$objectid.")",0);
+						$Cover = $this->Cover($objectid, $size);
 						echo $Cover;
 						//return $Cover;
 					}
