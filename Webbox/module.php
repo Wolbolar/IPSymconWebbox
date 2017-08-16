@@ -286,7 +286,7 @@
 		
 		protected function Cover($sonosid, $size)
 		{
-            $coverurl = GetCoverURLfromDetail($sonosid);
+            $coverurl = $this->GetCoverURLfromDetail($sonosid);
 			// HTML ausgeben
 			if($coverurl == "") // transparent no cover
 			{
