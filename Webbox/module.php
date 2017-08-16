@@ -284,28 +284,11 @@
 			return $output_file; 
 		}
 		
-		protected function Cover($imgobjectid, $size, $detailobjectid)
+		protected function Cover($sonosid, $size)
 		{
-			$name = IPS_GetName($imgobjectid);
-			$mediaimage = $this->MediaImage($imgobjectid);
-			//$headhtml = $mediaimage["headhtml"];
-			$imgdata = $mediaimage["imgdata"];
-			$mimetype = $mediaimage["mimetype"];
-			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."_temp.".$mimetype;
-			$ImageFile = $this->savepicture($imgdata, $output_file);
-			$imageinfo = $this->getimageinfo($ImageFile);
-			$mediaimgwidth = $size;
-			$mediaimgheight = $size;
-			$image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
-			$thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
-			$thumbimg = $thumb["img"];
-			$thumbwidth = $thumb["width"];
-			$thumbheight = $thumb["height"];
-			$coverimg = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
-				
-			// HTMLBox ausgeben
-			$sonoscoverdetail = GetValue($detailobjectid);
-			if($sonoscoverdetail == "")
+            $coverurl = GetCoverURLfromDetail($sonosid);
+			// HTML ausgeben
+			if($coverurl == "") // transparent no cover
 			{
 				$img = imagecreatetruecolor($size, $size);
 				imagesavealpha($img, true);
@@ -316,7 +299,9 @@
 			}
 			else
 			{
-				$cover = '<a href="sonos://"><img class="reflex" src="'.$coverimg.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
+
+				$cover = '<a href="sonos://"><img class="reflex" src="'.$coverurl.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
+
 			}	
 
 			$content = '<!doctype html>
@@ -333,7 +318,54 @@
 </html>';
 			return $content;
 		}
-		
+
+		protected function GetCoverURLfromDetail($sonosid)
+		{
+            $details = GetValue(IPS_GetObjectIDByIdent("Details", $sonosid)); // Detail Variable des Sonos Players
+            //var_dump($details);
+            if($details == "")
+            {
+                //transparent image
+                $picurl = "";
+            }
+            else
+            {
+                $picurlstart = strpos($details, '<img src="');
+                $picurlend = strpos($details, '" style="max-width: 170px; max-height: 170px; -webkit-box-reflect');
+                $picurllength = $picurlend - ($picurlstart+10);
+                $picurl = substr($details, ($picurlstart+10), ($picurllength));
+            }
+            return $picurl;
+		}
+
+		protected function CreateCoverMediaImage()
+		{
+
+		}
+
+		protected function GetCoverfromMediaImage()
+		{
+            $name = IPS_GetName($imgobjectid);
+            $mediaimage = $this->MediaImage($imgobjectid);
+            //$headhtml = $mediaimage["headhtml"];
+            $imgdata = $mediaimage["imgdata"];
+            $mimetype = $mediaimage["mimetype"];
+            $output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."_temp.".$mimetype;
+            $ImageFile = $this->savepicture($imgdata, $output_file);
+            $imageinfo = $this->getimageinfo($ImageFile);
+            $mediaimgwidth = $size;
+            $mediaimgheight = $size;
+            $image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
+            $thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
+            $thumbimg = $thumb["img"];
+            $thumbwidth = $thumb["width"];
+            $thumbheight = $thumb["height"];
+            $coverimgpath = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
+            $coverpicture = imagecreatefrompng ( $coverimgpath );
+            imagepng($coverpicture); // load picture in browser
+            imagedestroy($coverpicture); // clear ram
+		}
+
 		protected function HTMLBox($objectid, $uri)
 		{
 		//$uriips =  substr($uri, 0, 26);
@@ -1183,20 +1215,30 @@ Raphael.colorwheel = function(target, color_wheel_size, no_segments){
 		
 		protected function MediaImage($imageid)
 		{
-		if(!IPS_MediaExists($imageid))
-			die("ID #".$imageid.") does not exists");
+			if(!IPS_MediaExists($imageid))
+			{
+				$this->SendDebug("Webbox", "No Media Image for ID ".$imageid." found",0);
+				die("Media Image with ID (".$imageid.") does not exists");
+			}
 
-		$media=IPS_GetMedia($imageid);
 
-		if($media['MediaType'] != 1)
-			die("ID #".$imageid." is not an image");
 
-		$imgbase64 = IPS_GetMediaContent($imageid); //liefert den Base64 kodierten Inhalt für das Medienobjekt
-		$imgdata = base64_decode($imgbase64); 
-		$mimetype = $this->getImageMimeType($imgdata);
-		$headhtml =  $this->getimgheader($mimetype);
-		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata, "mimetype" => $mimetype);
-		return $mediaimage;
+			$media=IPS_GetMedia($imageid);
+
+			if($media['MediaType'] != 1)
+			{
+				$this->SendDebug("Webbox", "No Media Image for ID ".$imageid." found",0);
+				die("ID #".$imageid." is not an image");
+			}
+
+
+
+			$imgbase64 = IPS_GetMediaContent($imageid); //liefert den Base64 kodierten Inhalt für das Medienobjekt
+			$imgdata = base64_decode($imgbase64);
+			$mimetype = $this->getImageMimeType($imgdata);
+			$headhtml =  $this->getimgheader($mimetype);
+			$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata, "mimetype" => $mimetype);
+			return $mediaimage;
 		}
 		
 		protected function getimgheader($mimetype)
@@ -1431,6 +1473,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				header('WWW-Authenticate: Basic Realm="Doorbird WebHook"');
 				header('HTTP/1.0 401 Unauthorized');
 				echo "Authorization required";
+                $this->SendDebug("Webbox", "Wrong username or password",0);
 				return;
 			}
 			//echo "Webhook Webbox IP-Symcon 4";
@@ -1451,12 +1494,15 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				if (isset($_GET["objectid"]))
 					{
 						$objectid = $_GET["objectid"];
+                        $this->SendDebug("Webbox", "ObjectID: ".$objectid,0);
 					}
 				else{
+						$this->SendDebug("Webbox", "no object id found",0);
 						return "no object id found";
 					}	
 				if ($type == "htmlbox")
 					{
+                        $this->SendDebug("Webbox", "HTMLBox",0);
 						$host = $_SERVER['HTTP_HOST'];
 						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
@@ -1465,6 +1511,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "mediaimage")
 					{
+                        $this->SendDebug("Webbox", "Media Image",0);
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
@@ -1482,6 +1529,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "wunderground")
 					{
+                        $this->SendDebug("Webbox", "Wunderground",0);
 						if (isset($_GET["weather"]))
 						{
 							$weathertype = $_GET["weather"];
@@ -1497,22 +1545,24 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}	
 				elseif ($type == "cover")
 					{
-						$imgobjectid = $objectid;
+						$sonosid = $objectid;
                         $size = 170;
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
 						}
-						if (isset($_GET["detailobjectid"]))
+						if (isset($_GET["sonosid"]))
 						{
-							$detailobjectid = $_GET["detailobjectid"];
+							$sonosid = $_GET["sonosid"];
 						}
-						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
+                        $this->SendDebug("Webbox", "Cover with Size ".$size." for Media Object (".$imgobjectid.")",0);
+						$Cover = $this->Cover($sonosid, $size);
 						echo $Cover;
 						//return $Cover;
 					}
 				elseif ($type == "colorwheel")
 					{
+                        $this->SendDebug("Webbox", "Colorwheel",0);
 						/*
 						if (isset($_GET["size"]))
 						{
