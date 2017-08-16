@@ -287,6 +287,7 @@
 		protected function Cover($sonosid, $size)
 		{
             $coverurl = $this->GetCoverURLfromDetail($sonosid);
+            $name = $this->GetSonosName($sonosid);
 			// HTML ausgeben
 			if($coverurl == "") // transparent no cover
 			{
@@ -336,6 +337,12 @@
                 $picurl = substr($details, ($picurlstart+10), ($picurllength));
             }
             return $picurl;
+		}
+
+		protected function GetSonosName($sonosid)
+		{
+			$name = IPS_GetName($sonosid);
+			return $name;
 		}
 
 		protected function CreateCoverMediaImage()
