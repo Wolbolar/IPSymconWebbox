@@ -1,4 +1,8 @@
 <?
+require_once(__DIR__ . "/../bootstrap.php");
+
+use Fonzo\IPS\IPSVarType;
+
 
 	class Webbox extends IPSModule
 	{
@@ -183,19 +187,19 @@
 		{
 				$varinfo = (IPS_GetVariable($objid));
 				$vartype =  $varinfo["VariableType"];
-				if ($vartype == 0) //bool
+				if ($vartype == IPSVarType::vtBoolean) //bool
 				{
 					$ipsvartype = "boolean";
 				}
-				elseif ($vartype == 1) //integer
+				elseif ($vartype == IPSVarType::vtInteger) //integer
 				{
 					$ipsvartype = "integer";
 				}
-				elseif ($vartype == 2) //float
+				elseif ($vartype == IPSVarType::vtFloat) //float
 				{
 					$ipsvartype = "double";
 				}
-				elseif ($vartype == 3) //string
+				elseif ($vartype == IPSVarType::vtString) //string
 				{
 					$ipsvartype = "string";
 				}
@@ -247,8 +251,9 @@
 		
 		protected function WebboxCSSTransparent()
 		{
-			$CSS = '<style type="text/css" media="screen">
-			@charset "utf-8";
+			$CSS = '@charset "utf-8";
+			<style type="text/css" media="screen">
+			
 			body {
 				background-color: transparent;
 			}
@@ -345,12 +350,12 @@
 			return $name;
 		}
 
-		protected function CreateCoverMediaImage()
+		protected function CreateCoverMediaImage($sonosid)
 		{
 
 		}
 
-		protected function GetCoverfromMediaImage()
+		protected function GetCoverfromMediaImage($imgobjectid)
 		{
             $name = IPS_GetName($imgobjectid);
             $mediaimage = $this->MediaImage($imgobjectid);
@@ -360,8 +365,8 @@
             $output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."_temp.".$mimetype;
             $ImageFile = $this->savepicture($imgdata, $output_file);
             $imageinfo = $this->getimageinfo($ImageFile);
-            $mediaimgwidth = $size;
-            $mediaimgheight = $size;
+            $mediaimgwidth = $imageinfo["imagewidth"];
+            $mediaimgheight = $imageinfo["imageheight"];
             $image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
             $thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
             $thumbimg = $thumb["img"];
@@ -427,7 +432,7 @@
 	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/raphael.min.js"></script> -->
 	<script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" type="text/javascript"></script>
-	<script src="http://192.168.55.120:3777/user/Colorwheel/colorwheel.js"></script>
+	<script src="http://192.168.55.71:3777/user/Colorwheel/colorwheel.js"></script>
 	  <style type="text/css" media="screen">
     body {
       background:#FFF;
@@ -1579,14 +1584,18 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						return $Cover;
 						*/
 						$root = realpath(__DIR__ . "/www/Colorwheel");
-			
-						//append colorwheel.php
-						if(substr($_SERVER['REQUEST_URI'], -16) == "?type=colorwheel")
-						{
-							$uri = substr($_SERVER['REQUEST_URI'], 0, -(strlen("?type=colorwheel")));
-							$uri .= "/colorwheel.html";
-						}
-						
+						$request = $_SERVER['REQUEST_URI'];
+                        $urlendstring1 = substr($request, -31, 26);
+                        $urlendstring2 = substr($request, -31, 10);
+                        $urlendstring3 = substr($request, -16);
+                        $uri = "";
+                        //append colorwheel.php
+                        if($urlendstring1 == "?type=colorwheel&objectid=" || ($urlendstring2 == "?objectid=" && $urlendstring3 =="&type=colorwheel"))
+                        {
+                            $uri = substr($request, 0, -(strlen("?type=colorwheel&objectid=12345")));
+                            $uri .= "/colorwheel.html";
+                        }
+
 						//reduce any relative paths. this also checks for file existance
 						$path = realpath($root . "/" . substr($uri, 39));
 						$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/Colorwheel/colorwheel.html";
@@ -1602,7 +1611,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 							die("Security issue. Cannot leave root folder!");
 						}
 						*/
-						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+						//header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
 						readfile($path);
 					}	
 				}
