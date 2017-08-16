@@ -1,0 +1,16 @@
+{
+	"id": "{0FE65592-0B40-4924-8E46-7DE640EE156E}",
+	"title": "Webbox Text",
+	"description": "Instanz um Text aus IP-Symcon extern in einem Webseitenelement in NEO oder Webview Element in IPSView oder iframe in einer Webseite darzustellen",
+	"name": "WebboxText",
+	"type": 3,
+	"vendor": "",
+	"aliases": 
+	[
+		"Webbox Text"
+	],
+	"parentRequirements": [],
+	"childRequirements": [],
+	"implemented": [],
+	"prefix": "WebboxText"
+}

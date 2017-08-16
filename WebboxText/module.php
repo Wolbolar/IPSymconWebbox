@@ -1,6 +1,6 @@
 <?
 
-	class Webbox extends IPSModule
+	class WebboxText extends IPSModule
 	{
 		
 		public function Create() {
@@ -1452,9 +1452,6 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					{
 						$objectid = $_GET["objectid"];
 					}
-				else{
-						return "no object id found";
-					}	
 				if ($type == "htmlbox")
 					{
 						$host = $_SERVER['HTTP_HOST'];
@@ -1465,14 +1462,6 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "mediaimage")
 					{
-						if (isset($_GET["size"]))
-						{
-							$size = $_GET["size"];
-						}
-						else
-						{
-							$size = null;
-						}
 						$mediaimage = $this->MediaImage($objectid);
 						$headhtml = $mediaimage["headhtml"];
 						$imgdata = $mediaimage["imgdata"];
@@ -1497,15 +1486,13 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}	
 				elseif ($type == "cover")
 					{
-						$imgobjectid = $objectid;
-                        $size = 170;
 						if (isset($_GET["size"]))
 						{
-							$size = $_GET["size"];
+							$objectid = $_GET["size"];
 						}
 						if (isset($_GET["detailobjectid"]))
 						{
-							$detailobjectid = $_GET["detailobjectid"];
+							$objectid = $_GET["detailobjectid"];
 						}
 						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
 						echo $Cover;

@@ -1,0 +1,11 @@
+{
+	"elements":
+	[
+		{ "type": "Label", "label": "Webbox for glowing text" },
+		{ "type": "Label", "label": "Select a text sytle:" },
+		{ "type": "SelectInstance", "name": "SonosID", "caption": "Sonos instance" },
+		{ "type": "CheckBox", "name": "Position", "caption": "Position" },
+		{ "type": "Label", "label": "Use shadow:" },
+		{ "type": "CheckBox", "name": "NEOtoggle", "caption": "NEO toggle" }
+	]
+}

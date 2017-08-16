@@ -23,13 +23,7 @@ um damit in externen Webseiten oder Visualisierungstools wie Mediola NEO oder IP
 * HTMLBox aus IP-Symcon darstellen
 * Media Image aus IP-Symcon darstellen
 * Coveranzeige darstellen z.B. Sonos
-* Fernbedienungsremote
-* Slider
 
-### IPSStudio Funktionen für Webview Element: 
-
-* Slider
-* Fernbedienungsremote
 
 ## 2. Voraussetzungen
 
@@ -91,6 +85,15 @@ http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=mediaima
 Beispiel:
 http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=mediaimage&objectid=12345
 
+Wenn das Bild eine bestimmte Größe haben soll wird noch height und width mit übergeben oder size
+
+Beispiel mit height und width:
+http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=mediaimage&objectid=12345&height=500&width=300
+
+oder
+Beispiel mit size (Prozent des Originals):
+http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=mediaimage&objectid=12345&size=30
+
 ## 5. Konfiguration:
 
 ### Webbox:
@@ -107,10 +110,7 @@ http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=mediaimage&objecti
 
 #### Webbox:
 
-```php
-Webbox_Blablub(int $InstanceID)
-```
-Blablub Funktion
+zu ergänzen
 
 
 ###  b. GUIDs und Datenaustausch:

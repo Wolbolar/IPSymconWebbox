@@ -1,0 +1,10 @@
+{
+	"translations": {
+		"de": { 
+			"Connection to IP-Symcon":"Verbindung zu IP-Symcon",
+			"authentication for Webbox webhook":"Authentizifierung für den Webbox Webhook",
+			"webhook username":"Webhook Benutzername",
+			"webhook password":"Webhook Passwort"
+		}
+	}
+}
