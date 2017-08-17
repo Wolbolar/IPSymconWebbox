@@ -1503,18 +1503,11 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			if (isset($_GET["type"]))
 				{
 				$type = $_GET["type"];
-				if (isset($_GET["objectid"]))
-					{
-						$objectid = $_GET["objectid"];
-                        $this->SendDebug("Webbox", "ObjectID: ".$objectid,0);
-					}
-				else{
-						$this->SendDebug("Webbox", "no object id found",0);
-						return "no object id found";
-					}	
+
 				if ($type == "htmlbox")
 					{
-                        $this->SendDebug("Webbox", "HTMLBox",0);
+                        $objectid = $this->GetObjectID($_GET);
+						$this->SendDebug("Webbox", "HTMLBox",0);
 						$host = $_SERVER['HTTP_HOST'];
 						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
@@ -1523,7 +1516,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "mediaimage")
 					{
-                        $this->SendDebug("Webbox", "Media Image",0);
+                        $objectid = $this->GetObjectID($_GET);
+						$this->SendDebug("Webbox", "Media Image",0);
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
@@ -1541,7 +1535,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "wunderground")
 					{
-                        $this->SendDebug("Webbox", "Wunderground",0);
+                        $objectid = $this->GetObjectID($_GET);
+						$this->SendDebug("Webbox", "Wunderground",0);
 						if (isset($_GET["weather"]))
 						{
 							$weathertype = $_GET["weather"];
@@ -1557,7 +1552,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}	
 				elseif ($type == "cover")
 					{
-                        $size = 170;
+                        $objectid = $this->GetObjectID($_GET);
+						$size = 170;
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
@@ -1570,7 +1566,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "colorwheel")
 					{
-                        $this->SendDebug("Webbox", "Colorwheel",0);
+                        //$objectid = $this->GetObjectID($_GET);
+						$this->SendDebug("Webbox", "Colorwheel",0);
 						/*
 						if (isset($_GET["size"]))
 						{
@@ -1613,7 +1610,42 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						*/
 						//header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
 						readfile($path);
-					}	
+					}
+					elseif ($type == "jquery")
+					{
+						//$objectid = $this->GetObjectID($_GET);
+						$this->SendDebug("Webbox", "jquery",0);
+
+						$root = realpath(__DIR__ . "/www/jquery");
+						$urlendstring1 = substr($_SERVER['REQUEST_URI'], -12);
+						// cut off end and append index.html
+						if($urlendstring1 == "?type=jquery")
+						{
+                            $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], 0, -(strlen("?type=jquery")));
+                            $_SERVER['REQUEST_URI'] .= "/index.html";
+						}
+
+						//reduce any relative paths. this also checks for file existance
+						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/webbox/")));
+						//$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/jquery/index.html";
+                        $this->SendDebug("Webbox", "Path (".$path.")",0);
+						if($path === false)
+						{
+							http_response_code(404);
+                            $this->SendDebug("Webbox", "Send Response 404, File not found!",0);
+							die("File not found!");
+						}
+
+						if(substr($path, 0, strlen($root)) != $root)
+						{
+							http_response_code(403);
+                            $this->SendDebug("Webbox", "Send Response 403, Security issue. Cannot leave root folder!",0);
+							die("Security issue. Cannot leave root folder!");
+						}
+
+						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+						readfile($path);
+					}
 				}
 		}
 		
@@ -1639,7 +1671,21 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			return "text/html";
 			//return "text/plain";
 		}
-		
+
+		protected function GetObjectID($get)
+		{
+            if (isset($get["objectid"]))
+            {
+                $objectid = $get["objectid"];
+                $this->SendDebug("Webbox", "ObjectID: ".$objectid,0);
+                return $objectid;
+            }
+            else{
+                $this->SendDebug("Webbox", "no object id found",0);
+                return "no object id found";
+            }
+		}
+
 		private function CreateCategoryByIdent($id, $ident, $name) {
 			 $cid = @IPS_GetObjectIDByIdent($ident, $id);
 			 if($cid === false) {
