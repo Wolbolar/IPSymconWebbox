@@ -1631,6 +1631,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 
                         //reduce any relative paths. this also checks for file existance
                         $path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen($webhookname.$suffix)));
+                        $path .= "/".$folderstartpage;
                         $this->SendDebug("Webbox", "Path (".$path.")",0);
                         if($path === false) {
                             http_response_code(404);
