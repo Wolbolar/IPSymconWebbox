@@ -1645,6 +1645,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
                             die("Security issue. Cannot leave root folder!");
                         }
                         header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+                        $this->SendDebug("Webbox", "Set header \"Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION))."\"",0);
+                        $this->SendDebug("Webbox", "readfile(".$path.")",0);
                         readfile($path);
 					}
 				}
