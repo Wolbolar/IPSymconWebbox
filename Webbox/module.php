@@ -1616,35 +1616,35 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						//$objectid = $this->GetObjectID($_GET);
 						$this->SendDebug("Webbox", "jquery",0);
 
-						$root = realpath(__DIR__ . "/www/jquery");
-						$urlendstring1 = substr($_SERVER['REQUEST_URI'], -12);
-						// cut off end and append index.html
-						if($urlendstring1 == "?type=jquery")
-						{
-                            $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], 0, -(strlen("?type=jquery")));
-                            $_SERVER['REQUEST_URI'] .= "/index.html";
-						}
+                        $root = realpath(__DIR__ . "/www/jquery"); // folder for redirection
+						$folderstartpage = "index.html"; // start page
+						$suffix = "?type=jquery"; // suffix
+						$webhookname = "/hook/webbox/";
+                        $stringlength = strlen($suffix); // Suffix
 
-						//reduce any relative paths. this also checks for file existance
-						$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/webbox/")));
-						//$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/jquery/index.html";
+                        //append folder start page
+                        if(substr($_SERVER['REQUEST_URI'], -$stringlength) == $suffix)
+                        {
+                            $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], 0, -(strlen("$suffix"))); // cut off suffix
+                        	$_SERVER['REQUEST_URI'] .= "/".$folderstartpage; // append folder start page
+                        }
+
+                        //reduce any relative paths. this also checks for file existance
+                        $path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen($webhookname.$suffix)));
                         $this->SendDebug("Webbox", "Path (".$path.")",0);
-						if($path === false)
-						{
-							http_response_code(404);
+                        if($path === false) {
+                            http_response_code(404);
                             $this->SendDebug("Webbox", "Send Response 404, File not found!",0);
-							die("File not found!");
-						}
+                            die("File not found!");
+                        }
 
-						if(substr($path, 0, strlen($root)) != $root)
-						{
-							http_response_code(403);
+                        if(substr($path, 0, strlen($root)) != $root) {
+                            http_response_code(403);
                             $this->SendDebug("Webbox", "Send Response 403, Security issue. Cannot leave root folder!",0);
-							die("Security issue. Cannot leave root folder!");
-						}
-
-						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
-						readfile($path);
+                            die("Security issue. Cannot leave root folder!");
+                        }
+                        header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+                        readfile($path);
 					}
 				}
 		}

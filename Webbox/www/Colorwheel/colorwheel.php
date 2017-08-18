@@ -4,10 +4,10 @@ $html = '<!DOCTYPE html>
 	
 	<head>
 	<title>Colorwheel</title>
-	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/jquery-3.1.1.min.js"></script> -->
-	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/raphael.min.js"></script> -->
-	<script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" type="text/javascript"></script>
+	<!-- <script src="jquery-3.1.1.min.js"></script> -->
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+	<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" type="text/javascript"></script> -->
+    <script src="raphael.min.js"></script> 
 	<script src="colorwheel.js"></script>
 	  <style type="text/css" media="screen">
     body {
@@ -113,7 +113,7 @@ $html = '<!DOCTYPE html>
         It was created for the UI at <a href="http://famedriver.com">Fame Driver</a> and distributed with a MIT license.
       </p>
       <p>
-        Hope you enjoy it – <a href="mailto:john@famedriver.com">John Weir</a>
+        Hope you enjoy it ï¿½ <a href="mailto:john@famedriver.com">John Weir</a>
       </p>
       <p>
         Source available on <a href="http://github.com/jweir/colorwheel">Github</a>.
