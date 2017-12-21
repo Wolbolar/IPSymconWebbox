@@ -336,18 +336,50 @@
 		
 		protected function HTMLBox($objectid, $uri)
 		{
-		//$uriips =  substr($uri, 0, 26);
-		//IPS_LogMessage("Webbox", "IPS IP : ".$uriips);
 		// HTMLBox ausgeben
 		$HTML = GetValue($objectid);
 		if ( strpos($HTML, '</iframe>'))
 			{
-			$start = strpos($HTML, '<iframe src="');
-			$htmlrest = substr($HTML, $start+13);
-			$end = strpos($htmlrest, '"');
-			$src = substr($HTML, $start+13, $end);
-			$posuser = strpos($src, 'user');
-			$absuri = $uri."/".$src;
+                $start = strpos($HTML, '<iframe src="');
+                if(!$start)
+                {
+                    $start = strpos($HTML, "<iframe src='");
+                    $htmlrest = substr($HTML, $start+13);
+                    $end = strpos($htmlrest, "'");
+                }
+                else
+                {
+                    $htmlrest = substr($HTML, $start+13);
+                    $end = strpos($htmlrest, '"');
+                }
+                $src = substr($HTML, $start+13, $end);
+                $poshttp = strpos($src, 'http://');
+                $poshttps = strpos($src, 'https://');
+                $posuser = strpos($src, 'user');
+                if($poshttp)
+                {
+                    $src = substr($src, $poshttp);
+                    $absuri = $src;
+                    $this->SendDebug("Webbox URL", "http found", 0);
+                }
+				elseif($poshttps)
+                {
+                    $src = substr($src, $poshttps);
+                    $absuri = $src;
+                    $this->SendDebug("Webbox URL", "https found", 0);
+                }
+				elseif($posuser)
+                {
+                    $src = substr($src, $posuser);
+                    $absuri = $uri."/".$src;
+                    $this->SendDebug("Webbox URL", "user found", 0);
+                }
+                else
+                {
+                    $absuri = $uri."/".$src;
+                    $this->SendDebug("Webbox URL", "URI ".$absuri, 0);
+                }
+                $this->SendDebug("Webbox URL", $absuri, 0);
 			$HTML = file_get_contents($absuri);
 			IPS_LogMessage("Webbox", "Auslesen : ".$absuri);
 			return $HTML;
