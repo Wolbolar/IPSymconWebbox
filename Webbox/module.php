@@ -341,7 +341,7 @@
 		if ( strpos($HTML, '</iframe>'))
 			{
                 $start = strpos($HTML, '<iframe src="');
-                if(!$start)
+                if($start<>0)
                 {
                     $start = strpos($HTML, "<iframe src='");
                     $htmlrest = substr($HTML, $start+13);
