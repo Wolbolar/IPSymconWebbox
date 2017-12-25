@@ -1467,6 +1467,9 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			}
 			//echo "Webhook Webbox IP-Symcon 4";
 
+			$isHttps = (!empty($_SERVER['HTTPS']));
+			$this->SendDebug("Server[HTTPS]", "HTTPS >".$isHttps."<", 0);
+			
 			//workaround for bug
 			if(!isset($_IPS))
 				global $_IPS;
