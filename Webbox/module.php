@@ -1460,13 +1460,18 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				$_SERVER['PHP_AUTH_PW'] = "";
 			 
 			if(($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword)) {
-				header('WWW-Authenticate: Basic Realm="Doorbird WebHook"');
+				header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
 				header('HTTP/1.0 401 Unauthorized');
 				echo "Authorization required";
 				return;
 			}
 			//echo "Webhook Webbox IP-Symcon 4";
-
+			if(isset($_SERVER['HTTPS']))
+			{
+				$isHttps = (!empty($_SERVER['HTTPS']));
+				$this->SendDebug("Server[HTTPS]", "HTTPS >".$isHttps."<", 0);
+			}
+			
 			//workaround for bug
 			if(!isset($_IPS))
 				global $_IPS;
