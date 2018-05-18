@@ -341,7 +341,7 @@
 		if ( strpos($HTML, '</iframe>'))
 			{
                 $start = strpos($HTML, '<iframe src="');
-                if(!$start)
+                if($start<>0)
                 {
                     $start = strpos($HTML, "<iframe src='");
                     $htmlrest = substr($HTML, $start+13);
@@ -1471,7 +1471,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				$isHttps = (!empty($_SERVER['HTTPS']));
 				$this->SendDebug("Server[HTTPS]", "HTTPS >".$isHttps."<", 0);
 			}
-			
+
 			//workaround for bug
 			if(!isset($_IPS))
 				global $_IPS;
@@ -1495,6 +1495,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				if ($type == "htmlbox")
 					{
 						$host = $_SERVER['HTTP_HOST'];
+						$this->SendDebug("Server[HTTPS]", "HTTPS ".$_SERVER['HTTPS'], 0);
 						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
 						echo $HTMLPage;
