@@ -1495,7 +1495,10 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				if ($type == "htmlbox")
 					{
 						$host = $_SERVER['HTTP_HOST'];
-						$this->SendDebug("Server[HTTPS]", "HTTPS ".$_SERVER['HTTPS'], 0);
+						if(isset($_SERVER['HTTPS']))
+						{
+							$this->SendDebug("Server[HTTPS]", "HTTPS ".$_SERVER['HTTPS'], 0);
+						}
 						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
 						echo $HTMLPage;
