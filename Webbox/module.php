@@ -356,13 +356,13 @@
                 $poshttp = strpos($src, 'http://');
                 $poshttps = strpos($src, 'https://');
                 $posuser = strpos($src, 'user');
-                if($poshttp)
+                if($poshttp === 0 || $poshttp > 0)
                 {
                     $src = substr($src, $poshttp);
                     $absuri = $src;
                     $this->SendDebug("Webbox URL", "http found", 0);
                 }
-				elseif($poshttps)
+				elseif($poshttps === 0 || $poshttps > 0)
                 {
                     $src = substr($src, $poshttps);
                     $absuri = $src;
