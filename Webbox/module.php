@@ -1454,32 +1454,36 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			
 			$webhookusername = $this->ReadPropertyString('webhookusername');
 			$webhookpassword = $this->ReadPropertyString('webhookpassword');
+			//$basicauth = false;
+			$getauth = false;
+			if (isset($_GET["user"])) {
+				$user = $_GET["user"];
+				$this->SendDebug("Webbox GET", "username: " . $user, 0);
+			}
+			if (isset($_GET["password"])) {
+				$password = $_GET["password"];
+				$this->SendDebug("Webbox GET", "password: " . $password, 0);
+			}
+			if($user == $webhookusername && $password == $webhookpassword)
+			{
+				$getauth = true;
+			}
 			if (!isset($_SERVER['PHP_AUTH_USER']))
 			{
-				if (isset($_GET["user"])) {
-					$_SERVER['PHP_AUTH_USER'] = $_GET["user"];
-				}
-				else
-				{
-					$_SERVER['PHP_AUTH_USER'] = "";
-				}
+				$_SERVER['PHP_AUTH_USER'] = "";
 			}
 
 			if (!isset($_SERVER['PHP_AUTH_PW']))
 			{
-				if (isset($_GET["password"])) {
-					$_SERVER['PHP_AUTH_PW'] = $_GET["password"];
-				}
-				else
-				{
-					$_SERVER['PHP_AUTH_PW'] = "";
-				}
+				$_SERVER['PHP_AUTH_PW'] = "";
 			}
-				 
-			if(($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword)) {
+
+
+			if ($getauth == false && (($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword))) {
 				header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
 				header('HTTP/1.0 401 Unauthorized');
 				echo "Authorization required";
+				$this->SendDebug("Webbox", "Wrong username or password", 0);
 				return;
 			}
 			//echo "Webhook Webbox IP-Symcon 4";

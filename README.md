@@ -66,6 +66,12 @@ http://<webhook user>:<webhook password>@<IP IPS>:3777/hook/webbox?type=htmlbox&
 Beispiel:
 http://max:musterpasswort@192.168.10.10:3777/hook/webbox?type=htmlbox&objectid=12345
 
+Alternative:
+  
+```
+http://<IP IPS>:3777/hook/webbox?type=htmlbox&objectid=<objectid>&user=<webhook user>&password=<webhook password>
+```
+
 
 ### Media Image aus IP-Symcon in NEO einbinden:	
 
