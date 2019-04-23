@@ -1,4 +1,4 @@
-<?
+<?php
 
 	class Webbox extends IPSModule
 	{
@@ -1454,11 +1454,28 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			
 			$webhookusername = $this->ReadPropertyString('webhookusername');
 			$webhookpassword = $this->ReadPropertyString('webhookpassword');
-			if(!isset($_SERVER['PHP_AUTH_USER']))
-			$_SERVER['PHP_AUTH_USER'] = "";
-			if(!isset($_SERVER['PHP_AUTH_PW']))
-				$_SERVER['PHP_AUTH_PW'] = "";
-			 
+			if (!isset($_SERVER['PHP_AUTH_USER']))
+			{
+				if (isset($_GET["user"])) {
+					$_SERVER['PHP_AUTH_USER'] = $_GET["user"];
+				}
+				else
+				{
+					$_SERVER['PHP_AUTH_USER'] = "";
+				}
+			}
+
+			if (!isset($_SERVER['PHP_AUTH_PW']))
+			{
+				if (isset($_GET["password"])) {
+					$_SERVER['PHP_AUTH_PW'] = $_GET["password"];
+				}
+				else
+				{
+					$_SERVER['PHP_AUTH_PW'] = "";
+				}
+			}
+				 
 			if(($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword)) {
 				header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
 				header('HTTP/1.0 401 Unauthorized');
