@@ -1,8 +1,4 @@
-<?
-require_once(__DIR__ . "/../bootstrap.php");
-
-use Fonzo\IPS\IPSVarType;
-
+<?php
 
 	class Webbox extends IPSModule
 	{
@@ -187,19 +183,19 @@ use Fonzo\IPS\IPSVarType;
 		{
 				$varinfo = (IPS_GetVariable($objid));
 				$vartype =  $varinfo["VariableType"];
-				if ($vartype == IPSVarType::vtBoolean) //bool
+				if ($vartype == 0) //bool
 				{
 					$ipsvartype = "boolean";
 				}
-				elseif ($vartype == IPSVarType::vtInteger) //integer
+				elseif ($vartype == 1) //integer
 				{
 					$ipsvartype = "integer";
 				}
-				elseif ($vartype == IPSVarType::vtFloat) //float
+				elseif ($vartype == 2) //float
 				{
 					$ipsvartype = "double";
 				}
-				elseif ($vartype == IPSVarType::vtString) //string
+				elseif ($vartype == 3) //string
 				{
 					$ipsvartype = "string";
 				}
@@ -251,9 +247,8 @@ use Fonzo\IPS\IPSVarType;
 		
 		protected function WebboxCSSTransparent()
 		{
-			$CSS = '@charset "utf-8";
-			<style type="text/css" media="screen">
-			
+			$CSS = '<style type="text/css" media="screen">
+			@charset "utf-8";
 			body {
 				background-color: transparent;
 			}
@@ -289,12 +284,28 @@ use Fonzo\IPS\IPSVarType;
 			return $output_file; 
 		}
 		
-		protected function Cover($sonosid, $size)
+		protected function Cover($imgobjectid, $size, $detailobjectid)
 		{
-            $coverurl = $this->GetCoverURLfromDetail($sonosid);
-            $name = $this->GetSonosName($sonosid);
-			// HTML ausgeben
-			if($coverurl == "") // transparent no cover
+			$name = IPS_GetName($imgobjectid);
+			$mediaimage = $this->MediaImage($imgobjectid);
+			//$headhtml = $mediaimage["headhtml"];
+			$imgdata = $mediaimage["imgdata"];
+			$mimetype = $mediaimage["mimetype"];
+			$output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."_temp.".$mimetype;
+			$ImageFile = $this->savepicture($imgdata, $output_file);
+			$imageinfo = $this->getimageinfo($ImageFile);
+			$mediaimgwidth = $size;
+			$mediaimgheight = $size;
+			$image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
+			$thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
+			$thumbimg = $thumb["img"];
+			$thumbwidth = $thumb["width"];
+			$thumbheight = $thumb["height"];
+			$coverimg = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
+				
+			// HTMLBox ausgeben
+			$sonoscoverdetail = GetValue($detailobjectid);
+			if($sonoscoverdetail == "")
 			{
 				$img = imagecreatetruecolor($size, $size);
 				imagesavealpha($img, true);
@@ -305,9 +316,7 @@ use Fonzo\IPS\IPSVarType;
 			}
 			else
 			{
-
-				$cover = '<a href="sonos://"><img class="reflex" src="'.$coverurl.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
-
+				$cover = '<a href="sonos://"><img class="reflex" src="'.$coverimg.'" width="'.$size.'" height="'.$size.'" border="0" alt="Cover Sonos"></a>';
 			}	
 
 			$content = '<!doctype html>
@@ -324,74 +333,53 @@ use Fonzo\IPS\IPSVarType;
 </html>';
 			return $content;
 		}
-
-		protected function GetCoverURLfromDetail($sonosid)
-		{
-            $details = GetValue(IPS_GetObjectIDByIdent("Details", $sonosid)); // Detail Variable des Sonos Players
-            //var_dump($details);
-            if($details == "")
-            {
-                //transparent image
-                $picurl = "";
-            }
-            else
-            {
-                $picurlstart = strpos($details, '<img src="');
-                $picurlend = strpos($details, '" style="max-width: 170px; max-height: 170px; -webkit-box-reflect');
-                $picurllength = $picurlend - ($picurlstart+10);
-                $picurl = substr($details, ($picurlstart+10), ($picurllength));
-            }
-            return $picurl;
-		}
-
-		protected function GetSonosName($sonosid)
-		{
-			$name = IPS_GetName($sonosid);
-			return $name;
-		}
-
-		protected function CreateCoverMediaImage($sonosid)
-		{
-
-		}
-
-		protected function GetCoverfromMediaImage($imgobjectid)
-		{
-            $name = IPS_GetName($imgobjectid);
-            $mediaimage = $this->MediaImage($imgobjectid);
-            //$headhtml = $mediaimage["headhtml"];
-            $imgdata = $mediaimage["imgdata"];
-            $mimetype = $mediaimage["mimetype"];
-            $output_file = IPS_GetKernelDir()."media".DIRECTORY_SEPARATOR.$name."_temp.".$mimetype;
-            $ImageFile = $this->savepicture($imgdata, $output_file);
-            $imageinfo = $this->getimageinfo($ImageFile);
-            $mediaimgwidth = $imageinfo["imagewidth"];
-            $mediaimgheight = $imageinfo["imageheight"];
-            $image = $this->createimage($ImageFile, $imageinfo["imagetype"]);
-            $thumb = $this->createthumbnail($mediaimgwidth, $mediaimgheight, $imageinfo["imagewidth"],$imageinfo["imageheight"]);
-            $thumbimg = $thumb["img"];
-            $thumbwidth = $thumb["width"];
-            $thumbheight = $thumb["height"];
-            $coverimgpath = $this->copyimgtothumbnail($thumbimg, $image, $thumbwidth, $thumbheight, $imageinfo["imagewidth"],$imageinfo["imageheight"], $name);
-            $coverpicture = imagecreatefrompng ( $coverimgpath );
-            imagepng($coverpicture); // load picture in browser
-            imagedestroy($coverpicture); // clear ram
-		}
-
+		
 		protected function HTMLBox($objectid, $uri)
 		{
-		//$uriips =  substr($uri, 0, 26);
-		//IPS_LogMessage("Webbox", "IPS IP : ".$uriips);
 		// HTMLBox ausgeben
 		$HTML = GetValue($objectid);
 		if ( strpos($HTML, '</iframe>'))
 			{
-			$start = strpos($HTML, '<iframe src="');
-			$htmlrest = substr($HTML, $start+13);
-			$end = strpos($htmlrest, '"');
-			$src = substr($HTML, $start+13, $end);
-			$posuser = strpos($src, 'user');
-			$absuri = $uri."/".$src;
+                $start = strpos($HTML, '<iframe src="');
+                if($start<>0)
+                {
+                    $start = strpos($HTML, "<iframe src='");
+                    $htmlrest = substr($HTML, $start+13);
+                    $end = strpos($htmlrest, "'");
+                }
+                else
+                {
+                    $htmlrest = substr($HTML, $start+13);
+                    $end = strpos($htmlrest, '"');
+                }
+                $src = substr($HTML, $start+13, $end);
+                $poshttp = strpos($src, 'http://');
+                $poshttps = strpos($src, 'https://');
+                $posuser = strpos($src, 'user');
+                if($poshttp === 0 || $poshttp > 0)
+                {
+                    $src = substr($src, $poshttp);
+                    $absuri = $src;
+                    $this->SendDebug("Webbox URL", "http found", 0);
+                }
+				elseif($poshttps === 0 || $poshttps > 0)
+                {
+                    $src = substr($src, $poshttps);
+                    $absuri = $src;
+                    $this->SendDebug("Webbox URL", "https found", 0);
+                }
+				elseif($posuser)
+                {
+                    $src = substr($src, $posuser);
+                    $absuri = $uri."/".$src;
+                    $this->SendDebug("Webbox URL", "user found", 0);
+                }
+                else
+                {
+                    $absuri = $uri."/".$src;
+                    $this->SendDebug("Webbox URL", "URI ".$absuri, 0);
+                }
+                $this->SendDebug("Webbox URL", $absuri, 0);
 			$HTML = file_get_contents($absuri);
 			IPS_LogMessage("Webbox", "Auslesen : ".$absuri);
 			return $HTML;
@@ -432,7 +420,7 @@ use Fonzo\IPS\IPSVarType;
 	<!-- <script src="http://192.168.55.120:3777/user/Colorwheel/raphael.min.js"></script> -->
 	<script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js" type="text/javascript"></script>
-	<script src="http://192.168.55.71:3777/user/Colorwheel/colorwheel.js"></script>
+	<script src="http://192.168.55.120:3777/user/Colorwheel/colorwheel.js"></script>
 	  <style type="text/css" media="screen">
     body {
       background:#FFF;
@@ -1227,30 +1215,20 @@ Raphael.colorwheel = function(target, color_wheel_size, no_segments){
 		
 		protected function MediaImage($imageid)
 		{
-			if(!IPS_MediaExists($imageid))
-			{
-				$this->SendDebug("Webbox", "No Media Image for ID ".$imageid." found",0);
-				die("Media Image with ID (".$imageid.") does not exists");
-			}
+		if(!IPS_MediaExists($imageid))
+			die("ID #".$imageid.") does not exists");
 
+		$media=IPS_GetMedia($imageid);
 
+		if($media['MediaType'] != 1)
+			die("ID #".$imageid." is not an image");
 
-			$media=IPS_GetMedia($imageid);
-
-			if($media['MediaType'] != 1)
-			{
-				$this->SendDebug("Webbox", "No Media Image for ID ".$imageid." found",0);
-				die("ID #".$imageid." is not an image");
-			}
-
-
-
-			$imgbase64 = IPS_GetMediaContent($imageid); //liefert den Base64 kodierten Inhalt für das Medienobjekt
-			$imgdata = base64_decode($imgbase64);
-			$mimetype = $this->getImageMimeType($imgdata);
-			$headhtml =  $this->getimgheader($mimetype);
-			$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata, "mimetype" => $mimetype);
-			return $mediaimage;
+		$imgbase64 = IPS_GetMediaContent($imageid); //liefert den Base64 kodierten Inhalt für das Medienobjekt
+		$imgdata = base64_decode($imgbase64); 
+		$mimetype = $this->getImageMimeType($imgdata);
+		$headhtml =  $this->getimgheader($mimetype);
+		$mediaimage = array("headhtml" => $headhtml, "imgdata" => $imgdata, "mimetype" => $mimetype);
+		return $mediaimage;
 		}
 		
 		protected function getimgheader($mimetype)
@@ -1476,19 +1454,82 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			
 			$webhookusername = $this->ReadPropertyString('webhookusername');
 			$webhookpassword = $this->ReadPropertyString('webhookpassword');
-			if(!isset($_SERVER['PHP_AUTH_USER']))
-			$_SERVER['PHP_AUTH_USER'] = "";
-			if(!isset($_SERVER['PHP_AUTH_PW']))
+			//$basicauth = false;
+			$getauth = false;
+			$user = '';
+			$password = '';
+			$user_auth = '';
+			$password_auth = '';
+
+			if (isset($_GET["user"])) {
+				$user = $_GET["user"];
+				$this->SendDebug("Webbox GET", "username: " . $user, 0);
+			}
+			if (isset($_GET["password"])) {
+				$password = $_GET["password"];
+				$this->SendDebug("Webbox GET", "password: " . $password, 0);
+			}
+
+
+			if (!isset($_SERVER['PHP_AUTH_USER']))
+			{
+				$this->SendDebug("Webbox Authentication", "no username received", 0);
+				$_SERVER['PHP_AUTH_USER'] = "";
+			}
+			else
+			{
+				$user_auth = $_SERVER['PHP_AUTH_USER'];
+				$this->SendDebug("Webbox Authentication", "username: " . $_SERVER['PHP_AUTH_USER'], 0);
+			}
+
+			if (!isset($_SERVER['PHP_AUTH_PW']))
+			{
+				$this->SendDebug("Webbox Authentication", "no password received", 0);
 				$_SERVER['PHP_AUTH_PW'] = "";
-			 
-			if(($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword)) {
-				header('WWW-Authenticate: Basic Realm="Doorbird WebHook"');
+			}
+			else
+			{
+				$password_auth = $_SERVER['PHP_AUTH_PW'];
+				$this->SendDebug("Webbox Authentication", "password: " . $_SERVER['PHP_AUTH_PW'], 0);
+			}
+
+			if(($user == $webhookusername && $password == $webhookpassword) || ($user_auth == $webhookusername && $password_auth == $webhookpassword))
+			{
+				$getauth = true;
+				$this->SendDebug("Webbox Authentication", "authentication ok", 0);
+			}
+
+			if($user != $webhookusername && $user_auth != $webhookusername)
+			{
 				header('HTTP/1.0 401 Unauthorized');
 				echo "Authorization required";
-                $this->SendDebug("Webbox", "Wrong username or password",0);
+				$this->SendDebug("Webbox Authentication", "wrong username", 0);
 				return;
 			}
+			if($password != $webhookpassword && $password_auth != $webhookpassword)
+			{
+				header('HTTP/1.0 401 Unauthorized');
+				echo "Authorization required";
+				$this->SendDebug("Webbox Authentication", "wrong password", 0);
+				return;
+			}
+
+
+			if ($getauth == false && (($_SERVER['PHP_AUTH_USER'] != $webhookusername) || ($_SERVER['PHP_AUTH_PW'] != $webhookpassword))) {
+				header('WWW-Authenticate: Basic Realm="Webbox WebHook"');
+				header('HTTP/1.0 401 Unauthorized');
+				echo "Authorization required";
+				$this->SendDebug("Webbox", "Wrong username or password", 0);
+				return;
+			}
+				
+
 			//echo "Webhook Webbox IP-Symcon 4";
+			if(isset($_SERVER['HTTPS']))
+			{
+				$isHttps = (!empty($_SERVER['HTTPS']));
+				$this->SendDebug("Server[HTTPS]", "HTTPS >".$isHttps."<", 0);
+			}
 
 			//workaround for bug
 			if(!isset($_IPS))
@@ -1503,12 +1544,20 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			if (isset($_GET["type"]))
 				{
 				$type = $_GET["type"];
-
+				if (isset($_GET["objectid"]))
+					{
+						$objectid = $_GET["objectid"];
+					}
+				else{
+						return "no object id found";
+					}	
 				if ($type == "htmlbox")
 					{
-                        $objectid = $this->GetObjectID($_GET);
-						$this->SendDebug("Webbox", "HTMLBox",0);
 						$host = $_SERVER['HTTP_HOST'];
+						if(isset($_SERVER['HTTPS']))
+						{
+							$this->SendDebug("Server[HTTPS]", "HTTPS ".$_SERVER['HTTPS'], 0);
+						}
 						$uri = "http://".$host;
 						$HTMLPage = $this->HTMLBox($objectid, $uri);
 						echo $HTMLPage;
@@ -1516,8 +1565,6 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "mediaimage")
 					{
-                        $objectid = $this->GetObjectID($_GET);
-						$this->SendDebug("Webbox", "Media Image",0);
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
@@ -1535,8 +1582,6 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}
 				elseif ($type == "wunderground")
 					{
-                        $objectid = $this->GetObjectID($_GET);
-						$this->SendDebug("Webbox", "Wunderground",0);
 						if (isset($_GET["weather"]))
 						{
 							$weathertype = $_GET["weather"];
@@ -1552,22 +1597,21 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 					}	
 				elseif ($type == "cover")
 					{
-                        $objectid = $this->GetObjectID($_GET);
-						$size = 170;
+						$imgobjectid = $objectid; 
 						if (isset($_GET["size"]))
 						{
 							$size = $_GET["size"];
 						}
-
-                        $this->SendDebug("Webbox", "Cover with Size ".$size." for Media Object (".$objectid.")",0);
-						$Cover = $this->Cover($objectid, $size);
+						if (isset($_GET["detailobjectid"]))
+						{
+							$objectid = $_GET["detailobjectid"];
+						}
+						$Cover = $this->Cover($imgobjectid, $size, $detailobjectid);
 						echo $Cover;
 						//return $Cover;
 					}
 				elseif ($type == "colorwheel")
 					{
-                        //$objectid = $this->GetObjectID($_GET);
-						$this->SendDebug("Webbox", "Colorwheel",0);
 						/*
 						if (isset($_GET["size"]))
 						{
@@ -1581,18 +1625,14 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 						return $Cover;
 						*/
 						$root = realpath(__DIR__ . "/www/Colorwheel");
-						$request = $_SERVER['REQUEST_URI'];
-                        $urlendstring1 = substr($request, -31, 26);
-                        $urlendstring2 = substr($request, -31, 10);
-                        $urlendstring3 = substr($request, -16);
-                        $uri = "";
-                        //append colorwheel.php
-                        if($urlendstring1 == "?type=colorwheel&objectid=" || ($urlendstring2 == "?objectid=" && $urlendstring3 =="&type=colorwheel"))
-                        {
-                            $uri = substr($request, 0, -(strlen("?type=colorwheel&objectid=12345")));
-                            $uri .= "/colorwheel.html";
-                        }
-
+			
+						//append colorwheel.php
+						if(substr($_SERVER['REQUEST_URI'], -16) == "?type=colorwheel")
+						{
+							$uri = substr($_SERVER['REQUEST_URI'], 0, -(strlen("?type=colorwheel")));
+							$uri .= "/colorwheel.html";
+						}
+						
 						//reduce any relative paths. this also checks for file existance
 						$path = realpath($root . "/" . substr($uri, 39));
 						$path = "/var/lib/symcon/modules/ipsymconwebbox/Webbox/www/Colorwheel/colorwheel.html";
@@ -1608,47 +1648,9 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 							die("Security issue. Cannot leave root folder!");
 						}
 						*/
-						//header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
+						header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
 						readfile($path);
-					}
-					elseif ($type == "jquery")
-					{
-						//$objectid = $this->GetObjectID($_GET);
-						$this->SendDebug("Webbox", "jquery",0);
-
-                        $root = realpath(__DIR__ . "/www/jquery"); // folder for redirection
-						$folderstartpage = "index.html"; // start page
-						$suffix = "?type=jquery"; // suffix
-						$webhookname = "/hook/webbox/";
-                        $stringlength = strlen($suffix); // Suffix
-
-                        //append folder start page
-                        if(substr($_SERVER['REQUEST_URI'], -$stringlength) == $suffix)
-                        {
-                            $_SERVER['REQUEST_URI'] = substr($_SERVER['REQUEST_URI'], 0, -(strlen("$suffix"))); // cut off suffix
-                        	$_SERVER['REQUEST_URI'] .= "/".$folderstartpage; // append folder start page
-                        }
-
-                        //reduce any relative paths. this also checks for file existance
-                        $path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen($webhookname.$suffix)));
-                        $path .= "/".$folderstartpage;
-                        $this->SendDebug("Webbox", "Path (".$path.")",0);
-                        if($path === false) {
-                            http_response_code(404);
-                            $this->SendDebug("Webbox", "Send Response 404, File not found!",0);
-                            die("File not found!");
-                        }
-
-                        if(substr($path, 0, strlen($root)) != $root) {
-                            http_response_code(403);
-                            $this->SendDebug("Webbox", "Send Response 403, Security issue. Cannot leave root folder!",0);
-                            die("Security issue. Cannot leave root folder!");
-                        }
-                        header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
-                        $this->SendDebug("Webbox", "Set header \"Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION))."\"",0);
-                        $this->SendDebug("Webbox", "readfile(".$path.")",0);
-                        readfile($path);
-					}
+					}	
 				}
 		}
 		
@@ -1674,21 +1676,7 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			return "text/html";
 			//return "text/plain";
 		}
-
-		protected function GetObjectID($get)
-		{
-            if (isset($get["objectid"]))
-            {
-                $objectid = $get["objectid"];
-                $this->SendDebug("Webbox", "ObjectID: ".$objectid,0);
-                return $objectid;
-            }
-            else{
-                $this->SendDebug("Webbox", "no object id found",0);
-                return "no object id found";
-            }
-		}
-
+		
 		private function CreateCategoryByIdent($id, $ident, $name) {
 			 $cid = @IPS_GetObjectIDByIdent($ident, $id);
 			 if($cid === false) {
