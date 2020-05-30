@@ -1456,6 +1456,11 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 			$webhookpassword = $this->ReadPropertyString('webhookpassword');
 			//$basicauth = false;
 			$getauth = false;
+			$user = '';
+			$password = '';
+			$user_auth = '';
+			$password_auth = '';
+
 			if (isset($_GET["user"])) {
 				$user = $_GET["user"];
 				$this->SendDebug("Webbox GET", "username: " . $user, 0);
@@ -1464,18 +1469,49 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				$password = $_GET["password"];
 				$this->SendDebug("Webbox GET", "password: " . $password, 0);
 			}
-			if($user == $webhookusername && $password == $webhookpassword)
-			{
-				$getauth = true;
-			}
+
+
 			if (!isset($_SERVER['PHP_AUTH_USER']))
 			{
+				$this->SendDebug("Webbox Authentication", "no username received", 0);
 				$_SERVER['PHP_AUTH_USER'] = "";
+			}
+			else
+			{
+				$user_auth = $_SERVER['PHP_AUTH_USER'];
+				$this->SendDebug("Webbox Authentication", "username: " . $_SERVER['PHP_AUTH_USER'], 0);
 			}
 
 			if (!isset($_SERVER['PHP_AUTH_PW']))
 			{
+				$this->SendDebug("Webbox Authentication", "no password received", 0);
 				$_SERVER['PHP_AUTH_PW'] = "";
+			}
+			else
+			{
+				$password_auth = $_SERVER['PHP_AUTH_PW'];
+				$this->SendDebug("Webbox Authentication", "password: " . $_SERVER['PHP_AUTH_PW'], 0);
+			}
+
+			if(($user == $webhookusername && $password == $webhookpassword) || ($user_auth == $webhookusername && $password_auth == $webhookpassword))
+			{
+				$getauth = true;
+				$this->SendDebug("Webbox Authentication", "authentication ok", 0);
+			}
+
+			if($user != $webhookusername && $user_auth != $webhookusername)
+			{
+				header('HTTP/1.0 401 Unauthorized');
+				echo "Authorization required";
+				$this->SendDebug("Webbox Authentication", "wrong username", 0);
+				return;
+			}
+			if($password != $webhookpassword && $password_auth != $webhookpassword)
+			{
+				header('HTTP/1.0 401 Unauthorized');
+				echo "Authorization required";
+				$this->SendDebug("Webbox Authentication", "wrong password", 0);
+				return;
 			}
 
 
@@ -1486,6 +1522,8 @@ Webbox_ProcessHookDataOLD('.$this->InstanceID.');
 				$this->SendDebug("Webbox", "Wrong username or password", 0);
 				return;
 			}
+				
+
 			//echo "Webhook Webbox IP-Symcon 4";
 			if(isset($_SERVER['HTTPS']))
 			{
